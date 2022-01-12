@@ -16,7 +16,7 @@ function LocationEntryForm() {
   const [ndays, setndays] = useState(0);
   const [cabchoices, setcabchoices] = useState([]);
   useEffect(() => {
-    if (triptype == "Drop Trip") {
+    if (triptype === "Drop Trip") {
       setcabchoices(["Etios/Dzire or Equivalent", "Innova/Xylo or Equivalent"]);
     } else {
       setcabchoices([
@@ -35,10 +35,10 @@ function LocationEntryForm() {
           <button
             style={{
               background:
-                triptype == e
+                triptype === e
                   ? "linear-gradient(to left, #a6f77b, #2dbd6e)"
                   : "none",
-              boxShadow: triptype == e ? "0px 1px 8px #24c64f" : "none",
+              boxShadow: triptype === e ? "0px 1px 8px #24c64f" : "none",
             }}
             className="form__chip"
             onClick={() => settriptype(e)}
@@ -107,7 +107,7 @@ function LocationEntryForm() {
           <MenuItem value={index}>{e}</MenuItem>
         ))}
       </Select>
-      {triptype == "Round Trip" && (
+      {triptype === "Round Trip" && (
         <>
           <p>Select The Number Of Days</p>
           <TextField

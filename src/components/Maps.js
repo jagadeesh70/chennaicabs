@@ -9,7 +9,7 @@ const containerStyle = {
 }
 
 
-const Maps = () => {
+const Maps = (e) => {
     const DirectionsService = new window.google.maps.DirectionsService()
     let [direction,setDirection] = useState("")
     DirectionsService.route(
