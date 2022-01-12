@@ -3,6 +3,13 @@ import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
+import PlacesSuggestion from "./PlacesSuggestion";
+// import PlacesAutocomplete from 'react-places-autocomplete';
+// import {
+//   geocodeByAddress,
+//   geocodeByPlaceId,
+//   getLatLng,
+// } from 'react-places-autocomplete';
 import "./LocationEntryForm.css";
 
 const top100Films = [
@@ -66,6 +73,7 @@ function LocationEntryForm() {
           />
         )}
       />
+      {/* <PlacesSuggestion /> */}
       <p>Destination Location</p>
       <Autocomplete
         size="small"
