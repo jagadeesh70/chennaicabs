@@ -1,0 +1,30 @@
+.footer-container {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #21ba45;
+  color: white;
+}
+
+.socialmedia {
+  width: 200px;
+  display: flex;
+  justify-content: space-between;
+  margin-right: 30px;
+  cursor: pointer;
+}
+.tc {
+  font-size: medium;
+  display: flex;
+  margin-left: 50px;
+}
+.tc > div {
+  margin-right: 20px;
+}
+
+.footer-logo {
+  width: 100px;
+  height: 100px;
+  margin-left: 30px;
+}

@@ -4,7 +4,7 @@ import logo from "../images/logo.png"
 
 function Header() {
     return (
-        <div className='container'>
+        <div className='header-container'>
             <img src={logo} alt="Chennai Cabs" className='header-logo' />
             <div className="main-container">
             <div className="header">Home</div>
