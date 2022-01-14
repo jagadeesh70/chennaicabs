@@ -1,6 +1,7 @@
 import { GoogleMap, useJsApiLoader, DirectionsService,DirectionsRenderer } from '@react-google-maps/api'
-import React, { useState, useCallback } from 'react'
+import React, { useState, useContext } from 'react'
 import "./Maps.css"
+import { Context } from '../context/Context'
 
 const isLoaded = true
 const containerStyle = {
@@ -9,7 +10,8 @@ const containerStyle = {
 }
 
 
-const Maps = (e) => {
+const Maps = () => {
+    const {origin,destination} = useContext(Context)
     const DirectionsService = new window.google.maps.DirectionsService()
     let [direction,setDirection] = useState("")
     DirectionsService.route(

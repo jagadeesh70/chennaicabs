@@ -1,27 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext,useRef } from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import PlacesSuggestion from "./PlacesSuggestion";
-// import PlacesAutocomplete from 'react-places-autocomplete';
-// import {
-//   geocodeByAddress,
-//   geocodeByPlaceId,
-//   getLatLng,
-// } from 'react-places-autocomplete';
+import { BookingContext } from "../context/BookingContext";
 import "./LocationEntryForm.css";
+import PlacesAutocomplete from "react-places-autocomplete/dist/PlacesAutocomplete";
 
 const top100Films = [
   { title: "The Shawshank Redemption", year: 1994 },
   { title: "The Godfather", year: 1972 },
 ];
-
 function LocationEntryForm() {
+
+
+  const {origin,destination,setOrigin,setDestination} = useContext(BookingContext)
   const [triptype, settriptype] = useState("Drop Trip");
   const [cabtype, setcabtype] = useState(1);
   const [ndays, setndays] = useState(0);
   const [cabchoices, setcabchoices] = useState([]);
+
   useEffect(() => {
     if (triptype === "Drop Trip") {
       setcabchoices(["Etios/Dzire or Equivalent", "Innova/Xylo or Equivalent"]);
@@ -55,25 +54,9 @@ function LocationEntryForm() {
         ))}
       </div>
       <p>Pickup Location</p>
-      <Autocomplete
-        size="small"
-        freeSolo
-        id="free-solo-2-demo"
-        className="form__autocomplete"
-        disableClearable
-        options={top100Films.map((option) => option.title )}
-        renderInput={(params) => (
-          <TextField
-            {...params}
-            label="Enter the Pickup Location"
-            InputProps={{
-              ...params.InputProps,
-              type: "search",
-            }}
-          />
-        )}
-      />
-      {/* <PlacesSuggestion /> */}
+      
+      
+          <PlacesSuggestion inputType='Enter the Pickup Location' />
       <p>Destination Location</p>
       <Autocomplete
         size="small"
@@ -90,6 +73,8 @@ function LocationEntryForm() {
               ...params.InputProps,
               type: "search",
             }}
+            onChange={e => setDestination(e.target.value)}
+            value={destination}
           />
         )}
       />
@@ -140,5 +125,24 @@ function LocationEntryForm() {
     </div>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 export default LocationEntryForm;

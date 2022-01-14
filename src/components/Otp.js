@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import "./Login.css";
-import { Context } from "../Context";
+import { Context } from "../context/Context";
 import { useContext } from "react";
 import LoginSuccess from "./LoginSuccess";
 

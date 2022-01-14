@@ -1,5 +1,5 @@
 import {createContext,useState} from 'react'
-import { auth } from './config/firebase-config'
+import { auth } from '../config/firebase-config'
 import { RecaptchaVerifier,signInWithPhoneNumber } from 'firebase/auth'
 
 const Context = createContext()
@@ -11,6 +11,7 @@ const ContextProvider = ({children}) =>{
     const [phone, setPhone] = useState()
     const [otp, setotp] = useState()
     const [otpsent, setoptsent] = useState(false)
+    
     
     const configureCaptcha = (e) =>{
         window.recaptchaVerifier = new RecaptchaVerifier('sign-in-button', {
@@ -63,7 +64,8 @@ const ContextProvider = ({children}) =>{
             onSignInSubmit,
             onSubmitOtp,
             otpsent,
-            authstate
+            authstate,
+            
         }}
         >
             {children}

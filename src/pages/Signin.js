@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Login from "../components/Login";
 import { useContext } from "react";
-import { Context } from "../Context";
+import { Context } from "../context/Context";
 import Otp from "../components/Otp";
 
 function Signin() {

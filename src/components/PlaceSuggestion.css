@@ -1,0 +1,14 @@
+.auto-complete-container {
+  max-width: 40px;
+  background-color: #24c64f;
+  overflow: auto;
+}
+.autocomplete-dropdown-container {
+  width: 40px;
+  display: block;
+  max-height: 40%;
+  width: 100%;
+  position: absolute;
+  z-index: 100;
+  box-sizing: inherit;
+}
