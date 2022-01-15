@@ -4,13 +4,16 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import LocationEntryForm from "../components/LocationEntryForm";
 import Maps from "../components/Maps";
+import './Homepage.css'
 
 function Homepage() {
   return (
     <div>
       <Header></Header>
-      <LocationEntryForm />
-      {/* <Maps></Maps> */}
+      <div className="entry-container">
+        <LocationEntryForm />
+        <Maps></Maps>
+      </div>
       <Cars />
       <Footer></Footer>
     </div>

@@ -1,40 +1,53 @@
-import { GoogleMap, useJsApiLoader, DirectionsService,DirectionsRenderer } from '@react-google-maps/api'
+import { GoogleMap,DirectionsRenderer } from '@react-google-maps/api'
 import React, { useState, useContext } from 'react'
 import "./Maps.css"
-import { Context } from '../context/Context'
+import { BookingContext } from '../context/BookingContext'
 
-const isLoaded = true
 const containerStyle = {
-    width: '300px',
-    height: '300px'
+    width: '350px',
+    height: '400px'
 }
 
 
 const Maps = () => {
-    const {origin,destination} = useContext(Context)
+    const {origin,destination} = useContext(BookingContext)
     const DirectionsService = new window.google.maps.DirectionsService()
-    let [direction,setDirection] = useState("")
-    DirectionsService.route(
+    let [direction,setDirection, setDistance] = useState("")
+    const Mapdirection = () =>{
+
+        DirectionsService.route(
             {
-                origin: { lat: 12.5244, lng:  77.3792 },
-                destination: { lat: 18.5244, lng:  80.3792 },
-                travelMode: window.google.maps.TravelMode.DRIVING
+                origin: { lat: 13.5244, lng:  80.3792 },
+                destination: { lat: 12.5244, lng:  77.3792 },
+                travelMode: window.google.maps.TravelMode.DRIVING,
+                region: "IN"
             },
             (result,status) =>{
                 if(status === window.google.maps.DirectionsStatus.OK){
+                    setDistance(result.routes[0].legs[0].distance.text)
                     setDirection(result)
-                    console.log(result)
-                }else{
+                }
+                else{
                     console.log(`error ::: ${result}`)
                 }
             }
-        )
-
-    return (
-        <div className='map-container'>
+            )
+        }
+        Mapdirection()
+            
+            return (
+                <div className='map-container'>
             <div className="googlemap">
                 <GoogleMap 
-                defaultZoom={10}
+                options={{
+                    mapTypeControl: false,
+                    streetViewControl: false,
+                    zoomControl: true,
+                    fullscreenControl: false,
+                    styles: containerStyle,
+                    minZoom: 7,
+                    maxZoom: 20
+                  }}
                 mapContainerStyle={containerStyle}
                 
                 >

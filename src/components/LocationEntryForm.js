@@ -8,6 +8,7 @@ import { BookingContext } from "../context/BookingContext";
 import "./LocationEntryForm.css";
 import PlacesAutocomplete from "react-places-autocomplete/dist/PlacesAutocomplete";
 
+
 const top100Films = [
   { title: "The Shawshank Redemption", year: 1994 },
   { title: "The Godfather", year: 1972 },
@@ -15,7 +16,7 @@ const top100Films = [
 function LocationEntryForm() {
 
 
-  const {origin,destination,setOrigin,setDestination} = useContext(BookingContext)
+  const {origin,destination,setOrigin,setDestination,vehicle,setVehicle} = useContext(BookingContext)
   const [triptype, settriptype] = useState("Drop Trip");
   const [cabtype, setcabtype] = useState(1);
   const [ndays, setndays] = useState(0);
@@ -32,6 +33,9 @@ function LocationEntryForm() {
         "Toyota Crysta",
         "Force traveller",
       ]);
+    }
+    return () =>{
+      setcabchoices(["Etios/Dzire or Equivalent", "Innova/Xylo or Equivalent"])
     }
   }, [triptype]);
   return (
