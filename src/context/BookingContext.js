@@ -1,4 +1,4 @@
-import { createContext,useState } from "react";
+import { createContext,useEffect,useState } from "react";
 
 const BookingContext = createContext()
 
@@ -13,6 +13,12 @@ const BookingContextProvider = ({children}) =>{
     const [distance, setDistance] = useState("")
     const [vehicle, setVehicle] = useState(1)
     const [totalFare,setTotalFare] = useState()
+    useEffect(()=>{
+        oneWayTrip(319,"Innova/Xylo or Equivalent")
+        return () =>{
+            setTotalFare()
+        }
+    },[])
 
 
     const oneWayTrip = (distances,vehicles) =>{
@@ -29,8 +35,7 @@ const BookingContextProvider = ({children}) =>{
                         console.log("something is wrong")
                         break;
                 }
-            }
-            if(distances > 130){
+            }else if(distances > 130){
                 switch (vehicles) {
                     case "Etios/Dzire or Equivalent":
                         setTotalFare(baseFareSmall+driverFee+((baseDistance - distance)* 13))
@@ -46,7 +51,9 @@ const BookingContextProvider = ({children}) =>{
             }
         }
         }
-        oneWayTrip(319,"Etios/Dzire or Equivalent")
+        
+        console.log(totalFare)
+        
         return(
             <BookingContext.Provider value={{
                 origin,setOrigin,
@@ -54,7 +61,8 @@ const BookingContextProvider = ({children}) =>{
                 distance,
                 setDistance,
                 vehicle,
-                setVehicle
+                setVehicle,
+                oneWayTrip
             }}>
             {children}
         </BookingContext.Provider>
