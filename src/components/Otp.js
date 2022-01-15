@@ -1,30 +1,34 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Login.css";
 import { Context } from "../context/Context";
 import { useContext } from "react";
+import LoginSuccess from "./LoginSuccess";
 
-function Login() {
-  const {setPhone, onSignInSubmit} = useContext(Context)
-  return (
-    <div className="login__root__container">
+function Otp() {
+  const {setotp, onSubmitOtp,authstate} = useContext(Context)
+  if(authstate){
+    return <LoginSuccess/>
+  }else{
+    return (
+      <div className="login__root__container">
       <div id="card">
         <div id="card-content">
           <div id="card-title">
             <h2>LOGIN</h2>
             <div className="underline-title"></div>
           </div>
-          <form onSubmit={onSignInSubmit}>
+          <form onSubmit={onSubmitOtp}>
             <label style={{ paddingTop: "13px" }}>
-              &nbsp;Mobile Number
+              &nbsp;Enter OTP
             </label>
             <input
-              id="user-email"
+              id="OTP"
               className="form-content"
-              type="text"
+              type="number"
               name="number"
-              autoComplete="on"
+              autoComplete="off"
               required
-              onChange={(e) => setPhone(e.target.value)}
+              onChange={(e) => setotp(e.target.value)}
               />
             <div className="form-border"></div>
             <button
@@ -32,14 +36,14 @@ function Login() {
             name="submit"
             id="submit-btn-2"
             >
-              Login
+              Submit
             </button>
-            <div id='sign-in-button' style={{visibility: "hidden"}}></div>
           </form>
         </div>
       </div>
     </div>
   );
 }
+}
 
-export default Login;
+export default Otp;

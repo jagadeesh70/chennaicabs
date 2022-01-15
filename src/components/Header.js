@@ -1,11 +1,16 @@
 import React from 'react'
 import "./Header.css"
 import logo from "../images/logo.png"
+import { useContext } from 'react'
+import {Context} from '../context/Context'
 
 function Header() {
+    const {username}  = useContext(Context)
+
     return (
         <div className='header-container'>
             <img src={logo} alt="Chennai Cabs" className='header-logo' />
+            
             <div className="main-container">
             <div className="header">Home</div>
             <div className="header">About</div>

@@ -1,46 +1,56 @@
-import { GoogleMap, useJsApiLoader, DirectionsService,DirectionsRenderer } from '@react-google-maps/api'
-import React, { useState, useCallback } from 'react'
-import "./Maps.css"
-
-const isLoaded = true
+import { GoogleMap, DirectionsRenderer } from "@react-google-maps/api";
+import React, { useState, useContext } from "react";
+import "./Maps.css";
+import { BookingContext } from "../context/BookingContext";
 const containerStyle = {
-    width: '300px',
-    height: '300px'
-}
-
+  width: "350px",
+  height: "400px",
+};
 
 const Maps = () => {
-    const DirectionsService = new window.google.maps.DirectionsService()
-    let [direction,setDirection] = useState("")
+  const { origin, destination, setDistance } = useContext(BookingContext);
+  const DirectionsService = new window.google.maps.DirectionsService();
+  let [direction, setDirection] = useState("");
+  const Mapdirection = () => {
     DirectionsService.route(
-            {
-                origin: { lat: 12.5244, lng:  77.3792 },
-                destination: { lat: 18.5244, lng:  80.3792 },
-                travelMode: window.google.maps.TravelMode.DRIVING
-            },
-            (result,status) =>{
-                if(status === window.google.maps.DirectionsStatus.OK){
-                    setDirection(result)
-                    console.log(result)
-                }else{
-                    console.log(`error ::: ${result}`)
-                }
-            }
-        )
+      {
+        origin: { lat: 13.5244, lng: 80.3792 },
+        destination: { lat: 12.5244, lng: 77.3792 },
+        travelMode: window.google.maps.TravelMode.DRIVING,
+        region: "IN",
+      },
+      (result, status) => {
+        if (status === window.google.maps.DirectionsStatus.OK) {
+          setDirection(result);
+          setDistance(result);
+        } else {
+          console.log(`error ::: ${result}`);
+        }
+      }
+    );
+  };
+  Mapdirection();
 
-    return (
-        <div className='map-container'>
-            <div className="googlemap">
-                <GoogleMap 
-                defaultZoom={10}
-                mapContainerStyle={containerStyle}
-                
-                >
-                    {direction && <DirectionsRenderer directions={direction}/>}
-                </GoogleMap>
-            </div>
-        </div>
-    )
-}
+  return (
+    <div className="map-container">
+      <div className="googlemap">
+        <GoogleMap
+          options={{
+            mapTypeControl: false,
+            streetViewControl: false,
+            zoomControl: true,
+            fullscreenControl: false,
+            styles: containerStyle,
+            minZoom: 7,
+            maxZoom: 20,
+          }}
+          mapContainerStyle={containerStyle}
+        >
+          {direction && <DirectionsRenderer directions={direction} />}
+        </GoogleMap>
+      </div>
+    </div>
+  );
+};
 
-export default Maps
+export default Maps;
