@@ -5,11 +5,9 @@ import Header from "../components/Header";
 import LocationEntryForm from "../components/LocationEntryForm";
 import Maps from "../components/Maps";
 import './Homepage.css'
-import { BookingContextProvider } from "../context/BookingContext";
 
 function Homepage() {
   return (
-    <BookingContextProvider>
       <div>
         <Header></Header>
         <div className="entry-container">
@@ -19,7 +17,7 @@ function Homepage() {
         <Cars />
         <Footer></Footer>
       </div>
-    </BookingContextProvider>
+    
   );
 }
 

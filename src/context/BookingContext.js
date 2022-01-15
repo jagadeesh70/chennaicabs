@@ -15,10 +15,10 @@ const BookingContextProvider = ({children}) =>{
     const [totalFare,setTotalFare] = useState()
 
 
-    const oneWayTrip = (distance,vehicle) =>{
-        if(distance && vehicle){
+    const oneWayTrip = (distances,vehicles) =>{
+        if(distances && vehicles){
             if(distance < 130){
-                switch (vehicle) {
+                switch (vehicles) {
                     case "Etios/Dzire or Equivalent":
                         setTotalFare(baseFareSmall+driverFee)
                         break;
@@ -30,13 +30,13 @@ const BookingContextProvider = ({children}) =>{
                         break;
                 }
             }
-            if(distance > 130){
-                switch (vehicle) {
+            if(distances > 130){
+                switch (vehicles) {
                     case "Etios/Dzire or Equivalent":
-                        setTotalFare(baseFareSmall+driverFee)
+                        setTotalFare(baseFareSmall+driverFee+((baseDistance - distance)* 13))
                         break;
                     case "Innova/Xylo or Equivalent":
-                        setTotalFare(baseFareLarge+driverFee)
+                        setTotalFare(baseFareSmall+driverFee+((baseDistance - distance)* 18))
                         break
                     default:
                         console.log("something is wrong")
@@ -45,9 +45,8 @@ const BookingContextProvider = ({children}) =>{
 
             }
         }
-
         }
-        
+        oneWayTrip(319,"Etios/Dzire or Equivalent")
         return(
             <BookingContext.Provider value={{
                 origin,setOrigin,

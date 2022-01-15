@@ -12,25 +12,29 @@ const Maps = () => {
     const {origin,destination,setDistance} = useContext(BookingContext)
     const DirectionsService = new window.google.maps.DirectionsService()
     let [direction,setDirection] = useState("")
-    const Mapdirection = () =>{
-
+    const Mapdirection =  () =>{
+        
         DirectionsService.route(
             {
                 origin: { lat: 13.5244, lng:  80.3792 },
                 destination: { lat: 12.5244, lng:  77.3792 },
                 travelMode: window.google.maps.TravelMode.DRIVING,
-                region: "IN"
+                region: "IN",
+                
             },
+
             (result,status) =>{
-                if(status === window.google.maps.DirectionsStatus.OK){
-                    setDirection(result)
-                    setDistance(result)
+                setTimeout(() =>{
+                    if(status === window.google.maps.DirectionsStatus.OK){
+                        setDirection(result)
+                    }
+                    else{
+                        console.log(`error ::: ${result}`)
+                    }
                 }
-                else{
-                    console.log(`error ::: ${result}`)
+                    ,2000)
                 }
-            }
-            )
+                )
         }
         Mapdirection()
             
