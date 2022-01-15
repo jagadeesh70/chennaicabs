@@ -3,14 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import {ContextProvider} from './context/Context'
-import {BookingContextProvider} from './context/BookingContext'
 
 ReactDOM.render(
-  <BookingContextProvider>
-    <ContextProvider>
+  <ContextProvider>
       <App />
-    </ContextProvider>
-  </BookingContextProvider>,
+  </ContextProvider>,
   document.getElementById('root')
 );
 

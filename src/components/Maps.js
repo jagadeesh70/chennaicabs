@@ -2,7 +2,6 @@ import { GoogleMap,DirectionsRenderer } from '@react-google-maps/api'
 import React, { useState, useContext } from 'react'
 import "./Maps.css"
 import { BookingContext } from '../context/BookingContext'
-
 const containerStyle = {
     width: '350px',
     height: '400px'
@@ -10,9 +9,9 @@ const containerStyle = {
 
 
 const Maps = () => {
-    const {origin,destination} = useContext(BookingContext)
+    const {origin,destination,setDistance} = useContext(BookingContext)
     const DirectionsService = new window.google.maps.DirectionsService()
-    let [direction,setDirection, setDistance] = useState("")
+    let [direction,setDirection] = useState("")
     const Mapdirection = () =>{
 
         DirectionsService.route(
@@ -24,8 +23,8 @@ const Maps = () => {
             },
             (result,status) =>{
                 if(status === window.google.maps.DirectionsStatus.OK){
-                    setDistance(result.routes[0].legs[0].distance.text)
                     setDirection(result)
+                    setDistance(result)
                 }
                 else{
                     console.log(`error ::: ${result}`)
@@ -47,7 +46,7 @@ const Maps = () => {
                     styles: containerStyle,
                     minZoom: 7,
                     maxZoom: 20
-                  }}
+                }}
                 mapContainerStyle={containerStyle}
                 
                 >
