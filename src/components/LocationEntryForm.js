@@ -12,7 +12,6 @@ import PlacesSuggestion from "./PlacesSuggestion";
 import "./LocationEntryForm.css";
 import PlacesAutocomplete from "react-places-autocomplete/dist/PlacesAutocomplete";
 
-
 const top100Films = [
   { title: "The Shawshank Redemption", year: 1994 },
   { title: "The Godfather", year: 1972 },
@@ -37,9 +36,9 @@ function LocationEntryForm() {
         "Force traveller",
       ]);
     }
-    return () =>{
-      setcabchoices(["Etios/Dzire or Equivalent", "Innova/Xylo or Equivalent"])
-    }
+    return () => {
+      setcabchoices(["Etios/Dzire or Equivalent", "Innova/Xylo or Equivalent"]);
+    };
   }, [triptype]);
   return (
     <LocalizationProvider dateAdapter={DateAdapter}>
@@ -151,24 +150,5 @@ function LocationEntryForm() {
     </LocalizationProvider>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 export default LocationEntryForm;

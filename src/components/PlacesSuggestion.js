@@ -10,7 +10,7 @@ import Autocomplete from "@mui/material/Autocomplete";
 class LocationSearchInput extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { address: ""};
+    this.state = { address: "" };
   }
 
   handleChange = (address) => {
@@ -34,7 +34,7 @@ class LocationSearchInput extends React.Component {
       >
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
           <>
-            <TextField
+            {/* <TextField
               size="small"
               id="free-solo-2-demo"
               className="form__autocomplete"
@@ -46,16 +46,14 @@ class LocationSearchInput extends React.Component {
                   className: "location-search-input",
                 }),
               }}
-            />
-            {/* <Autocomplete
+            /> */}
+            <Autocomplete
               size="small"
               freeSolo
               id="free-solo-2-demo"
               className="form__autocomplete"
               disableClearable
-              options={
-                suggestions.map((suggestion) => suggestion.description)
-              }
+              options={suggestions.map((suggestion) => suggestion.description)}
               renderInput={(params) => (
                 <TextField
                   {...params}
@@ -66,7 +64,7 @@ class LocationSearchInput extends React.Component {
                   }}
                 />
               )}
-            /> */}
+            />
             <div className="auto-complete-container">
               <div className="autocomplete-dropdown-container">
                 {loading && <div>Loading...</div>}
@@ -79,7 +77,7 @@ class LocationSearchInput extends React.Component {
                     ? {
                         backgroundColor: "#24c64f",
                         cursor: "pointer",
-                        width: "100%",
+                        width: "29%",
                       }
                     : {
                         backgroundColor: "#a6f77b",
