@@ -9,17 +9,15 @@ import { BookingContextProvider } from "../context/BookingContext";
 
 function Homepage() {
   return (
-    <BookingContextProvider>
-      <div>
-        <Header></Header>
-        <div className="entry-container">
-          <LocationEntryForm />
-          <Maps></Maps>
-        </div>
-        <Cars />
-        <Footer></Footer>
+    <div>
+      <Header></Header>
+      <div className="entry-container">
+        <LocationEntryForm />
+        <Maps></Maps>
       </div>
-    </BookingContextProvider>
+      <Cars />
+      <Footer></Footer>
+    </div>
   );
 }
 
