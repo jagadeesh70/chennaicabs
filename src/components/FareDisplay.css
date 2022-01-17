@@ -1,0 +1,60 @@
+.fare__topbar {
+  margin: 1rem 0;
+}
+
+.ft__icons {
+  margin-right: 1rem;
+}
+
+.fare__topbar__location1,
+.fare__topbar__location2 {
+  align-items: center;
+}
+
+.fare__middlebar,
+.fare__bottombar {
+  padding: 0.7rem 0.6rem;
+  background-color: #efefef;
+  border-radius: 0.8rem;
+  margin: 0.8rem 0rem;
+}
+
+.fare__middlebar__row2 {
+  margin-top: 0.4rem;
+  flex: 1;
+  justify-content: space-between;
+}
+
+.fm__col2__row2 {
+  font-size: 0.8rem;
+  background-color: #c4c4c4;
+  font-weight: bold;
+  padding: 0.2rem;
+  border-radius: 0.3rem;
+}
+.fm__col1 {
+  margin-right: 1rem;
+}
+
+.fm__col2 {
+  flex: 1;
+}
+
+.fm__col2 div {
+  margin-bottom: 0.3rem;
+}
+
+.fb__row1 {
+  flex: 1;
+  margin: 0.5rem 0;
+}
+
+.fb__row1__col1 p,
+.fb__row1__col2 p {
+  margin-bottom: 0.4rem;
+  margin-right: 2rem;
+}
+
+.fb__row2 {
+  font-weight: bold;
+}

@@ -1,5 +1,7 @@
 .header-container {
-  width: 100%;
+  /* position: absolute;
+  top: 0; */
+  width: 100vw;
   height: 80px;
   display: flex;
   justify-content: space-between;

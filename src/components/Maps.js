@@ -32,7 +32,16 @@ const Maps = () => {
   Mapdirection();
 
   return (
-    <div className="map-container">
+    <div
+      style={{
+        height: "fit-content",
+        marginTop: "auto",
+        marginBottom: "auto",
+        marginLeft: "auto",
+        marginRight: "auto",
+      }}
+      className="map-container"
+    >
       <div className="googlemap">
         <GoogleMap
           options={{

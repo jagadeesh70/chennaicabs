@@ -6,6 +6,7 @@ import LocationEntryForm from "../components/LocationEntryForm";
 import Maps from "../components/Maps";
 import "./Homepage.css";
 import { BookingContextProvider } from "../context/BookingContext";
+import FareDisplay from "../components/FareDisplay";
 
 function Homepage() {
   return (
@@ -14,6 +15,7 @@ function Homepage() {
       <div className="entry-container">
         <LocationEntryForm />
         <Maps></Maps>
+        <FareDisplay />
       </div>
       <Cars />
       <Footer></Footer>

@@ -1,4 +1,6 @@
 .form__container {
+  margin: auto auto;
+  background: white;
   width: 50vw;
   max-width: 350px;
   margin-left: 100px;
@@ -8,10 +10,8 @@
   border: 2px solid rgba(0, 0, 0, 0.125);
   box-shadow: 0 2px 20px rgb(0 0 0 / 20%);
   padding: 1rem;
-}
-
-.form__container p {
-  margin-bottom: 1rem;
+  border-radius: 0.7rem;
+  height: fit-content;
 }
 
 .form__chip {

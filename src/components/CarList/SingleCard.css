@@ -1,14 +1,8 @@
 .card__container {
-  /* height: 300px; */
   width: 500px;
   display: flex;
   flex-direction: column;
 }
-
-/* .img__container img {
-  width: 100px;
-  height: auto;
-} */
 
 .cars__container {
   display: flex;
