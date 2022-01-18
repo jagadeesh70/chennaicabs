@@ -22,27 +22,44 @@ function Map() {
     directionsRendererOptions,
   } = useContext(MapContext);
   return (
-    <div className="map">
-      <GoogleMap
-        onLoad={onMapLoad}
-        mapContainerStyle={{ width: "350px", height: "400px" }}
-        center={position}
-        zoom={15}
-      >
-        {!response && pointA && <Marker position={pointA} />}
-        {!response && pointB && <Marker position={pointB} />}
+    <div
+      style={{
+        height: "fit-content",
+        marginTop: "auto",
+        marginBottom: "auto",
+        marginLeft: "auto",
+        marginRight: "auto",
+      }}
+      className="map-container"
+    >
+      <div className="googlemap">
+        <GoogleMap
+          options={{
+            mapTypeControl: false,
+            streetViewControl: false,
+            zoomControl: true,
+            fullscreenControl: false,
+          }}
+          onLoad={onMapLoad}
+          mapContainerStyle={{ width: "350px", height: "400px" }}
+          center={position}
+          zoom={15}
+        >
+          {!response && pointA && <Marker position={pointA} />}
+          {!response && pointB && <Marker position={pointB} />}
 
-        {origin && destination && (
-          <DirectionsService
-            options={directionsServiceOptions}
-            callback={directionsCallback}
-          />
-        )}
+          {origin && destination && (
+            <DirectionsService
+              options={directionsServiceOptions}
+              callback={directionsCallback}
+            />
+          )}
 
-        {response && directionsRendererOptions && (
-          <DirectionsRenderer options={directionsRendererOptions} />
-        )}
-      </GoogleMap>
+          {response && directionsRendererOptions && (
+            <DirectionsRenderer options={directionsRendererOptions} />
+          )}
+        </GoogleMap>
+      </div>
     </div>
   );
 }
