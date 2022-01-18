@@ -9,11 +9,41 @@ import Van from "../../images/van.png";
 function Cars() {
   return (
     <div className="cars__container">
-      <SingleCard src={Executive} />
-      <SingleCard src={Sedan} />
-      <SingleCard src={Suv_plus} />
-      <SingleCard src={Suv} />
-      <SingleCard src={Van} />
+      <SingleCard
+        src={Executive}
+        name="Etios/Dzire or Equivalent"
+        price={11}
+        type="sedan"
+        npersons="4"
+      />
+      <SingleCard
+        src={Sedan}
+        name="Innova/Xylo or Equivalent"
+        price={15}
+        type="suv"
+        npersons="7"
+      />
+      <SingleCard
+        src={Suv_plus}
+        name="Toyota Innova"
+        price={15}
+        type="suv+"
+        npersons="7"
+      />
+      <SingleCard
+        src={Suv}
+        name="Toyota Crysta"
+        price={17}
+        type="executive"
+        npersons="6"
+      />
+      <SingleCard
+        src={Van}
+        name="Force traveller"
+        price={19}
+        type="tempo"
+        npersons="12"
+      />
     </div>
   );
 }
