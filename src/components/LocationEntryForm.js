@@ -8,22 +8,38 @@ import MobileTimePicker from "@mui/lab/MobileTimePicker";
 import DateAdapter from "@mui/lab/AdapterDateFns";
 import { BookingContext } from "../context/BookingContext";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
-import PlacesSuggestion from "./PlacesSuggestion";
+import "./PlaceSuggestion.css";
 import "./LocationEntryForm.css";
-import PlacesAutocomplete from "react-places-autocomplete/dist/PlacesAutocomplete";
+import InputLabel from "@mui/material/InputLabel";
+import { StandaloneSearchBox, LoadScript } from "@react-google-maps/api";
+import { MapContext } from "../context/MapContext";
+import { id } from "date-fns/locale";
 
-const top100Films = [
-  { title: "The Shawshank Redemption", year: 1994 },
-  { title: "The Godfather", year: 1972 },
-];
 function LocationEntryForm() {
-  const { origin, destination, setOrigin, setDestination } =
-    useContext(BookingContext);
+  const {
+    onLoadA,
+    onPlacesChangedA,
+    onPlacesChangedB,
+    onLoadB,
+    traceRoute,
+    distance,
+  } = useContext(MapContext);
+  const { oneWayTrip, TwoWayTrip } = useContext(BookingContext);
   const [triptype, settriptype] = useState("Drop Trip");
-  const [cabtype, setcabtype] = useState("Etios/Dzire or Equivalent");
+  const [cabtype, setcabtype] = useState("");
   const [cabchoices, setcabchoices] = useState([]);
   const [value, setValue] = useState(null);
+  const [pickInput, setPickInput] = useState();
+  const [dropInput, setdropInput] = useState();
 
+  const dist = () => {
+    console.log(distance);
+    oneWayTrip(distance, "Etios/Dzire or Equivalent");
+  };
+
+  const normalfun = () => {
+    dist();
+  };
   useEffect(() => {
     if (triptype === "Drop Trip") {
       setcabchoices(["Etios/Dzire or Equivalent", "Innova/Xylo or Equivalent"]);
@@ -36,10 +52,11 @@ function LocationEntryForm() {
         "Force traveller",
       ]);
     }
+    setcabtype("");
     return () => {
       setcabchoices(["Etios/Dzire or Equivalent", "Innova/Xylo or Equivalent"]);
     };
-  }, [triptype]);
+  }, [triptype, pickInput, dropInput]);
   return (
     <LocalizationProvider dateAdapter={DateAdapter}>
       <div className="form__container">
@@ -61,35 +78,42 @@ function LocationEntryForm() {
             </button>
           ))}
         </div>
-
-        <PlacesSuggestion />
-        <Autocomplete
-          size="small"
-          freeSolo
-          id="free-solo-2-demo"
-          className="form__autocomplete"
-          disableClearable
-          options={top100Films.map((option) => option.title)}
-          renderInput={(params) => (
+        <div>
+          <label>Enter Pick Up Location</label>
+          <StandaloneSearchBox
+            onLoad={onLoadA}
+            onPlacesChanged={onPlacesChangedA}
+          >
             <TextField
-              {...params}
-              label="Enter the Destination Location"
-              InputProps={{
-                ...params.InputProps,
-                type: "search",
-              }}
+              required
+              size="small"
+              className="form__autocomplete"
+              fullWidth={true}
+              onChange={(e) => setPickInput(e.target.value)}
             />
-          )}
-        />
+          </StandaloneSearchBox>
+          <label>Enter Destination Loaction</label>
+          <StandaloneSearchBox
+            onLoad={onLoadB}
+            onPlacesChanged={onPlacesChangedB}
+          >
+            <TextField
+              size="small"
+              className="form__autocomplete"
+              fullWidth={true}
+              onChange={(e) => setdropInput(e.target.value)}
+            />
+          </StandaloneSearchBox>
+        </div>
+        <InputLabel id="demo-simple-select-label2">Choose Vehicle</InputLabel>
         <Select
-          labelId="demo-simple-select-label2"
-          id="demo-simple-select"
           size="small"
           variant="outlined"
           className="form__autocomplete"
           value={cabtype}
           onChange={(event) => {
             setcabtype(event.target.value);
+            traceRoute();
           }}
         >
           {cabchoices.map((e) => (
@@ -143,7 +167,7 @@ function LocationEntryForm() {
           </>
         )}
 
-        <button id="submit-btn" className="form__submit">
+        <button type="button" id="submit-btn" onClick={normalfun}>
           Search Cabs
         </button>
       </div>

@@ -7,6 +7,7 @@ import Maps from "../components/Maps";
 import "./Homepage.css";
 import { BookingContextProvider } from "../context/BookingContext";
 import FareDisplay from "../components/FareDisplay";
+import Map from "../components/Map";
 
 function Homepage() {
   return (
@@ -14,7 +15,7 @@ function Homepage() {
       <Header></Header>
       <div className="entry-container">
         <LocationEntryForm />
-        <Maps></Maps>
+        <Map></Map>
         <FareDisplay />
       </div>
       <Cars />

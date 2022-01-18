@@ -1,17 +1,25 @@
-import {createContext,useState} from 'react'
-import { auth } from '../config/firebase-config'
+import {createContext,useState, useEffect} from 'react'
+import { auth,db } from '../config/firebase-config'
 import { RecaptchaVerifier,signInWithPhoneNumber } from 'firebase/auth'
+import { collection, getDocs, onSnapshot } from 'firebase/firestore'
 
 const Context = createContext()
 
 const ContextProvider = ({children}) =>{
-
+    
+    
+    const [loading, setLoading] = useState(true)
     const [authstate,setAuthstate] = useState(false)
     const [username, setUsername] = useState("")
     const [phone, setPhone] = useState()
     const [otp, setotp] = useState()
     const [otpsent, setoptsent] = useState(false)
-    
+
+    useEffect( async () => {
+        onSnapshot(collection(db,"noob"),(snap) =>{
+            console.log(snap.docs.map(doc => doc.data()))
+        })
+    }, [])
     
     const configureCaptcha = (e) =>{
         window.recaptchaVerifier = new RecaptchaVerifier('sign-in-button', {
