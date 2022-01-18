@@ -38,7 +38,7 @@ const ResponsiveAppBar = () => {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar style={{ background: "#21ba45" }} position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
@@ -95,7 +95,13 @@ const ResponsiveAppBar = () => {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                <MenuItem
+                  style={{
+                    marginLeft: page == "Home" ? "auto" : "inherit",
+                  }}
+                  key={page}
+                  onClick={handleCloseNavMenu}
+                >
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
