@@ -120,38 +120,38 @@ function LocationEntryForm() {
             <MenuItem value={e}>{e}</MenuItem>
           ))}
         </Select>
+        <MobileDatePicker
+          label="Enter Pickup Date"
+          value={value}
+          onChange={(newValue) => {
+            setValue(newValue);
+          }}
+          renderInput={(params) => (
+            <TextField
+              className="form__autocomplete"
+              size="small"
+              {...params}
+            />
+          )}
+        />
+        <MobileTimePicker
+          label="Enter Pickup Time"
+          value={value}
+          onChange={(newValue) => {
+            setValue(newValue);
+          }}
+          renderInput={(params) => (
+            <TextField
+              className="form__autocomplete"
+              size="small"
+              {...params}
+            />
+          )}
+        />
         {triptype == "Round Trip" && (
           <>
             <MobileDatePicker
-              label="Enter Pickup Date"
-              value={value}
-              onChange={(newValue) => {
-                setValue(newValue);
-              }}
-              renderInput={(params) => (
-                <TextField
-                  className="form__autocomplete"
-                  size="small"
-                  {...params}
-                />
-              )}
-            />
-            <MobileDatePicker
               label="Enter Drop Date"
-              value={value}
-              onChange={(newValue) => {
-                setValue(newValue);
-              }}
-              renderInput={(params) => (
-                <TextField
-                  className="form__autocomplete"
-                  size="small"
-                  {...params}
-                />
-              )}
-            />
-            <MobileTimePicker
-              label="Enter Pickup Time"
               value={value}
               onChange={(newValue) => {
                 setValue(newValue);
