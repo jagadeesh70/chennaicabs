@@ -1,17 +1,29 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { FaCarAlt } from "react-icons/fa";
 import { FiMapPin } from "react-icons/fi";
 import { RiArrowUpDownLine } from "react-icons/ri";
 import { RiBuildingLine } from "react-icons/ri";
 import "./FareDisplay.css";
+import { MapContext } from "../context/MapContext";
+import { BookingContext } from "../context/BookingContext";
 
 function FareDisplay() {
+  const { pickup, drop, distance } = useContext(MapContext);
+  const { totalFare } = useContext(BookingContext);
+
+  const pick = () => {
+    if (pickup) {
+      return <p>{pickup}</p>;
+    } else {
+      return <p>Enter the pick up Location</p>;
+    }
+  };
   return (
     <div className="form__container">
       <div className="fare__topbar fc">
         <div className="fare__topbar__location1 fr">
           <FiMapPin size="1.6rem" className="ft__icons" color="#15FE1E" />
-          <p>Chennai</p>
+          {pick()}
         </div>
         <div style={{ margin: ".3rem 0" }} className="fare__topbar__mlogo">
           <RiArrowUpDownLine
@@ -22,7 +34,7 @@ function FareDisplay() {
         </div>
         <div className="fare__topbar__location2 fr">
           <RiBuildingLine size="1.6rem" className="ft__icons" color="#15FE1E" />
-          <p>Bengaluru</p>
+          {drop ? <p>{drop}</p> : <p>Enter the Destination Location</p>}
         </div>
       </div>
       <p
@@ -72,10 +84,12 @@ function FareDisplay() {
           </div>
           <div className="fb__row1__col2 fc">
             <p>Pick Up Time:</p>
-            <p>Distance:</p>
+            {distance ? <p>Distance: {distance} km</p> : <p>Distance: -</p>}
           </div>
         </div>
-        <div className="fb__row2">Total Fare:</div>
+        <div className="fb__row2">
+          {totalFare ? <p>Total Fare: ₹{totalFare}</p> : <p>Total Fare: -</p>}
+        </div>
       </div>
     </div>
   );
