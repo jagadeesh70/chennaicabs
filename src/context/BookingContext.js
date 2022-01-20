@@ -4,6 +4,7 @@ const BookingContext = createContext();
 
 const BookingContextProvider = ({ children }) => {
   let totalfare = 0;
+  const [triptype, settriptype] = useState("Drop Trip");
   //Driver Fee based on vehicle
   const driverFeeSmall = 300;
   const driverFeeMedium = 400;
@@ -168,6 +169,8 @@ const BookingContextProvider = ({ children }) => {
         twoWayBaseFareMedium,
         twoWayBaseFareLarge,
         twoWayBaseFareVan,
+        triptype,
+        settriptype,
       }}
     >
       {children}

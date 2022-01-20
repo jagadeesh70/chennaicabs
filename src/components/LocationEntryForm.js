@@ -34,8 +34,9 @@ function LocationEntryForm() {
     setVehicle,
     DaysLeft,
     daysLeft,
+    triptype,
+    settriptype,
   } = useContext(BookingContext);
-  const [triptype, settriptype] = useState("Drop Trip");
   const [cabtype, setcabtype] = useState("");
   const [cabchoices, setcabchoices] = useState([]);
   const [value, setValue] = useState(null);
