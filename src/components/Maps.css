@@ -1,11 +1,17 @@
 .map-container {
   overflow: hidden;
-  border-radius: 15px;
-  margin-left: 100px;
+  border-radius: 5px;
+  margin: 0 1rem;
+  max-width: 350px;
   display: flex;
   height: fit-content;
   flex-direction: column;
-  margin-top: 150px;
   border: 2px solid rgba(0, 0, 0, 0.125);
   box-shadow: 0 2px 20px rgb(0 0 0 / 20%);
+}
+
+@media only screen and (max-width: 1030px) {
+  .map-container {
+    display: none;
+  }
 }
