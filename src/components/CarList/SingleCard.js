@@ -60,9 +60,7 @@ function SingleCard({ src, name, price, type, npersons, Totalprice }) {
           <p>{npersons} person</p>
           <p>AC</p>
         </div>
-        <button id="submit-btn" onClick={() => navigate("/signin")}>
-          Book Now
-        </button>
+        <button id="submit-btn">Book Now</button>
       </div>
     </div>
   );

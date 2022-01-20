@@ -2,7 +2,8 @@
   height: 80px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  padding: 0 0.5rem;
+  justify-content: space-evenly;
   background: #21ba45;
   color: white;
 }
@@ -11,20 +12,21 @@
   width: 200px;
   display: flex;
   justify-content: space-between;
-  margin-right: 30px;
   cursor: pointer;
 }
-.tc {
-  font-size: medium;
-  display: flex;
-  margin-left: 50px;
+
+.ft__1 {
+  margin: 0.5rem 0.5rem;
 }
-.tc > div {
-  margin-right: 20px;
+.footer-logo {
+  width: auto;
+  height: 100%;
 }
 
-.footer-logo {
-  width: 100px;
-  height: 100px;
-  margin-left: 30px;
+@media only screen and (max-width: 680px) {
+  .footer-container {
+    flex-wrap: wrap;
+    height: 100%;
+    padding-bottom: 0.8rem;
+  }
 }
