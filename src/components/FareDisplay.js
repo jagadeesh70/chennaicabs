@@ -9,7 +9,8 @@ import { BookingContext } from "../context/BookingContext";
 
 function FareDisplay() {
   const { pickup, drop, distance } = useContext(MapContext);
-  const { totalFare } = useContext(BookingContext);
+  const { totalFare, pickDate, dropDate, pickTime, vehicle } =
+    useContext(BookingContext);
 
   const pick = () => {
     if (pickup) {
@@ -18,6 +19,9 @@ function FareDisplay() {
       return <p>Enter the pick up Location</p>;
     }
   };
+  let pickupDate = new Date(pickDate).toLocaleDateString();
+  let pickupTime = new Date(pickTime).toLocaleTimeString();
+  let dropdownDate = new Date(dropDate).toLocaleDateString();
   return (
     <div className="form__container">
       <div className="fare__topbar fc">
@@ -56,7 +60,11 @@ function FareDisplay() {
               className="fm__col2__row1"
               style={{ marginLeft: "auto", marginRight: "auto" }}
             >
-              Car name----------till this
+              {vehicle ? (
+                <strong>{vehicle}</strong>
+              ) : (
+                <strong>Choose mode of Travel</strong>
+              )}
             </div>
             <div className="fm__col2__row2" style={{ marginLeft: "auto" }}>
               price per KM
@@ -70,25 +78,55 @@ function FareDisplay() {
                 marginRight: ".3rem",
               }}
             />
-            <p>Sedan</p>
+            <b>Sedan</b>
           </div>
-          <p>4 person</p>
+          <b>4 person</b>
           <p>AC</p>
         </div>
       </div>
       <div className="fare__bottombar fc">
         <div className="fb__row1 fr">
           <div className="fb__row1__col1 fc">
-            <p>Pickup Date:</p>
-            <p>Return Date:</p>
+            {pickDate ? (
+              <p>
+                Pickup Date: <strong>{pickupDate}</strong>
+              </p>
+            ) : (
+              <p>Pickup Date:</p>
+            )}
+            {dropDate ? (
+              <p>
+                Return Date: <strong>{dropdownDate}</strong>
+              </p>
+            ) : (
+              <p>Return Date:</p>
+            )}
           </div>
           <div className="fb__row1__col2 fc">
-            <p>Pick Up Time:</p>
-            {distance ? <p>Distance: {distance} km</p> : <p>Distance: -</p>}
+            {pickTime ? (
+              <p>
+                Pick Up Time: <strong>{pickupTime}</strong>
+              </p>
+            ) : (
+              <p>Pick Up Time:</p>
+            )}
+            {distance ? (
+              <p>
+                Distance: <strong>{distance} km</strong>
+              </p>
+            ) : (
+              <p>Distance: -</p>
+            )}
           </div>
         </div>
         <div className="fb__row2">
-          {totalFare ? <p>Total Fare: ₹{totalFare}</p> : <p>Total Fare: -</p>}
+          {totalFare ? (
+            <p>
+              Total Fare: <strong>₹{totalFare}</strong>
+            </p>
+          ) : (
+            <p>Total Fare: -</p>
+          )}
         </div>
       </div>
     </div>

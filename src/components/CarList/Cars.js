@@ -10,14 +10,14 @@ function Cars() {
   return (
     <div className="cars__container">
       <SingleCard
-        src={Executive}
+        src={Sedan}
         name="Etios/Dzire or Equivalent"
         price={11}
         type="sedan"
         npersons="4"
       />
       <SingleCard
-        src={Sedan}
+        src={Executive}
         name="Innova/Xylo or Equivalent"
         price={15}
         type="suv"

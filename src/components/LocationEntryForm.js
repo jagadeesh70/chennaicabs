@@ -1,6 +1,5 @@
 import { useState, useEffect, useContext, useRef } from "react";
 import TextField from "@mui/material/TextField";
-import Autocomplete from "@mui/material/Autocomplete";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import MobileDatePicker from "@mui/lab/MobileDatePicker";
@@ -10,8 +9,7 @@ import { BookingContext } from "../context/BookingContext";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import "./PlaceSuggestion.css";
 import "./LocationEntryForm.css";
-import InputLabel from "@mui/material/InputLabel";
-import { StandaloneSearchBox, LoadScript } from "@react-google-maps/api";
+import { StandaloneSearchBox } from "@react-google-maps/api";
 import { MapContext } from "../context/MapContext";
 import { id } from "date-fns/locale";
 
@@ -24,7 +22,19 @@ function LocationEntryForm() {
     traceRoute,
     distance,
   } = useContext(MapContext);
-  const { oneWayTrip, TwoWayTrip } = useContext(BookingContext);
+  const {
+    oneWayTrip,
+    TwoWayTrip,
+    setdropDate,
+    setpickDate,
+    setpickTime,
+    pickDate,
+    pickTime,
+    dropDate,
+    setVehicle,
+    DaysLeft,
+    daysLeft,
+  } = useContext(BookingContext);
   const [triptype, settriptype] = useState("Drop Trip");
   const [cabtype, setcabtype] = useState("");
   const [cabchoices, setcabchoices] = useState([]);
@@ -33,12 +43,17 @@ function LocationEntryForm() {
   const [dropInput, setdropInput] = useState();
 
   const dist = () => {
-    console.log(distance);
-    oneWayTrip(distance, "Etios/Dzire or Equivalent");
+    oneWayTrip(distance, cabtype);
+  };
+  const dist2 = () => {
+    TwoWayTrip(distance, cabtype, daysLeft);
   };
 
-  const normalfun = () => {
+  const oneWayFun = () => {
     dist();
+  };
+  const twoWayFun = () => {
+    dist2();
   };
   useEffect(() => {
     if (triptype === "Drop Trip") {
@@ -53,6 +68,7 @@ function LocationEntryForm() {
       ]);
     }
     setcabtype("");
+
     return () => {
       setcabchoices(["Etios/Dzire or Equivalent", "Innova/Xylo or Equivalent"]);
     };
@@ -105,13 +121,14 @@ function LocationEntryForm() {
             />
           </StandaloneSearchBox>
         </div>
-        <InputLabel id="demo-simple-select-label2">Choose Vehicle</InputLabel>
+        <label>Choose Vehicle</label>
         <Select
           size="small"
           variant="outlined"
           className="form__autocomplete"
           value={cabtype}
           onChange={(event) => {
+            setVehicle(event.target.value);
             setcabtype(event.target.value);
             traceRoute();
           }}
@@ -122,10 +139,8 @@ function LocationEntryForm() {
         </Select>
         <MobileDatePicker
           label="Enter Pickup Date"
-          value={value}
-          onChange={(newValue) => {
-            setValue(newValue);
-          }}
+          value={pickDate}
+          onChange={(e) => setpickDate(e)}
           renderInput={(params) => (
             <TextField
               className="form__autocomplete"
@@ -136,10 +151,8 @@ function LocationEntryForm() {
         />
         <MobileTimePicker
           label="Enter Pickup Time"
-          value={value}
-          onChange={(newValue) => {
-            setValue(newValue);
-          }}
+          value={pickTime}
+          onChange={(e) => setpickTime(e)}
           renderInput={(params) => (
             <TextField
               className="form__autocomplete"
@@ -152,10 +165,8 @@ function LocationEntryForm() {
           <>
             <MobileDatePicker
               label="Enter Drop Date"
-              value={value}
-              onChange={(newValue) => {
-                setValue(newValue);
-              }}
+              value={dropDate}
+              onChange={(e) => setdropDate(e)}
               renderInput={(params) => (
                 <TextField
                   className="form__autocomplete"
@@ -166,10 +177,22 @@ function LocationEntryForm() {
             />
           </>
         )}
-
-        <button type="button" id="submit-btn" onClick={normalfun}>
-          Search Cabs
-        </button>
+        {triptype === "Round Trip" ? (
+          <button
+            type="button"
+            id="submit-btn"
+            onClick={() => {
+              twoWayFun();
+              DaysLeft(pickDate, dropDate);
+            }}
+          >
+            Search Cabs
+          </button>
+        ) : (
+          <button type="button" id="submit-btn" onClick={oneWayFun}>
+            Search Cabs
+          </button>
+        )}
       </div>
     </LocalizationProvider>
   );

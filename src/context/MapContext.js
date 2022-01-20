@@ -10,9 +10,7 @@ const MapContext = createContext();
 
 const MapContextProvider = ({ children }) => {
   const [distance, setDistance] = useState();
-  useEffect(() => {
-    console.log(distance);
-  }, [distance]);
+  useEffect(() => {}, [distance]);
 
   const [map, setMap] = useState();
   const [searchBoxA, setSearchBoxA] = useState();
@@ -21,6 +19,8 @@ const MapContextProvider = ({ children }) => {
   const [pointB, setPointB] = useState();
   const [pickup, setPickup] = useState();
   const [drop, setDrop] = useState();
+  const [fromId, setFromId] = useState();
+  const [toId, setToId] = useState();
 
   const [origin, setOrigin] = useState(null);
   const [destination, setDestination] = useState(null);
@@ -46,8 +46,10 @@ const MapContextProvider = ({ children }) => {
 
   const onPlacesChangedA = () => {
     const places = searchBoxA.getPlaces();
+    console.log(places);
     const place = places[0];
     setPickup(place.formatted_address);
+    setFromId(place.place_id);
     const location = {
       lat: place?.geometry?.location?.lat() || 0,
       lng: place?.geometry?.location?.lng() || 0,
@@ -63,6 +65,7 @@ const MapContextProvider = ({ children }) => {
     const places = searchBoxB.getPlaces();
     const place = places[0];
     setDrop(place.formatted_address);
+    setToId(place.place_id);
     const location = {
       lat: place?.geometry?.location?.lat() || 0,
       lng: place?.geometry?.location?.lng() || 0,
@@ -135,6 +138,8 @@ const MapContextProvider = ({ children }) => {
         distance,
         pickup,
         drop,
+        fromId,
+        toId,
       }}
     >
       {children}

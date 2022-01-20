@@ -34,6 +34,15 @@ function SingleCard({ src, name, price, type, npersons }) {
         >
           Price: ₹{price}/km
         </p>
+        <p
+          style={{
+            marginLeft: "auto",
+            fontWeight: "bold",
+            marginBottom: ".7rem",
+          }}
+        >
+          Total Price: ₹{price}/km
+        </p>
         <div
           style={{ width: "100%", marginBottom: ".5rem" }}
           className="fare__middlebar__row2 fr"

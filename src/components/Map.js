@@ -7,6 +7,7 @@ import {
   LoadScript,
 } from "@react-google-maps/api";
 import { MapContext } from "../context/MapContext";
+import "./Maps.css";
 
 function Map() {
   const {
@@ -22,16 +23,7 @@ function Map() {
     directionsRendererOptions,
   } = useContext(MapContext);
   return (
-    <div
-      style={{
-        height: "fit-content",
-        marginTop: "auto",
-        marginBottom: "auto",
-        marginLeft: "auto",
-        marginRight: "auto",
-      }}
-      className="map-container"
-    >
+    <div className="map-container">
       <div className="googlemap">
         <GoogleMap
           options={{
@@ -41,7 +33,7 @@ function Map() {
             fullscreenControl: false,
           }}
           onLoad={onMapLoad}
-          mapContainerStyle={{ width: "350px", height: "400px" }}
+          mapContainerStyle={{ width: "400px", height: "475px" }}
           center={position}
           zoom={15}
         >

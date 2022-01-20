@@ -26,6 +26,19 @@ const BookingContextProvider = ({ children }) => {
   const [distance, setDistance] = useState("");
   const [vehicle, setVehicle] = useState();
   const [totalFare, setTotalFare] = useState();
+  const [pickDate, setpickDate] = useState(null);
+  const [dropDate, setdropDate] = useState(null);
+  const [pickTime, setpickTime] = useState(null);
+  const [daysLeft, setDaysLeft] = useState(null);
+  console.log(pickDate);
+
+  const DaysLeft = (pickDates, dropDates) => {
+    if (pickDates && dropDates) {
+      let days = parseInt(dropDates.getDate() - pickDates.getDate());
+      setDaysLeft(days + 1);
+    }
+  };
+  console.log(daysLeft);
 
   const oneWayTrip = (distances, vehicles) => {
     if (distances && vehicles) {
@@ -62,7 +75,6 @@ const BookingContextProvider = ({ children }) => {
         }
       }
     }
-    console.log(totalfare);
     setTotalFare(totalfare);
   };
 
@@ -125,6 +137,7 @@ const BookingContextProvider = ({ children }) => {
         }
       }
     }
+    setTotalFare(totalfare);
   };
   // oneWayTrip(319,"Innova/Xylo or Equivalent")
   // TwoWayTrip(638,"Force traveller",5)
@@ -139,6 +152,22 @@ const BookingContextProvider = ({ children }) => {
         oneWayTrip,
         TwoWayTrip,
         totalFare,
+        pickDate,
+        setpickDate,
+        dropDate,
+        setdropDate,
+        pickTime,
+        setpickTime,
+        DaysLeft,
+        daysLeft,
+        oneWayBaseFareSmallCar,
+        oneWayBaseFareLargeCar,
+        oneWayBaseDistance,
+        twoWayBaseDistance,
+        twoWayBaseFareSmall,
+        twoWayBaseFareMedium,
+        twoWayBaseFareLarge,
+        twoWayBaseFareVan,
       }}
     >
       {children}

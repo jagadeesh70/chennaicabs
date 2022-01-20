@@ -5,16 +5,13 @@ import { Context } from "../context/Context";
 import Otp from "../components/Otp";
 
 function Signin() {
-  const {otpsent} = useContext(Context)
-  useEffect(() => {
-    console.log(otpsent)
-  }, [otpsent])
-  if(otpsent){
-    return <Otp/>
-  }else{
-    return <Login/>
+  const { otpsent } = useContext(Context);
+  useEffect(() => {}, [otpsent]);
+  if (otpsent) {
+    return <Otp />;
+  } else {
+    return <Login />;
   }
 }
-
 
 export default Signin;
