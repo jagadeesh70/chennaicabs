@@ -129,7 +129,7 @@ const ContextProvider = ({ children }) => {
     car_mode,
     tripReturnDate, //done
     driverFee,
-    phoneNumber,
+    phoneNumber, //done
     baseFare,
     username,
     time,

@@ -10,7 +10,6 @@ const MapContext = createContext();
 
 const MapContextProvider = ({ children }) => {
   const [distance, setDistance] = useState();
-  useEffect(() => {}, [distance]);
 
   const [map, setMap] = useState();
   const [searchBoxA, setSearchBoxA] = useState();
@@ -26,6 +25,9 @@ const MapContextProvider = ({ children }) => {
   const [destination, setDestination] = useState(null);
 
   const [response, setResponse] = useState(null);
+  useEffect(() => {
+    traceRoute();
+  }, [distance, pointA, pointB]);
 
   const position = {
     lat: -27.590824,

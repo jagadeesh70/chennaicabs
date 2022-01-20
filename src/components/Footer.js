@@ -8,7 +8,7 @@ function Footer() {
       <a href="https://play.google.com/store/apps/details?id=com.cabs.chennaicabs&hl=en_IN&gl=US&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1">
         <img
           className="footer-logo"
-          style={{ width: "200px", height: "80px", "margin-right": "60px" }}
+          style={{ width: "200px", height: "80px", marginRight: "60px" }}
           alt="Get it on Google Play"
           src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
         />

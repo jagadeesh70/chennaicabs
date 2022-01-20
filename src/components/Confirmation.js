@@ -6,8 +6,8 @@ import { BookingContext } from "../context/BookingContext";
 
 function Confirmation() {
   const { addNewTrip, username, uid, phone } = useContext(Context);
-  const { pickup, drop, distance } = useContext(MapContext);
-  const { pickDate, dropDate, pickTime } = useContext(BookingContext);
+  const { pickup, drop, distance, fromId, toId } = useContext(MapContext);
+  const { pickDate, dropDate, pickTime, triptype } = useContext(BookingContext);
   addNewTrip();
 
   return <div></div>;

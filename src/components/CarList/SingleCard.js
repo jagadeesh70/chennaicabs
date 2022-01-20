@@ -1,8 +1,10 @@
 import React from "react";
 import "./SingleCard.css";
 import { FaCarAlt } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
-function SingleCard({ src, name, price, type, npersons }) {
+function SingleCard({ src, name, price, type, npersons, Totalprice }) {
+  const navigate = useNavigate();
   return (
     <div className="card">
       <div className="card-header">
@@ -41,7 +43,7 @@ function SingleCard({ src, name, price, type, npersons }) {
             marginBottom: ".7rem",
           }}
         >
-          Total Price: ₹{price}/km
+          Total Price: ₹{Totalprice}/km
         </p>
         <div
           style={{ width: "100%", marginBottom: ".5rem" }}
@@ -58,7 +60,9 @@ function SingleCard({ src, name, price, type, npersons }) {
           <p>{npersons} person</p>
           <p>AC</p>
         </div>
-        <button id="submit-btn">Book Now</button>
+        <button id="submit-btn" onClick={() => navigate("/signin")}>
+          Book Now
+        </button>
       </div>
     </div>
   );
