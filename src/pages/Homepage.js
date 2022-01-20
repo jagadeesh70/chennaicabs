@@ -14,8 +14,8 @@ function Homepage() {
       <Header></Header>
       <div className="entry-container">
         <LocationEntryForm />
-        <Maps></Maps>
         <FareDisplay />
+        <Maps></Maps>
       </div>
       <Cars />
       <Footer></Footer>

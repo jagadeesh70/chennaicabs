@@ -35,10 +35,10 @@ const Maps = () => {
     <div
       style={{
         height: "fit-content",
-        marginTop: "auto",
-        marginBottom: "auto",
-        marginLeft: "auto",
-        marginRight: "auto",
+        // marginTop: "auto",
+        // marginBottom: "auto",
+        // marginLeft: "auto",
+        // marginRight: "auto",
       }}
       className="map-container"
     >
