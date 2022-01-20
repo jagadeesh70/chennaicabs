@@ -1,10 +1,8 @@
 import React from "react";
 import "./SingleCard.css";
 import { FaCarAlt } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
 
 function SingleCard({ src, name, price, type, npersons, Totalprice }) {
-  const navigate = useNavigate();
   return (
     <div className="card">
       <div className="card-header">

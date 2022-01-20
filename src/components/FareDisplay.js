@@ -50,40 +50,7 @@ function FareDisplay() {
       >
         Ride Details
       </p>
-      <div className="fare__middlebar fc">
-        <div className="fare__middlebar__row1 fr" style={{ width: "100%" }}>
-          <div className="fm__col1">
-            <FaCarAlt size={"2rem"} />
-          </div>
-          <div className="fm__col2 fc">
-            <div
-              className="fm__col2__row1"
-              style={{ marginLeft: "auto", marginRight: "auto" }}
-            >
-              {vehicle ? (
-                <strong>{vehicle}</strong>
-              ) : (
-                <strong>Choose mode of Travel</strong>
-              )}
-            </div>
-            <div className="fm__col2__row2" style={{ marginLeft: "auto" }}>
-              price per KM
-            </div>
-          </div>
-        </div>
-        <div className="fare__middlebar__row2 fr">
-          <div className="fare__middlebar__row2__col1 fr">
-            <FaCarAlt
-              style={{
-                marginRight: ".3rem",
-              }}
-            />
-            <b>Sedan</b>
-          </div>
-          <b>4 person</b>
-          <p>AC</p>
-        </div>
-      </div>
+
       <div className="fare__bottombar fc">
         <div className="fb__row1 fr">
           <div className="fb__row1__col1 fc">

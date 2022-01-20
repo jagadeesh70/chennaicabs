@@ -131,17 +131,18 @@ const ContextProvider = ({ children }) => {
     driverFee,
     phoneNumber, //done
     baseFare,
-    username,
+    username, //done
     time,
-    from_location,
-    to_location,
+    from_location, //done
+    to_location, //done
     day,
-    trip_type,
-    subTotal,
-    total_fare
+    trip_type, //done
+    subTotal, //done
+    total_fare //done
   ) => {
     await setDoc(doc(db, "new_booking"), {
       booking_id: generateBookingId(),
+
       from_address: fromAddress,
       to_address: toAddress,
       from_id: fromId,

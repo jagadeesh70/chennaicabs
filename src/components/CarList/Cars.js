@@ -7,6 +7,8 @@ import Suv from "../../images/suv.png";
 import Van from "../../images/van.png";
 import { BookingContext } from "../../context/BookingContext";
 import { useContext } from "react";
+import { Context } from "../../context/Context";
+import { MapContext } from "../../context/MapContext";
 
 function Cars() {
   const {
@@ -17,6 +19,40 @@ function Cars() {
     executiveFare,
     tempoFare,
   } = useContext(BookingContext);
+
+  const { addNewTrip, username, uid, phone } = useContext(Context);
+  const { pickup, drop, distance, fromId, toId, fromLocation, toLocation } =
+    useContext(MapContext);
+  const { pickDate, dropDate, pickTime } = useContext(BookingContext);
+
+  let pickupDate = new Date(pickDate).toLocaleDateString();
+  let pickupTime = new Date(pickTime).toLocaleTimeString();
+  let dropdownDate = new Date(dropDate).toLocaleDateString();
+
+  const sedan = () => {
+    addNewTrip(
+      fromId,
+      toId,
+      "asbdgsdgysd",
+      pickup,
+      drop,
+      pickupDate,
+      distance,
+      pickDate, //timestamp
+      "sedan",
+      dropdownDate,
+      "300",
+      "1234567890",
+      `${sedanFare()} Rs`,
+      "nub",
+      pickupTime,
+      fromLocation,
+      toLocation,
+      sedanFare,
+      sedanFare
+    );
+  };
+
   return (
     <div className="cars__container">
       {triptype === "Drop Trip" ? (
