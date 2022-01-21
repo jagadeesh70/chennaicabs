@@ -118,6 +118,7 @@ function LocationEntryForm() {
         <MobileDatePicker
           label="Enter Pickup Date"
           value={pickDate}
+          minDate={new Date()}
           onChange={(e) => setpickDate(e)}
           renderInput={(params) => (
             <TextField
@@ -144,6 +145,7 @@ function LocationEntryForm() {
             <MobileDatePicker
               label="Enter Drop Date"
               value={dropDate}
+              minDate={new Date()}
               onChange={(e) => setdropDate(e)}
               renderInput={(params) => (
                 <TextField
