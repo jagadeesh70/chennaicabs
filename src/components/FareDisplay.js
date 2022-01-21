@@ -9,7 +9,7 @@ import { BookingContext } from "../context/BookingContext";
 
 function FareDisplay() {
   const { pickup, drop, distance } = useContext(MapContext);
-  const { totalFare, pickDate, dropDate, pickTime, vehicle } =
+  const { totalFare, pickDate, dropDate, pickTime, triptype } =
     useContext(BookingContext);
 
   const pick = () => {
@@ -61,12 +61,16 @@ function FareDisplay() {
             ) : (
               <p>Pickup Date:</p>
             )}
-            {dropDate ? (
-              <p>
-                Return Date: <strong>{dropdownDate}</strong>
-              </p>
+            {triptype === "Round Trip" ? (
+              dropDate ? (
+                <p>
+                  Return Date: <strong>{dropdownDate}</strong>
+                </p>
+              ) : (
+                <p>Return Date:</p>
+              )
             ) : (
-              <p>Return Date:</p>
+              <></>
             )}
           </div>
           <div className="fb__row1__col2 fc">
@@ -85,15 +89,6 @@ function FareDisplay() {
               <p>Distance: -</p>
             )}
           </div>
-        </div>
-        <div className="fb__row2">
-          {totalFare ? (
-            <p>
-              Total Fare: <strong>₹{totalFare}</strong>
-            </p>
-          ) : (
-            <p>Total Fare: -</p>
-          )}
         </div>
       </div>
     </div>

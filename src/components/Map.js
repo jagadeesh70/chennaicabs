@@ -33,7 +33,7 @@ function Map() {
             fullscreenControl: false,
           }}
           onLoad={onMapLoad}
-          mapContainerStyle={{ width: "400px", height: "475px" }}
+          mapContainerStyle={{ width: "400px", height: "425px" }}
           center={position}
           zoom={15}
         >

@@ -27,9 +27,10 @@ function Cars() {
 
   let pickupDate = new Date(pickDate).toLocaleDateString();
   let pickupTime = new Date(pickTime).toLocaleTimeString();
+  let pickupDay = new Date(pickDate).toLocaleDateString();
   let dropdownDate = new Date(dropDate).toLocaleDateString();
 
-  const sedan = () => {
+  const sedanOneWay = () => {
     addNewTrip(
       fromId,
       toId,
@@ -37,17 +38,123 @@ function Cars() {
       pickup,
       drop,
       pickupDate,
-      distance,
+      `${distance} km`,
       pickDate, //timestamp
       "sedan",
-      dropdownDate,
+      "", //no return date for one way
       "300",
       "1234567890",
-      `${sedanFare()} Rs`,
-      "nub",
+      sedanFare,
+      "nub", //done
       pickupTime,
       fromLocation,
       toLocation,
+      pickupDay, //change
+      "one_way",
+      sedanFare,
+      sedanFare
+    );
+  };
+
+  const suvOneWay = () => {
+    addNewTrip(
+      fromId,
+      toId,
+      "asbdgsdgysd",
+      pickup,
+      drop,
+      pickupDate,
+      `${distance} km`,
+      pickDate, //timestamp
+      "suv",
+      "", //no return date for one way
+      "300",
+      "1234567890",
+      suvFare,
+      "nub", //done
+      pickupTime,
+      fromLocation,
+      toLocation,
+      pickupDay, //change
+      "one_way",
+      suvFare,
+      suvFare
+    );
+  };
+
+  const sedanTwoWay = () => {
+    addNewTrip(
+      fromId,
+      toId,
+      "asbdgsdgysd",
+      pickup,
+      drop,
+      pickupDate,
+      `${distance} km`,
+      pickDate, //timestamp
+      "sedan",
+      dropDate, //no return date for one way
+      "300",
+      "1234567890",
+      sedanFare,
+      "nub", //done
+      pickupTime,
+      fromLocation,
+      toLocation,
+      pickupDay, //change
+      "two_way",
+      sedanFare,
+      sedanFare
+    );
+  };
+
+  const suvTwoWay = () => {
+    addNewTrip(
+      fromId,
+      toId,
+      "asbdgsdgysd",
+      pickup,
+      drop,
+      pickupDate,
+      `${distance} km`,
+      pickDate, //timestamp
+      "sedan",
+      "", //no return date for one way
+      "300", //had to change
+      "1234567890",
+      sedanFare,
+      "nub", //done
+      pickupTime,
+      fromLocation,
+      toLocation,
+      pickupDay, //change
+      "one_way",
+      sedanFare,
+      sedanFare
+    );
+  };
+
+  const suvPlusTwoWay = () => {
+    addNewTrip(
+      fromId,
+      toId,
+      "asbdgsdgysd",
+      pickup,
+      drop,
+      pickupDate,
+      `${distance} km`,
+      pickDate, //timestamp
+      "sedan",
+      "", //no return date for one way
+      "300",
+      "1234567890",
+      sedanFare,
+      "nub", //done
+      pickupTime,
+      fromLocation,
+      toLocation,
+      pickupDay, //change
+      "one_way",
       sedanFare,
       sedanFare
     );
@@ -64,6 +171,7 @@ function Cars() {
             type="sedan"
             npersons="4"
             Totalprice={sedanFare}
+            onClick={sedanOneWay}
           />
           <SingleCard
             src={Suv}

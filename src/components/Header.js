@@ -7,9 +7,6 @@ import { useNavigate } from "react-router-dom";
 import ResponsiveAppBar from "./Appbar";
 
 function Header() {
-  const { username } = useContext(Context);
-  const navigate = useNavigate();
-
   return <ResponsiveAppBar />;
 }
 

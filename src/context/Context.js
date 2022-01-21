@@ -23,12 +23,14 @@ const ContextProvider = ({ children }) => {
   const [otp, setotp] = useState();
   const [otpsent, setoptsent] = useState(false);
   const [uid, setUid] = useState();
+  const [bookingId, setBookingId] = useState();
 
   useEffect(async () => {
+    generateBookingId();
     onSnapshot(collection(db, "profile"), (snap) => {
       console.log(snap.docs.map((doc) => doc.data()));
     });
-  }, []);
+  }, [otpsent]);
   const generateBookingId = async () => {
     let bookingId = "CC";
     let docRef = doc(db, "total_trips", "total");
@@ -37,9 +39,9 @@ const ContextProvider = ({ children }) => {
     for (let i = 0; i < 8 - total_trips.length; i++) {
       bookingId += "0";
     }
-    return bookingId + total_trips;
+    setBookingId(bookingId + total_trips);
   };
-  generateBookingId();
+  console.log(bookingId);
   const configureCaptcha = (e) => {
     window.recaptchaVerifier = new RecaptchaVerifier(
       "sign-in-button",
@@ -140,9 +142,8 @@ const ContextProvider = ({ children }) => {
     subTotal, //done
     total_fare //done
   ) => {
-    await setDoc(doc(db, "new_booking"), {
-      booking_id: generateBookingId(),
-
+    await setDoc(doc(db, "new_booking", bookingId), {
+      booking_id: bookingId,
       from_address: fromAddress,
       to_address: toAddress,
       from_id: fromId,
