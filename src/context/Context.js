@@ -191,6 +191,7 @@ const ContextProvider = ({ children }) => {
         onSignInSubmit,
         onSubmitOtp,
         otpsent,
+        setAuthstate,
         authstate,
         addNewTrip,
         uid,
