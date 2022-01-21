@@ -1,8 +1,11 @@
-import { useState, useEffect, useContext, useRef } from "react";
+import { useState, useEffect, useContext, useRef, forwardRef } from "react";
 import TextField from "@mui/material/TextField";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import MobileDatePicker from "@mui/lab/MobileDatePicker";
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
+
 import MobileTimePicker from "@mui/lab/MobileTimePicker";
 import DateAdapter from "@mui/lab/AdapterDateFns";
 import { BookingContext } from "../context/BookingContext";
@@ -12,8 +15,15 @@ import "./LocationEntryForm.css";
 import { StandaloneSearchBox } from "@react-google-maps/api";
 import { MapContext } from "../context/MapContext";
 
+let checkEmptyvalues;
+const Alert = forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
+
 function LocationEntryForm() {
   const {
+    pickup,
+    drop,
     onLoadA,
     onPlacesChangedA,
     onPlacesChangedB,
@@ -38,8 +48,45 @@ function LocationEntryForm() {
   const [cabchoices, setcabchoices] = useState([]);
   const [pickInput, setPickInput] = useState();
   const [dropInput, setdropInput] = useState();
+  const [snackbar, setsnackbar] = useState(false);
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setsnackbar(false);
+  };
+
+  checkEmptyvalues = () => {
+    if (triptype == "Drop Trip") {
+      if (
+        pickup == undefined ||
+        drop == undefined ||
+        pickDate == null ||
+        pickTime == null
+      ) {
+        setsnackbar(true);
+        return true;
+      }
+    } else {
+      if (
+        pickup == undefined ||
+        drop == undefined ||
+        pickDate == null ||
+        dropDate == null ||
+        pickTime == null
+      ) {
+        setsnackbar(true);
+        return true;
+      }
+    }
+  };
 
   const Total = () => {
+    if (checkEmptyvalues()) {
+      return;
+    }
     TotalFare(distance, triptype, getDate(pickDate, dropDate) + 1);
   };
   const getDate = (pickDates, dropDates) => {
@@ -69,6 +116,15 @@ function LocationEntryForm() {
   }, [triptype, pickInput, dropInput]);
   return (
     <LocalizationProvider dateAdapter={DateAdapter}>
+      <Snackbar
+        open={snackbar}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        // key={'top' + 'center'}
+        // anchorOrigin={{ 'top' , 'center' }}
+      >
+        <Alert severity="error">Please Fill all values</Alert>
+      </Snackbar>
       <div className="form__container">
         <div className="form__chip__container">
           {["Drop Trip", "Round Trip"].map((e, i) => (
@@ -157,7 +213,6 @@ function LocationEntryForm() {
             />
           </>
         )}
-
         <button type="button" id="submit-btn" onClick={Total}>
           Search Cabs
         </button>
@@ -166,4 +221,5 @@ function LocationEntryForm() {
   );
 }
 
+export { checkEmptyvalues };
 export default LocationEntryForm;

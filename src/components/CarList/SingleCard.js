@@ -2,10 +2,16 @@ import React from "react";
 import "./SingleCard.css";
 import { FaCarAlt } from "react-icons/fa";
 import ConfirmationModal from "../Modal";
+import { checkEmptyvalues } from "../LocationEntryForm";
 
 function SingleCard({ src, name, price, type, npersons, Totalprice }) {
   const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
+  const handleOpen = () => {
+    if (checkEmptyvalues()) {
+      return;
+    }
+    setOpen(true);
+  };
   const handleClose = () => setOpen(false);
   return (
     <>
