@@ -6,7 +6,7 @@ import { useContext } from "react";
 function Otp() {
   const { setotp, onSubmitOtp, authstate } = useContext(Context);
   if (authstate) {
-    return <h1>Booking COnfirmed</h1>;
+    return <h1>Booking Confirmed</h1>;
   } else {
     return (
       <div className="login__root__container">

@@ -61,3 +61,10 @@
 .fb__row2 {
   font-weight: bold;
 }
+
+.faredis__locs {
+  max-width: 210px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

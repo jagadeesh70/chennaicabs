@@ -14,9 +14,9 @@ function FareDisplay() {
 
   const pick = () => {
     if (pickup) {
-      return <p>{pickup}</p>;
+      return <p className="faredis__locs">{pickup}</p>;
     } else {
-      return <p>Enter the pick up Location</p>;
+      return <p className="faredis__locs">Enter the pick up Location</p>;
     }
   };
   let pickupDate = new Date(pickDate).toLocaleDateString();
@@ -38,7 +38,11 @@ function FareDisplay() {
         </div>
         <div className="fare__topbar__location2 fr">
           <RiBuildingLine size="1.6rem" className="ft__icons" color="#15FE1E" />
-          {drop ? <p>{drop}</p> : <p>Enter the Destination Location</p>}
+          {drop ? (
+            <p className="faredis__locs">{drop}</p>
+          ) : (
+            <p className="faredis__locs">Enter the Destination Location</p>
+          )}
         </div>
       </div>
       <p
@@ -50,40 +54,6 @@ function FareDisplay() {
       >
         Ride Details
       </p>
-      <div className="fare__middlebar fc">
-        <div className="fare__middlebar__row1 fr" style={{ width: "100%" }}>
-          <div className="fm__col1">
-            <FaCarAlt size={"2rem"} />
-          </div>
-          <div className="fm__col2 fc">
-            <div
-              className="fm__col2__row1"
-              style={{ marginLeft: "auto", marginRight: "auto" }}
-            >
-              {vehicle ? (
-                <strong>{vehicle}</strong>
-              ) : (
-                <strong>Choose mode of Travel</strong>
-              )}
-            </div>
-            <div className="fm__col2__row2" style={{ marginLeft: "auto" }}>
-              price per KM
-            </div>
-          </div>
-        </div>
-        <div className="fare__middlebar__row2 fr">
-          <div className="fare__middlebar__row2__col1 fr">
-            <FaCarAlt
-              style={{
-                marginRight: ".3rem",
-              }}
-            />
-            <b>Sedan</b>
-          </div>
-          <b>4 person</b>
-          <p>AC</p>
-        </div>
-      </div>
       <div className="fare__bottombar fc">
         <div className="fb__row1 fr">
           <div className="fb__row1__col1 fc">

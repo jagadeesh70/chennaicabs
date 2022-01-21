@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import { FaCarAlt } from "react-icons/fa";
 import Modal from "@mui/material/Modal";
 import Signin from "../pages/Signin";
 import temp from "../images/sedan.png";
+import { Context } from "../context/Context";
 
 const style = {
   position: "absolute",
@@ -17,15 +18,14 @@ const style = {
 };
 
 function ConfirmationModal({ open, setOpen, handleOpen, handleClose }) {
+  const { setAuthstate } = useContext(Context);
+
   const [isconfirmed, setisconfirmed] = useState(false);
-  useEffect(() => {
-    console.log(isconfirmed);
-  }, [isconfirmed]);
 
   return (
     <Modal
       open={open}
-      onClose={handleClose}
+      onClose={() => handleClose(setisconfirmed, setAuthstate)}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
@@ -34,6 +34,26 @@ function ConfirmationModal({ open, setOpen, handleOpen, handleClose }) {
           <Signin />
         ) : (
           <>
+            <div
+              style={{
+                justifyContent: "flex-end",
+                paddingRight: "1rem",
+              }}
+              className="fr"
+            >
+              <button
+                onClick={() => handleClose(setisconfirmed, setAuthstate)}
+                style={{
+                  background: "none",
+                  border: "none",
+                  padding: ".5rem",
+                  color: "red",
+                  fontWeight: "bold",
+                }}
+              >
+                X
+              </button>
+            </div>
             <div className="card-header">
               <img src={temp} alt="rover" />
             </div>
@@ -101,7 +121,11 @@ function ConfirmationModal({ open, setOpen, handleOpen, handleClose }) {
               >
                 Confirm
               </Button>
-              <Button onClick={handleClose} variant="text" color="error">
+              <Button
+                onClick={() => handleClose(setisconfirmed, setAuthstate)}
+                variant="text"
+                color="error"
+              >
                 Cancel
               </Button>
             </div>

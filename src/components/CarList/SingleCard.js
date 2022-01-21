@@ -12,7 +12,11 @@ function SingleCard({ src, name, price, type, npersons, Totalprice }) {
     }
     setOpen(true);
   };
-  const handleClose = () => setOpen(false);
+  const handleClose = (setisconfirmed, setAuthstate) => {
+    setisconfirmed(false);
+    setAuthstate(false);
+    setOpen(false);
+  };
   return (
     <>
       <ConfirmationModal
