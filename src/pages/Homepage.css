@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@800&display=swap");
+
 .entry-container {
   background-image: url("https://cms-web.olacabs.com/00000000383.jpg");
   background-size: cover;
@@ -9,9 +11,26 @@
   align-items: center;
 }
 
+.main-quote {
+  color: white;
+}
+
+.green-quote {
+  color: rgb(8, 245, 8);
+}
+
+.main-quote,
+.green-quote {
+  font-family: "Raleway", sans-serif;
+  font-weight: bold;
+}
+
 @media only screen and (max-width: 700px) {
   .entry-container {
     flex-wrap: wrap;
     height: fit-content;
+  }
+  .q-Quotes {
+    display: none;
   }
 }
