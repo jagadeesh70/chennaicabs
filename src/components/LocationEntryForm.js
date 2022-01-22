@@ -150,7 +150,7 @@ function LocationEntryForm() {
           ))}
         </div>
         <div>
-          <label>Enter Pick Up Location</label>
+          <label style={{ fontFamily: "Roboto" }}>Enter Pick Up Location</label>
           <StandaloneSearchBox
             onLoad={onLoadA}
             onPlacesChanged={onPlacesChangedA}
@@ -163,7 +163,9 @@ function LocationEntryForm() {
               onChange={(e) => setPickInput(e.target.value)}
             />
           </StandaloneSearchBox>
-          <label>Enter Destination Loaction</label>
+          <label style={{ fontFamily: "Roboto" }}>
+            Enter Destination Loaction
+          </label>
           <StandaloneSearchBox
             onLoad={onLoadB}
             onPlacesChanged={onPlacesChangedB}
