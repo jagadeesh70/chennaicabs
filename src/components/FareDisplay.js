@@ -14,9 +14,17 @@ function FareDisplay() {
 
   const pick = () => {
     if (pickup) {
-      return <p className="faredis__locs">{pickup}</p>;
+      return (
+        <p title={pickup} className="faredis__locs">
+          {pickup}
+        </p>
+      );
     } else {
-      return <p className="faredis__locs">Enter the pick up Location</p>;
+      return (
+        <p title="Enter the pick up Location" className="faredis__locs">
+          Enter the pick up Location
+        </p>
+      );
     }
   };
   let pickupDate = new Date(pickDate).toLocaleDateString();
@@ -39,9 +47,13 @@ function FareDisplay() {
         <div className="fare__topbar__location2 fr">
           <RiBuildingLine size="1.6rem" className="ft__icons" color="#15FE1E" />
           {drop ? (
-            <p className="faredis__locs">{drop}</p>
+            <p title={drop} className="faredis__locs">
+              {drop}
+            </p>
           ) : (
-            <p className="faredis__locs">Enter the Destination Location</p>
+            <p title="Enter the Destination Location" className="faredis__locs">
+              Enter the Destination Location
+            </p>
           )}
         </div>
       </div>

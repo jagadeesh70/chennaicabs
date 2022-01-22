@@ -7,7 +7,7 @@ import { checkEmptyvalues } from "../LocationEntryForm";
 function SingleCard({ src, name, price, type, npersons, Totalprice }) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
-    if (checkEmptyvalues()) {
+    if (checkEmptyvalues("from locentryform")) {
       return;
     }
     setOpen(true);
