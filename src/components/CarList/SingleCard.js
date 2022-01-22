@@ -11,7 +11,7 @@ function SingleCard({ src, name, price, type, npersons, Totalprice, cartype }) {
   const { setCartype } = useContext(BookingContext);
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
-    if (checkEmptyvalues()) {
+    if (checkEmptyvalues("from locentryform")) {
       return;
     }
     setOpen(true);

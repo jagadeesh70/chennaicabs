@@ -58,7 +58,7 @@ function LocationEntryForm() {
     setsnackbar(false);
   };
 
-  checkEmptyvalues = () => {
+  checkEmptyvalues = (type) => {
     if (triptype == "Drop Trip") {
       if (
         pickup == undefined ||
@@ -66,6 +66,9 @@ function LocationEntryForm() {
         pickDate == null ||
         pickTime == null
       ) {
+        if (type == "from locentryform") {
+          document.querySelector("#LocationEntryForm").scrollIntoView();
+        }
         setsnackbar(true);
         return true;
       }
@@ -77,6 +80,9 @@ function LocationEntryForm() {
         dropDate == null ||
         pickTime == null
       ) {
+        if (type == "from locentryform") {
+          document.querySelector("#LocationEntryForm").scrollIntoView();
+        }
         setsnackbar(true);
         return true;
       }
@@ -84,9 +90,10 @@ function LocationEntryForm() {
   };
 
   const Total = () => {
-    if (checkEmptyvalues()) {
+    if (checkEmptyvalues("from form")) {
       return;
     }
+    document.querySelector(".cars__container").scrollIntoView();
     TotalFare(distance, triptype, getDate(pickDate, dropDate) + 1);
   };
   const getDate = (pickDates, dropDates) => {
@@ -125,7 +132,7 @@ function LocationEntryForm() {
       >
         <Alert severity="error">Please Fill all values</Alert>
       </Snackbar>
-      <div className="form__container">
+      <div id="LocationEntryForm" className="form__container">
         <div className="form__chip__container">
           {["Drop Trip", "Round Trip"].map((e, i) => (
             <button
