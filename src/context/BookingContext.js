@@ -26,7 +26,6 @@ const BookingContextProvider = ({ children }) => {
   //States
   const [distance, setDistance] = useState("");
   const [vehicle, setVehicle] = useState();
-  const [totalFare, setTotalFare] = useState();
   const [pickDate, setpickDate] = useState(null);
   const [dropDate, setdropDate] = useState(null);
   const [pickTime, setpickTime] = useState(null);
@@ -36,6 +35,7 @@ const BookingContextProvider = ({ children }) => {
   const [suvplusFare, setSuvplusFare] = useState();
   const [executiveFare, setExecutiveFare] = useState();
   const [tempoFare, setTempoFare] = useState();
+  const [cartype, setCartype] = useState();
   console.log(pickDate);
 
   const DaysLeft = (pickDates, dropDates) => {
@@ -145,108 +145,6 @@ const BookingContextProvider = ({ children }) => {
     return fare;
   };
 
-  // const oneWayTrip = (distances, vehicles) => {
-  //   if (distances && vehicles) {
-  //     if (distances < 130) {
-  //       switch (vehicles) {
-  //         case "Etios/Dzire or Equivalent":
-  //           totalfare = oneWayBaseFareSmallCar + driverFeeSmall;
-  //           console.log(totalfare);
-  //           break;
-  //         case "Innova/Xylo or Equivalent":
-  //           totalfare = oneWayBaseFareLargeCar + driverFeeSmall;
-  //           break;
-  //         default:
-  //           console.log("something is wrong");
-  //           break;
-  //       }
-  //     } else if (distances > 130) {
-  //       switch (vehicles) {
-  //         case "Etios/Dzire or Equivalent":
-  //           totalfare =
-  //             oneWayBaseFareSmallCar +
-  //             driverFeeSmall +
-  //             (distances - oneWayBaseDistance) * 13;
-  //           break;
-  //         case "Innova/Xylo or Equivalent":
-  //           totalfare =
-  //             oneWayBaseFareLargeCar +
-  //             driverFeeSmall +
-  //             (distances - oneWayBaseDistance) * 18;
-  //           break;
-  //         default:
-  //           console.log("something is wrong");
-  //           break;
-  //       }
-  //     }
-  //   }
-  //   setTotalFare(totalfare);
-  // };
-
-  // const TwoWayTrip = (distances, vehicles, days) => {
-  //   if (distances && vehicles && days) {
-  //     if (distances < twoWayBaseDistance * days) {
-  //       switch (vehicles) {
-  //         case "Etios/Dzire or Equivalent":
-  //           totalfare = driverFeeSmall * days + twoWayBaseFareSmall * days;
-  //           break;
-  //         case "Innova/Xylo or Equivalent":
-  //           totalfare = driverFeeSmall * days + twoWayBaseFareMedium * days;
-  //           break;
-  //         case "Toyota Innova":
-  //           totalfare = driverFeeMedium * days + twoWayBaseFareMedium * days;
-  //           break;
-  //         case "Toyota Crysta":
-  //           totalfare = driverFeeLarge * days + twoWayBaseFareLarge * days;
-  //           break;
-  //         case "Force traveller":
-  //           totalfare = driverFeeVan * days + twoWayBaseFareVan * days;
-  //           break;
-  //         default:
-  //           break;
-  //       }
-  //     } else {
-  //       switch (vehicles) {
-  //         case "Etios/Dzire or Equivalent":
-  //           totalfare =
-  //             driverFeeSmall * days +
-  //             twoWayBaseFareSmall * days +
-  //             (distances - twoWayBaseDistance * days) * 11;
-  //           break;
-  //         case "Innova/Xylo or Equivalent":
-  //           totalfare =
-  //             driverFeeSmall * days +
-  //             twoWayBaseFareMedium * days +
-  //             (distances - twoWayBaseDistance * days) * 15;
-  //           break;
-  //         case "Toyota Innova":
-  //           totalfare =
-  //             driverFeeMedium * days +
-  //             twoWayBaseFareMedium * days +
-  //             (distances - twoWayBaseDistance * days) * 15;
-  //           break;
-  //         case "Toyota Crysta":
-  //           totalfare =
-  //             driverFeeLarge * days +
-  //             twoWayBaseFareLarge * days +
-  //             Math.abs((distances - twoWayBaseDistance * days) * 17);
-  //           break;
-  //         case "Force traveller":
-  //           totalfare =
-  //             driverFeeVan * days +
-  //             twoWayBaseFareVan * days +
-  //             (distances - twoWayBaseDistance * days) * 19;
-  //           break;
-  //         default:
-  //           break;
-  //       }
-  //     }
-  //   }
-  //   setTotalFare(totalfare);
-  // };
-  // oneWayTrip(319,"Innova/Xylo or Equivalent")
-  // TwoWayTrip(638,"Force traveller",5)
-
   return (
     <BookingContext.Provider
       value={{
@@ -254,9 +152,6 @@ const BookingContextProvider = ({ children }) => {
         setDistance,
         vehicle,
         setVehicle,
-        // oneWayTrip,
-        // TwoWayTrip,
-        totalFare,
         pickDate,
         setpickDate,
         dropDate,
@@ -274,6 +169,8 @@ const BookingContextProvider = ({ children }) => {
         executiveFare,
         tempoFare,
         SedanFare,
+        cartype,
+        setCartype,
       }}
     >
       {children}

@@ -29,6 +29,7 @@ function Cars() {
             type="sedan"
             npersons="4"
             Totalprice={sedanFare}
+            cartype="sedanoneway"
           />
           <SingleCard
             src={Suv}
@@ -37,6 +38,7 @@ function Cars() {
             type="suv"
             npersons="7"
             Totalprice={suvFare}
+            cartype="suvoneway"
           />
         </>
       ) : (
@@ -48,6 +50,7 @@ function Cars() {
             type="sedan"
             npersons="4"
             Totalprice={sedanFare}
+            cartype="sedan"
           />
           <SingleCard
             src={Suv}
@@ -56,6 +59,7 @@ function Cars() {
             type="suv"
             npersons="7"
             Totalprice={suvFare}
+            cartype="suv"
           />
           <SingleCard
             src={Suv_plus}
@@ -64,6 +68,7 @@ function Cars() {
             type="suv+"
             npersons="7"
             Totalprice={suvplusFare}
+            cartype="suvplus"
           />
           <SingleCard
             src={Executive}
@@ -72,6 +77,7 @@ function Cars() {
             type="executive"
             npersons="6"
             Totalprice={executiveFare}
+            cartype="executive"
           />
           <SingleCard
             src={Van}
@@ -80,6 +86,7 @@ function Cars() {
             type="tempo"
             npersons="12"
             Totalprice={tempoFare}
+            cartype="tempo"
           />
         </>
       )}

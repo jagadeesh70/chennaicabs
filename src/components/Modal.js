@@ -18,14 +18,14 @@ const style = {
 };
 
 function ConfirmationModal({ open, setOpen, handleOpen, handleClose }) {
-  const { setAuthstate } = useContext(Context);
+  const { setAuthstate, setotpsent } = useContext(Context);
 
   const [isconfirmed, setisconfirmed] = useState(false);
 
   return (
     <Modal
       open={open}
-      onClose={() => handleClose(setisconfirmed, setAuthstate)}
+      onClose={() => handleClose(setisconfirmed, setAuthstate, setotpsent)}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
@@ -42,7 +42,9 @@ function ConfirmationModal({ open, setOpen, handleOpen, handleClose }) {
               className="fr"
             >
               <button
-                onClick={() => handleClose(setisconfirmed, setAuthstate)}
+                onClick={() =>
+                  handleClose(setisconfirmed, setAuthstate, setotpsent)
+                }
                 style={{
                   background: "none",
                   border: "none",
@@ -122,7 +124,9 @@ function ConfirmationModal({ open, setOpen, handleOpen, handleClose }) {
                 Confirm
               </Button>
               <Button
-                onClick={() => handleClose(setisconfirmed, setAuthstate)}
+                onClick={() =>
+                  handleClose(setisconfirmed, setAuthstate, setotpsent)
+                }
                 variant="text"
                 color="error"
               >

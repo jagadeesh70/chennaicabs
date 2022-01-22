@@ -4,7 +4,7 @@ import { Context } from "../context/Context";
 import { useContext } from "react";
 
 function Login() {
-  const {setPhone, onSignInSubmit} = useContext(Context)
+  const { setPhone, onSignInSubmit, setUsername } = useContext(Context);
   return (
     <div className="login__root__container">
       <div id="card">
@@ -14,9 +14,16 @@ function Login() {
             <div className="underline-title"></div>
           </div>
           <form onSubmit={onSignInSubmit}>
-            <label style={{ paddingTop: "13px" }}>
-              &nbsp;Mobile Number
-            </label>
+            <label style={{ paddingTop: "13px" }}>&nbsp;Enter your Name</label>
+            <input
+              id="user-email"
+              className="form-content"
+              type="text"
+              autoComplete="off"
+              required
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <label style={{ paddingTop: "13px" }}>&nbsp;Mobile Number</label>
             <input
               id="user-email"
               className="form-content"
@@ -25,16 +32,12 @@ function Login() {
               autoComplete="on"
               required
               onChange={(e) => setPhone(e.target.value)}
-              />
+            />
             <div className="form-border"></div>
-            <button
-            type="submit"
-            name="submit"
-            id="submit-btn-2"
-            >
+            <button type="submit" name="submit" id="submit-btn-2">
               Login
             </button>
-            <div id='sign-in-button' style={{visibility: "hidden"}}></div>
+            <div id="sign-in-button" style={{ visibility: "hidden" }}></div>
           </form>
         </div>
       </div>

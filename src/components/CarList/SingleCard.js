@@ -3,8 +3,12 @@ import "./SingleCard.css";
 import { FaCarAlt } from "react-icons/fa";
 import ConfirmationModal from "../Modal";
 import { checkEmptyvalues } from "../LocationEntryForm";
+import { useContext } from "react";
+import { BookingContext } from "../../context/BookingContext";
+import Context from "../../context/Context";
 
-function SingleCard({ src, name, price, type, npersons, Totalprice }) {
+function SingleCard({ src, name, price, type, npersons, Totalprice, cartype }) {
+  const { setCartype } = useContext(BookingContext);
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
     if (checkEmptyvalues()) {
@@ -12,10 +16,15 @@ function SingleCard({ src, name, price, type, npersons, Totalprice }) {
     }
     setOpen(true);
   };
-  const handleClose = (setisconfirmed, setAuthstate) => {
+  const handleClose = (setisconfirmed, setAuthstate, setotpsent) => {
     setisconfirmed(false);
     setAuthstate(false);
     setOpen(false);
+    setotpsent(false);
+  };
+  const handleCar = (cartype) => {
+    handleOpen();
+    setCartype(cartype);
   };
   return (
     <>
@@ -79,7 +88,12 @@ function SingleCard({ src, name, price, type, npersons, Totalprice }) {
             <p>{npersons} person</p>
             <p>AC</p>
           </div>
-          <button id="submit-btn" onClick={handleOpen}>
+          <button
+            id="submit-btn"
+            onClick={() => {
+              handleCar(cartype);
+            }}
+          >
             Book Now
           </button>
         </div>

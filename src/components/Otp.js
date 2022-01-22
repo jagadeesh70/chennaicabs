@@ -2,11 +2,12 @@ import React from "react";
 import "./Login.css";
 import { Context } from "../context/Context";
 import { useContext } from "react";
+import Confirmation from "./Confirmation";
 
 function Otp() {
   const { setotp, onSubmitOtp, authstate } = useContext(Context);
   if (authstate) {
-    return <h1>Booking Confirmed</h1>;
+    return <Confirmation />;
   } else {
     return (
       <div className="login__root__container">

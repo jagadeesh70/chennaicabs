@@ -8,7 +8,6 @@ import {
 import {
   collection,
   doc,
-  Firestore,
   getDoc,
   onSnapshot,
   setDoc,
@@ -21,12 +20,14 @@ const ContextProvider = ({ children }) => {
   const [username, setUsername] = useState("");
   const [phone, setPhone] = useState();
   const [otp, setotp] = useState();
-  const [otpsent, setoptsent] = useState(false);
+  const [otpsent, setotpsent] = useState(false);
   const [uid, setUid] = useState();
   const [bookingId, setBookingId] = useState();
+  const [servOtp, setServOtp] = useState();
 
   useEffect(async () => {
     generateBookingId();
+    generateOtp();
     onSnapshot(collection(db, "profile"), (snap) => {
       console.log(snap.docs.map((doc) => doc.data()));
     });
@@ -65,7 +66,7 @@ const ContextProvider = ({ children }) => {
     signInWithPhoneNumber(auth, phoneNumber, appVerifier)
       .then((confirmationResult) => {
         window.confirmationResult = confirmationResult;
-        setoptsent(true);
+        setotpsent(true);
         console.log("OTP sent");
       })
       .catch((error) => {
@@ -103,9 +104,18 @@ const ContextProvider = ({ children }) => {
     for (let i = 0; i < 4; i++) {
       otp += digits[Math.floor(Math.random() * 10)].toString();
     }
-    return otp;
+    setServOtp(otp);
   };
 
+  const sendOtp = () => {
+    let api = `http://login.blesssms.com/api/mt/SendSMS?user=chennaicabscare@gmail.com&password=9841346080&senderid=CHCABS&channel=Trans&DCS=0&flashsms=0&number=91${phone}&text=DO NOT SHARE: ${servOtp} is the OTP for your ride ${bookingId} with Chennai cabs .  Say this OTP while you have been picked up by our driver.&route=10`;
+    fetch(api, {
+      method: "GET",
+      mode: "no-cors",
+    })
+      .then((res) => console.log(res))
+      .then((res) => console.log(res));
+  };
   const createUser = async (uid, userName, phoneNumber) => {
     await setDoc(doc(db, "profile", uid), {
       name: userName,
@@ -123,6 +133,7 @@ const ContextProvider = ({ children }) => {
     fromId, //done
     toId, //done
     uid, //dome
+    booking_date,
     fromAddress, //done
     toAddress, //done
     tripStartDate, //done
@@ -152,7 +163,7 @@ const ContextProvider = ({ children }) => {
       trip_status: "ongoing",
       referred_by: "",
       reward_points: "",
-      booking_date: Date.now(),
+      booking_date: booking_date,
       trip_start_date: tripStartDate,
       distance: distance,
       timestamp: timeStamp,
@@ -170,7 +181,7 @@ const ContextProvider = ({ children }) => {
       booking_time: "",
       time: time,
       driver_accepted: 0,
-      otp: generateOtp(),
+      otp: servOtp,
       from_location: from_location,
       to_location: to_location,
       day: day,
@@ -195,6 +206,8 @@ const ContextProvider = ({ children }) => {
         authstate,
         addNewTrip,
         uid,
+        setotpsent,
+        sendOtp,
       }}
     >
       {children}
