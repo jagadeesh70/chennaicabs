@@ -3,7 +3,6 @@ import { createContext, useState } from "react";
 const BookingContext = createContext();
 
 const BookingContextProvider = ({ children }) => {
-  let totalfare = 0;
   const [triptype, settriptype] = useState("Drop Trip");
   //Driver Fee based on vehicle
   const driverFeeSmall = 300;
@@ -32,6 +31,7 @@ const BookingContextProvider = ({ children }) => {
   const [daysLeft, setDaysLeft] = useState(null);
   const [sedanFare, SetSedanFare] = useState();
   const [suvFare, setSuvFare] = useState();
+  const [suvTwowayFare, setSuvTwowayFare] = useState();
   const [suvplusFare, setSuvplusFare] = useState();
   const [executiveFare, setExecutiveFare] = useState();
   const [tempoFare, setTempoFare] = useState();
@@ -102,6 +102,17 @@ const BookingContextProvider = ({ children }) => {
     }
     setSuvFare(fare);
     return fare;
+  };
+  const SuvTwowayFare = (distance, days) => {
+    let fare;
+    if (distance * 2 < twoWayBaseDistance * days) {
+      fare = driverFeeSmall * days + twoWayBaseFareMedium * days;
+    } else {
+      fare =
+        driverFeeSmall * days +
+        twoWayBaseFareMedium * days +
+        (distance * 2 - twoWayBaseDistance * days) * 15;
+    }
   };
 
   const SuvPlusFare = (distance, days) => {

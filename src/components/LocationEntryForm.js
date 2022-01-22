@@ -38,8 +38,6 @@ function LocationEntryForm() {
     pickDate,
     pickTime,
     dropDate,
-    DaysLeft,
-    daysLeft,
     triptype,
     settriptype,
     TotalFare,

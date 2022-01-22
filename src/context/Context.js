@@ -130,6 +130,7 @@ const ContextProvider = ({ children }) => {
   };
 
   const addNewTrip = async (
+    booking_time,
     fromId, //done
     toId, //done
     uid, //dome
@@ -178,7 +179,7 @@ const ContextProvider = ({ children }) => {
       driver_number: "",
       car_name: "",
       car_number: "",
-      booking_time: "",
+      booking_time: booking_time,
       time: time,
       driver_accepted: 0,
       otp: servOtp,

@@ -26,16 +26,17 @@ function Confirmation() {
   const { pickDate, dropDate, pickTime, cartype } = useContext(BookingContext);
 
   let nowdate = Date.now();
-  let bookingDate = new Date(nowdate).toLocaleDateString();
+  let bookingDate = new Date(nowdate).toLocaleDateString("hi-IN");
+  let bookingTime = new Date(nowdate).toLocaleTimeString("hi-IN");
 
   let pickupDate = new Date(pickDate).toLocaleDateString();
   let pickupTime = new Date(pickTime).toLocaleTimeString();
   let pickupDay = new Date(pickDate).toLocaleDateString();
   let dropdownDate = new Date(dropDate).toLocaleDateString();
-  console.log(pickupDate);
 
   const sedanOneWay = () => {
     addNewTrip(
+      bookingTime,
       fromId,
       toId,
       uid,
@@ -63,9 +64,11 @@ function Confirmation() {
 
   const suvOneWay = () => {
     addNewTrip(
+      bookingTime,
       fromId,
       toId,
       uid,
+      bookingDate,
       pickup,
       drop,
       pickupDate,
@@ -89,9 +92,11 @@ function Confirmation() {
 
   const sedanTwoWay = () => {
     addNewTrip(
+      bookingTime,
       fromId,
       toId,
       uid,
+      bookingDate,
       pickup,
       drop,
       pickupDate,
@@ -115,9 +120,11 @@ function Confirmation() {
 
   const suvTwoWay = () => {
     addNewTrip(
+      bookingTime,
       fromId,
       toId,
       uid,
+      bookingDate,
       pickup,
       drop,
       pickupDate,
@@ -127,23 +134,25 @@ function Confirmation() {
       dropdownDate, //no return date for one way
       "300", //had to change
       phone,
-      sedanFare,
-      "nub", //done
+      suvFare,
+      username, //done
       pickupTime,
       fromLocation,
       toLocation,
       pickupDay, //change
       "one_way",
-      sedanFare,
-      sedanFare
+      suvFare,
+      suvFare
     );
   };
 
   const suvPlusTwoWay = () => {
     addNewTrip(
+      bookingTime,
       fromId,
       toId,
       uid,
+      bookingDate,
       pickup,
       drop,
       pickupDate,
@@ -166,9 +175,11 @@ function Confirmation() {
   };
   const executiveTwoWay = () => {
     addNewTrip(
+      bookingTime,
       fromId,
       toId,
       uid,
+      bookingDate,
       pickup,
       drop,
       pickupDate,
@@ -191,9 +202,11 @@ function Confirmation() {
   };
   const tempoTwoWay = () => {
     addNewTrip(
+      bookingTime,
       fromId,
       toId,
       uid,
+      bookingDate,
       pickup,
       drop,
       pickupDate,
