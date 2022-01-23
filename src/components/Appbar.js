@@ -38,7 +38,7 @@ const ResponsiveAppBar = () => {
   };
 
   return (
-    <AppBar style={{ background: "#21ba45" }} position="static">
+    <AppBar style={{ background: "rgb(150, 224, 12)" }} position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
@@ -48,7 +48,12 @@ const ResponsiveAppBar = () => {
             sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
           >
             <div
-              style={{ justifyContent: "center", alignItems: "center" }}
+              style={{
+                justifyContent: "center",
+                alignItems: "center",
+                WebkitTextStrokeWidth: "0.3px",
+                WebkitTextStrokeColor: "black",
+              }}
               className="header__lgo fr"
             >
               <img

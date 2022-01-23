@@ -31,7 +31,6 @@ const BookingContextProvider = ({ children }) => {
   const [daysLeft, setDaysLeft] = useState(null);
   const [sedanFare, SetSedanFare] = useState();
   const [suvFare, setSuvFare] = useState();
-  const [suvTwowayFare, setSuvTwowayFare] = useState();
   const [suvplusFare, setSuvplusFare] = useState();
   const [executiveFare, setExecutiveFare] = useState();
   const [tempoFare, setTempoFare] = useState();

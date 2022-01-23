@@ -1,14 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@800&display=swap");
 
 .entry-container {
-  background-image: url("https://cms-web.olacabs.com/00000000383.jpg");
   background-size: cover;
-  object-fit: cover;
+  object-fit: fill;
   display: flex;
   flex-direction: row;
-  height: calc(100vh - 80px);
+  height: calc(105vh - 80px);
   justify-content: space-evenly;
   align-items: center;
+  margin-top: 20px;
 }
 
 .main-quote {
@@ -16,7 +16,7 @@
 }
 
 .green-quote {
-  color: rgb(8, 245, 8);
+  color: rgb(150, 224, 12);
 }
 
 .main-quote,

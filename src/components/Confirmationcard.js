@@ -47,7 +47,7 @@ function Confirmationcard({
             marginBottom: ".7rem",
           }}
         >
-          Price: ₹{baseprice}
+          Base Price: ₹{baseprice}
         </p>
         <p
           style={{

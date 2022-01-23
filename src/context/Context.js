@@ -81,20 +81,20 @@ const ContextProvider = ({ children }) => {
     window.confirmationResult
       .confirm(code)
       .then((result) => {
+        console.log(result);
         const user = result.user;
-        updateProfile(auth.currentUser, { displayName: "noob" });
+        updateProfile(auth.currentUser, { displayName: username });
         console.log(JSON.stringify(user));
         console.log("Login successful");
         createUser(user.uid, user.displayName, user.phoneNumber);
         setUsername(user.displayName);
         setPhone(user.phoneNumber);
         setUid(user.uid);
+        setAuthstate(true);
       })
       .catch((error) => {
         console.log(error, "Login failed");
-      })
-      .then(() => {
-        setAuthstate(true);
+        setAuthstate(false);
       });
   };
 
@@ -189,7 +189,7 @@ const ContextProvider = ({ children }) => {
       trip_type: trip_type,
       subtotal: subTotal,
       total_fare: total_fare,
-    });
+    }).then((res) => console.log(res));
   };
 
   return (

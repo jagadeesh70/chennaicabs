@@ -1,7 +1,6 @@
 import { useState, useEffect, useContext, useRef, forwardRef } from "react";
 import TextField from "@mui/material/TextField";
-import MenuItem from "@mui/material/MenuItem";
-import Select from "@mui/material/Select";
+
 import MobileDatePicker from "@mui/lab/MobileDatePicker";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
@@ -221,7 +220,7 @@ function LocationEntryForm() {
           </>
         )}
         <button type="button" id="submit-btn" onClick={Total}>
-          Search Cabs
+          Book Cab
         </button>
       </div>
     </LocalizationProvider>

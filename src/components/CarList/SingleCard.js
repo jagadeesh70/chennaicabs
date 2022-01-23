@@ -71,7 +71,7 @@ function SingleCard({ src, name, price, type, npersons, Totalprice, cartype }) {
               marginBottom: ".7rem",
             }}
           >
-            Total Price: ₹{Totalprice}/km
+            Total Price: ₹{Totalprice}
           </p>
           <div
             style={{ width: "100%", marginBottom: ".5rem" }}

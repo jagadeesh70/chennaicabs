@@ -1,0 +1,55 @@
+.end-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: 15px;
+  margin-left: 35px;
+  padding: 100px;
+  flex-direction: column;
+}
+
+.end-heading {
+  font-size: 48px;
+  color: white;
+  font-weight: 700;
+}
+
+.end-head {
+  color: white;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  line-height: 1.1;
+  letter-spacing: -0.3px;
+}
+
+.end-body {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 28px;
+  color: white;
+}
+
+.end-content {
+  color: white;
+  display: flex;
+  margin: 30px;
+  width: 700px;
+}
+
+.main-logo {
+  width: 50px;
+  height: 50px;
+  margin-top: 10px;
+}
+
+.end-single {
+  display: flex;
+  flex-direction: column;
+  margin-left: 40px;
+  margin-bottom: 10px;
+  justify-content: center;
+}
+
+.end-main {
+  margin-top: 50px;
+}

@@ -16,8 +16,9 @@ function Footer() {
           src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
         />
       </a>
-      <div className="ft__1">Terms & conditions</div>
-      <div className="ft__1">Privacy Policy</div>
+      <div className="ft__1">
+        Terms & conditions &nbsp; &nbsp; &nbsp;Privacy Policy
+      </div>
       <div className="socialmedia">
         <i className="fab fa-facebook-square fa-2x"></i>
         <i className="fab fa-instagram-square fa-2x"></i>

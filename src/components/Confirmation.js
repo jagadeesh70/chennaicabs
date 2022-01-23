@@ -11,19 +11,14 @@ import Suv from "../images/suv.png";
 import Van from "../images/van.png";
 
 function Confirmation() {
-  const {
-    triptype,
-    sedanFare,
-    suvFare,
-    suvplusFare,
-    executiveFare,
-    tempoFare,
-  } = useContext(BookingContext);
+  const { sedanFare, suvFare, suvplusFare, executiveFare, tempoFare } =
+    useContext(BookingContext);
 
   const { addNewTrip, username, uid, phone } = useContext(Context);
   const { pickup, drop, distance, fromId, toId, fromLocation, toLocation } =
     useContext(MapContext);
-  const { pickDate, dropDate, pickTime, cartype } = useContext(BookingContext);
+  const { pickDate, dropDate, pickTime, cartype, daysLeft } =
+    useContext(BookingContext);
 
   let nowdate = Date.now();
   let bookingDate = new Date(nowdate).toLocaleDateString("hi-IN");
@@ -104,7 +99,7 @@ function Confirmation() {
       pickDate, //timestamp
       "sedan",
       dropdownDate, //no return date for one way
-      "300",
+      300 * daysLeft,
       phone,
       sedanFare,
       username, //done
@@ -132,7 +127,7 @@ function Confirmation() {
       pickDate, //timestamp
       "suv",
       dropdownDate, //no return date for one way
-      "300", //had to change
+      300 * daysLeft, //had to change
       phone,
       suvFare,
       username, //done
@@ -160,7 +155,7 @@ function Confirmation() {
       pickDate, //timestamp
       "suv+",
       dropdownDate, //no return date for one way
-      "300",
+      400 * daysLeft,
       phone,
       suvplusFare,
       username, //done
@@ -187,7 +182,7 @@ function Confirmation() {
       pickDate, //timestamp
       "executive",
       dropdownDate, //no return date for one way
-      "300",
+      500 * daysLeft,
       phone,
       executiveFare,
       username, //done
@@ -214,7 +209,7 @@ function Confirmation() {
       pickDate, //timestamp
       "tempo",
       dropdownDate, //no return date for one way
-      "300",
+      600 * daysLeft,
       phone,
       tempoFare,
       username, //done
