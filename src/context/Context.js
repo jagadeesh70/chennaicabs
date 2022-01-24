@@ -108,13 +108,19 @@ const ContextProvider = ({ children }) => {
   };
 
   const sendOtp = () => {
-    let api = `http://login.blesssms.com/api/mt/SendSMS?user=chennaicabscare@gmail.com&password=9841346080&senderid=CHCABS&channel=Trans&DCS=0&flashsms=0&number=91${phone}&text=DO NOT SHARE: ${servOtp} is the OTP for your ride ${bookingId} with Chennai cabs .  Say this OTP while you have been picked up by our driver.&route=10`;
-    fetch(api, {
+    var requestOptions = {
       method: "GET",
-      mode: "no-cors",
-    })
-      .then((res) => console.log(res))
-      .then((res) => console.log(res));
+      redirect: "follow",
+      "Access-Control-Allow-Origin": "*",
+    };
+
+    fetch(
+      `https://cors-anywhere.herokuapp.com/http://login.blesssms.com/api/mt/SendSMS?senderid=CHCABS&channel=Trans&DCS=0&flashsms=0&number=91${phone}&text=Dear ${servOtp},Kindly request you to check the KM reading before the start {%23var%23} and end trip.For any assistance call..9841346080.Thanking you."&route=10&APIKey=jPT9C6DKXUmc8jDkBAq06w`,
+      requestOptions
+    )
+      .then((response) => console.log(response.text()))
+      .then((result) => console.log(result))
+      .catch((error) => console.log("error", error));
   };
   const createUser = async (uid, userName, phoneNumber) => {
     await setDoc(doc(db, "profile", uid), {

@@ -1,5 +1,6 @@
 import React from "react";
 import "./End.css";
+import BookingDone from "./BookingDone";
 
 function End() {
   return (
@@ -9,7 +10,7 @@ function End() {
       </div>
       <div className="end-main">
         <div className="end-content">
-          <i class="fas fa-shipping-fast fa-2x main-logo"></i>
+          <i className="fas fa-shipping-fast fa-2x main-logo"></i>
           <div className="end-single">
             <div className="end-head">Fast & easy booking</div>
             <div className="end-body">
@@ -19,7 +20,7 @@ function End() {
           </div>
         </div>
         <div className="end-content">
-          <i class="far fa-credit-card fa-2x main-logo"></i>
+          <i className="far fa-credit-card fa-2x main-logo"></i>
           <div className="end-single">
             <div className="end-head">Transparent billing</div>
             <div className="end-body">
@@ -29,12 +30,22 @@ function End() {
           </div>
         </div>
         <div className="end-content">
-          <i class="fas fa-history fa-2x main-logo"></i>
+          <i className="fas fa-history fa-2x main-logo"></i>
           <div className="end-single">
             <div className="end-head">24/7 Cutomer Support</div>
             <div className="end-body">
               Friendly & Helpful Support Team. Ride with expert chauffeurs,
               specifically trained for outstation rides.
+            </div>
+          </div>
+        </div>
+        <div className="end-content">
+          <i class="fas fa-heartbeat fa-2x main-logo"></i>
+          <div className="end-single">
+            <div className="end-head">Safe & Secure</div>
+            <div className="end-body">
+              Sanitized Cabs and Vaccinated drivers to ensure you a safe travel
+              experience.
             </div>
           </div>
         </div>

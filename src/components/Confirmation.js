@@ -20,14 +20,22 @@ function Confirmation() {
   const { pickDate, dropDate, pickTime, cartype, daysLeft } =
     useContext(BookingContext);
 
+  const weekday = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
   let nowdate = Date.now();
-  let bookingDate = new Date(nowdate).toLocaleDateString("hi-IN");
-  let bookingTime = new Date(nowdate).toLocaleTimeString("hi-IN");
-
-  let pickupDate = new Date(pickDate).toLocaleDateString();
+  let bookingDate = new Date(nowdate).toISOString().split("T")[0];
+  let bookingTime = new Date(nowdate).toLocaleString("sv-SV");
+  let pickupDate = new Date(pickDate).toISOString().split("T")[0];
   let pickupTime = new Date(pickTime).toLocaleTimeString();
-  let pickupDay = new Date(pickDate).toLocaleDateString();
-  let dropdownDate = new Date(dropDate).toLocaleDateString();
+  let pickupDay = new Date(pickDate).getDay();
+  let dropdownDate = new Date(dropDate).toISOString().split("T")[0];
 
   const sedanOneWay = () => {
     addNewTrip(
@@ -35,7 +43,7 @@ function Confirmation() {
       fromId,
       toId,
       uid,
-      bookingDate,
+      bookingDate.replaceAll("/", "-"),
       pickup,
       drop,
       pickupDate,
@@ -50,7 +58,7 @@ function Confirmation() {
       pickupTime,
       fromLocation,
       toLocation,
-      pickupDay, //change
+      weekday[pickupDay], //change
       "one_way",
       sedanFare,
       sedanFare

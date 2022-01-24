@@ -17,7 +17,7 @@ const style = {
   p: 1,
 };
 
-function ConfirmationModal({ open, setOpen, handleOpen, handleClose }) {
+function ConfirmationModal({ open, handleClose }) {
   const { setAuthstate, setotpsent } = useContext(Context);
 
   const [isconfirmed, setisconfirmed] = useState(false);
@@ -60,7 +60,7 @@ function ConfirmationModal({ open, setOpen, handleOpen, handleClose }) {
               <img src={temp} alt="rover" />
             </div>
             <div className="card-body">
-              <h4 className="cbody__name">name</h4>
+              <h4 className="cbody__name">helo</h4>
               <p
                 style={{
                   marginBottom: ".7rem",

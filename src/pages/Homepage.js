@@ -43,6 +43,13 @@ function Homepage() {
       </div>
       <Cars />
       <End />
+      <a
+        href="https://api.whatsapp.com/send?phone=9840556425"
+        className="float"
+        target="_blank"
+      >
+        <i class="fa fa-whatsapp my-float"></i>
+      </a>
       <Footer></Footer>
     </div>
   );

@@ -1,6 +1,10 @@
 import React from "react";
+import { useContext } from "react";
+import { MapContext } from "../context/MapContext";
 
 function ConfirmModal() {
+  const { pickup, drop, distance, fromId, toId, fromLocation, toLocation } =
+    useContext(MapContext);
   return (
     <>
       <div
@@ -33,7 +37,7 @@ function ConfirmModal() {
             marginBottom: ".7rem",
           }}
         >
-          Distance:kms
+          Distance: {distance} km
         </p>
         <p
           style={{
