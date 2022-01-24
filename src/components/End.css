@@ -53,3 +53,42 @@
 .end-main {
   margin-top: 50px;
 }
+
+@media only screen and (max-width: 920px) {
+  .end-container {
+    padding: 0;
+  }
+  .end-main {
+    margin-top: 1rem;
+  }
+  .end-content {
+    width: unset;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .end-heading {
+    font-size: 32px;
+    text-align: center;
+  }
+}
+@media only screen and (max-width: 560px) {
+  .end-head {
+    font-size: 20px;
+  }
+  .end-container {
+    margin-left: unset;
+    margin-right: unset;
+  }
+  .end-content {
+    margin: 1rem;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .end-heading {
+    font-size: 20px;
+  }
+  .end-head {
+    font-size: 18px;
+  }
+}

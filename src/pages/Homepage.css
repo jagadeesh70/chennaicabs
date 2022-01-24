@@ -31,6 +31,6 @@
     height: fit-content;
   }
   .q-Quotes {
-    display: none;
+    display: none !important;
   }
 }
