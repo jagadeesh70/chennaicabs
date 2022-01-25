@@ -1,10 +1,23 @@
 import React from "react";
 import { useContext } from "react";
 import { MapContext } from "../context/MapContext";
+import Button from "@mui/material/Button";
+import { FaCarAlt } from "react-icons/fa";
+import { Context } from "../context/Context";
 
-function ConfirmModal() {
+function ConfirmModal({
+  src,
+  name,
+  price,
+  Totalprice,
+  type,
+  handleClose,
+  setisconfirmed,
+}) {
   const { pickup, drop, distance, fromId, toId, fromLocation, toLocation } =
     useContext(MapContext);
+  const { setAuthstate, setotpsent } = useContext(Context);
+
   return (
     <>
       <div
@@ -28,16 +41,35 @@ function ConfirmModal() {
         </button>
       </div>
       <div className="card-header">
-        <img src={temp} alt="rover" />
+        <img src={src} alt="rover" />
       </div>
       <div className="card-body">
-        <h4 className="cbody__name">name</h4>
+        <h4 className="cbody__name">{name}</h4>
         <p
           style={{
             marginBottom: ".7rem",
           }}
         >
           Distance: {distance} km
+        </p>
+
+        <p
+          style={{
+            marginLeft: "auto",
+            fontWeight: "bold",
+            marginBottom: ".7rem",
+          }}
+        >
+          Base Price:{price} ₹/km
+        </p>
+        <p
+          style={{
+            marginLeft: "auto",
+            fontWeight: "bold",
+            marginBottom: ".7rem",
+          }}
+        >
+          Total Price:{Totalprice} ₹/km
         </p>
         <p
           style={{
@@ -46,24 +78,6 @@ function ConfirmModal() {
           }}
         >
           Extra Toll at actuals + Extra Permit charges applicable.
-        </p>
-        <p
-          style={{
-            marginLeft: "auto",
-            fontWeight: "bold",
-            marginBottom: ".7rem",
-          }}
-        >
-          Price: ₹/km
-        </p>
-        <p
-          style={{
-            marginLeft: "auto",
-            fontWeight: "bold",
-            marginBottom: ".7rem",
-          }}
-        >
-          Total Price: ₹/km
         </p>
         <div
           style={{ width: "100%", marginBottom: ".5rem" }}
@@ -75,7 +89,7 @@ function ConfirmModal() {
                 marginRight: ".3rem",
               }}
             />
-            <p>type</p>
+            <p>{type}</p>
           </div>
           <p>person</p>
           <p>AC</p>

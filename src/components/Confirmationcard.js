@@ -19,65 +19,6 @@ function Confirmationcard({
     sendOtp();
   };
   return (
-    //   <div className="card">
-    //     <div className="card-header">
-    //       <img src={images} />
-    //     </div>
-    //     <div className="card-body">
-    //       <h4 className="cbody__name">{name}</h4>
-    //       <p
-    //         style={{
-    //           marginBottom: ".7rem",
-    //         }}
-    //       >
-    //         Distance:{distance} km
-    //       </p>
-    //       <p
-    //         style={{
-    //           fontSize: "14px",
-    //           marginBottom: ".7rem",
-    //         }}
-    //       >
-    //         Extra Toll at actuals + Extra Permit charges applicable.
-    //       </p>
-    //       <p
-    //         style={{
-    //           marginLeft: "auto",
-    //           fontWeight: "bold",
-    //           marginBottom: ".7rem",
-    //         }}
-    //       >
-    //         Base Price: ₹{baseprice}
-    //       </p>
-    //       <p
-    //         style={{
-    //           marginLeft: "auto",
-    //           fontWeight: "bold",
-    //           marginBottom: ".7rem",
-    //         }}
-    //       >
-    //         Total Price: ₹{totalprice}
-    //       </p>
-    //       <div
-    //         style={{ width: "100%", marginBottom: ".5rem" }}
-    //         className="fare__middlebar__row2 fr"
-    //       >
-    //         <div className="fare__middlebar__row2__col1 fr">
-    //           <FaCarAlt
-    //             style={{
-    //               marginRight: ".3rem",
-    //             }}
-    //           />
-    //           <p>{cartype}</p>
-    //         </div>
-    //         <p>{nperson} person</p>
-    //         <p>AC</p>
-    //       </div>
-    //       <button id="submit-btn" onClick={() => handleClick(func)}>
-    //         Book Now
-    //       </button>
-    //     </div>
-    //   </div>
     <div
       style={{
         padding: "1rem",
@@ -92,6 +33,7 @@ function Confirmationcard({
             width: "fit-content",
             borderRadius: "1rem",
             marginBottom: "1rem",
+            fontWeight: "bold",
           }}
         >
           Booking summary
@@ -99,7 +41,7 @@ function Confirmationcard({
         <div className="fr">
           <img
             style={{
-              height: "3rem",
+              height: "4rem",
               width: "auto",
               marginRight: "1rem",
             }}
@@ -121,6 +63,13 @@ function Confirmationcard({
           </div>
         </div>
       </div>
+      <button
+        style={{ margin: ".5rem 0" }}
+        id="submit-btn"
+        onClick={() => handleClick(func)}
+      >
+        Book Now
+      </button>
     </div>
   );
 }

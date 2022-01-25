@@ -67,9 +67,9 @@ label {
 }
 .form-content {
   background: #fbfbfb;
-  padding: 0.5rem;
   border: none;
   outline: none;
+  padding: 1rem;
 }
 .underline-title {
   background: -webkit-linear-gradient(right, #a6f77b, #2ec06f);

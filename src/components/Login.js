@@ -14,7 +14,9 @@ function Login() {
             <div className="underline-title"></div>
           </div>
           <form onSubmit={onSignInSubmit}>
-            <label style={{ paddingTop: "13px" }}>&nbsp;Enter your Name</label>
+            <label style={{ paddingTop: "13px", paddingBottom: "2rem" }}>
+              &nbsp;Enter your Name:
+            </label>
             <input
               id="user-email"
               className="form-content"
@@ -23,7 +25,10 @@ function Login() {
               required
               onChange={(e) => setUsername(e.target.value)}
             />
-            <label style={{ paddingTop: "13px" }}>&nbsp;Mobile Number</label>
+            <br />
+            <label style={{ paddingTop: "13px", marginTop: "1rem" }}>
+              &nbsp;Mobile Number:
+            </label>
             <input
               id="user-email"
               className="form-content"

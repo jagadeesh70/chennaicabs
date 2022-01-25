@@ -102,17 +102,6 @@ const BookingContextProvider = ({ children }) => {
     setSuvFare(fare);
     return fare;
   };
-  const SuvTwowayFare = (distance, days) => {
-    let fare;
-    if (distance * 2 < twoWayBaseDistance * days) {
-      fare = driverFeeSmall * days + twoWayBaseFareMedium * days;
-    } else {
-      fare =
-        driverFeeSmall * days +
-        twoWayBaseFareMedium * days +
-        (distance * 2 - twoWayBaseDistance * days) * 15;
-    }
-  };
 
   const SuvPlusFare = (distance, days) => {
     let fare;
