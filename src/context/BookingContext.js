@@ -35,7 +35,6 @@ const BookingContextProvider = ({ children }) => {
   const [executiveFare, setExecutiveFare] = useState();
   const [tempoFare, setTempoFare] = useState();
   const [cartype, setCartype] = useState();
-  console.log(pickDate);
 
   const DaysLeft = (pickDates, dropDates) => {
     if (pickDates && dropDates) {
@@ -43,7 +42,6 @@ const BookingContextProvider = ({ children }) => {
       setDaysLeft(days + 1);
     }
   };
-  console.log(daysLeft);
 
   const TotalFare = (distance, triptype, days) => {
     SedanFare(distance, triptype, days);

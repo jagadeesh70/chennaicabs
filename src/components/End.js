@@ -40,7 +40,7 @@ function End() {
           </div>
         </div>
         <div className="end-content">
-          <i class="fas fa-heartbeat fa-2x main-logo"></i>
+          <i className="fas fa-heartbeat fa-2x main-logo"></i>
           <div className="end-single">
             <div className="end-head">Safe & Secure</div>
             <div className="end-body">

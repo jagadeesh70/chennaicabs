@@ -21,7 +21,7 @@ function BookingDone() {
             <div className="modal-body">
               <p className="text-center">
                 Your booking has been confirmed. Make sure you received SMS on
-                your booking {bookingId}.If not please contact{" "}
+                your booking <strong>{bookingId}</strong>.If not please contact{" "}
                 <strong>+919841346080</strong>
               </p>
             </div>

@@ -30,7 +30,7 @@ const ContextProvider = ({ children }) => {
     generateBookingId();
     generateOtp();
     onSnapshot(collection(db, "profile"), (snap) => {
-      console.log(snap.docs.map((doc) => doc.data()));
+      snap.docs.map((doc) => doc.data());
     });
   }, [otpsent]);
   const generateBookingId = async () => {
@@ -43,15 +43,12 @@ const ContextProvider = ({ children }) => {
     }
     setBookingId(bookingIds + total_trips);
   };
-  console.log(bookingId);
-  const configureCaptcha = (e) => {
+  const configureCaptcha = () => {
     window.recaptchaVerifier = new RecaptchaVerifier(
       "sign-in-button",
       {
         size: "invisible",
-        callback: (response) => {
-          console.log(response);
-          console.log("recap done");
+        callback: () => {
           onSignInSubmit();
         },
       },
@@ -62,18 +59,13 @@ const ContextProvider = ({ children }) => {
     e.preventDefault();
     configureCaptcha();
     const phoneNumber = "+91" + phone;
-    console.log(phoneNumber);
     const appVerifier = window.recaptchaVerifier;
-    signInWithPhoneNumber(auth, phoneNumber, appVerifier)
-      .then((confirmationResult) => {
+    signInWithPhoneNumber(auth, phoneNumber, appVerifier).then(
+      (confirmationResult) => {
         window.confirmationResult = confirmationResult;
         setotpsent(true);
-        console.log("OTP sent");
-      })
-      .catch((error) => {
-        console.log(error);
-        console.log("OTP not Sent");
-      });
+      }
+    );
   };
 
   const onSubmitOtp = async (e) => {
@@ -82,11 +74,8 @@ const ContextProvider = ({ children }) => {
     window.confirmationResult
       .confirm(code)
       .then((result) => {
-        console.log(result);
         const user = result.user;
         updateProfile(auth.currentUser, { displayName: username });
-        console.log(JSON.stringify(user));
-        console.log("Login successful");
         createUser(user.uid, user.displayName, user.phoneNumber);
         setUsername(user.displayName);
         setPhone(user.phoneNumber);
@@ -94,7 +83,6 @@ const ContextProvider = ({ children }) => {
         setAuthstate(true);
       })
       .catch((error) => {
-        console.log(error, "Login failed");
         setAuthstate(false);
       });
   };
@@ -116,12 +104,9 @@ const ContextProvider = ({ children }) => {
     };
 
     fetch(
-      `https://cors-anywhere.herokuapp.com/http://login.blesssms.com/api/mt/SendSMS?senderid=CHCABS&channel=Trans&DCS=0&flashsms=0&number=91${phone}&text=Dear ${servOtp},Kindly request you to check the KM reading before the start {%23var%23} and end trip.For any assistance call..9841346080.Thanking you."&route=10&APIKey=jPT9C6DKXUmc8jDkBAq06w`,
+      `https://cors-anywhere.herokuapp.com/http://login.blesssms.com/api/mt/SendSMS?senderid=CHCABS&channel=Trans&DCS=0&flashsms=0&number=${phone}&text=Dear ${servOtp},Kindly request you to check the KM reading before the start {%23var%23} and end trip.For any assistance call..9841346080.Thanking you."&route=10&APIKey=jPT9C6DKXUmc8jDkBAq06w`,
       requestOptions
-    )
-      .then((response) => console.log(response.text()))
-      .then((result) => console.log(result))
-      .catch((error) => console.log("error", error));
+    );
   };
   const createUser = async (uid, userName, phoneNumber) => {
     await setDoc(doc(db, "profile", uid), {
@@ -196,7 +181,7 @@ const ContextProvider = ({ children }) => {
       trip_type: trip_type,
       subtotal: subTotal,
       total_fare: total_fare,
-    }).then((res) => console.log(res));
+    });
   };
 
   return (
@@ -218,6 +203,7 @@ const ContextProvider = ({ children }) => {
         sendOtp,
         bookingConfirmed,
         setBookingConfirmed,
+        bookingId,
       }}
     >
       {children}

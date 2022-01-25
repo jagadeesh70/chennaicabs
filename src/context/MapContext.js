@@ -52,13 +52,11 @@ const MapContextProvider = ({ children }) => {
     const findType = (type) => type.types[0] === "locality";
     const location = address.map((obj) => obj);
     const rr = location.filter(findType)[0];
-    console.log(rr.short_name);
     return length === "short" ? rr.short_name : rr.long_name;
   };
 
   const onPlacesChangedA = () => {
     const places = searchBoxA.getPlaces();
-    console.log(places);
     const place = places[0];
     setFromLocation(getAddressCity(place.address_components, "short"));
     setPickup(place.formatted_address);
