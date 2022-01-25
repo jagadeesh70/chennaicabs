@@ -296,7 +296,7 @@ function Confirmation() {
             images={Suv_plus}
             name="suv+"
             distance={distance}
-            baseprice={suvplusFare - 300}
+            baseprice={suvplusFare - 400}
             totalprice={suvplusFare}
             cartype={cartype}
             nperson={7}
@@ -310,7 +310,7 @@ function Confirmation() {
             images={Executive}
             name="executive"
             distance={distance}
-            baseprice={executiveFare - 300}
+            baseprice={executiveFare - 500}
             totalprice={executiveFare}
             cartype={cartype}
             nperson={6}
@@ -324,7 +324,7 @@ function Confirmation() {
             images={Van}
             name="Tempo"
             distance={distance}
-            baseprice={tempoFare - 300}
+            baseprice={tempoFare - 600}
             totalprice={tempoFare}
             cartype={cartype}
             nperson={12}

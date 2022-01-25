@@ -1,11 +1,16 @@
 import React, { useState, useEffect, useContext } from "react";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import { FaCarAlt } from "react-icons/fa";
 import Modal from "@mui/material/Modal";
 import Signin from "../pages/Signin";
 import temp from "../images/sedan.png";
 import { Context } from "../context/Context";
+import Executive from "../images/executive.png";
+import Sedan from "../images/sedan.png";
+import Suv_plus from "../images/suv_plus.png";
+import Suv from "../images/suv.png";
+import Van from "../images/van.png";
+import ConfirmModal from "./ConfirmModal";
+import { BookingContext } from "../context/BookingContext";
 
 const style = {
   position: "absolute",
@@ -17,10 +22,119 @@ const style = {
   p: 1,
 };
 
-function ConfirmationModal({ open, handleClose }) {
+function ConfirmationModal({ open, handleClose, cartype }) {
   const { setAuthstate, setotpsent } = useContext(Context);
+  const {
+    triptype,
+    sedanFare,
+    suvFare,
+    suvplusFare,
+    executiveFare,
+    tempoFare,
+  } = useContext(BookingContext);
 
   const [isconfirmed, setisconfirmed] = useState(false);
+
+  const confirmCase = () => {
+    let card;
+    switch (cartype) {
+      case "sedanoneway":
+        card = (
+          <ConfirmModal
+            src={Sedan}
+            name={"Etios/Dzire or Equivalent"}
+            price={sedanFare - 300}
+            Totalprice={sedanFare}
+            type={"sedan"}
+            handleClose={handleClose}
+            setisconfirmed={setisconfirmed}
+          />
+        );
+        break;
+      case "suvoneway":
+        card = (
+          <ConfirmModal
+            src={Suv}
+            name={"Innova/Xylo or Equivalent"}
+            price={suvFare - 300}
+            Totalprice={suvFare}
+            type={"suv"}
+            handleClose={handleClose}
+            setisconfirmed={setisconfirmed}
+          />
+        );
+        break;
+      case "sedan":
+        card = (
+          <ConfirmModal
+            src={Sedan}
+            name={"Etios/Dzire or Equivalent"}
+            price={sedanFare - 300}
+            Totalprice={sedanFare}
+            type={"sedan"}
+            handleClose={handleClose}
+            setisconfirmed={setisconfirmed}
+          />
+        );
+        break;
+      case "suv":
+        card = (
+          <ConfirmModal
+            src={Suv}
+            name={"Innova/Xylo or Equivalent"}
+            price={suvFare - 300}
+            Totalprice={suvFare}
+            type={"suv"}
+            handleClose={handleClose}
+            setisconfirmed={setisconfirmed}
+          />
+        );
+        break;
+      case "suvplus":
+        card = (
+          <ConfirmModal
+            src={Suv_plus}
+            name={"Toyota Innova"}
+            price={suvplusFare - 400}
+            Totalprice={suvplusFare}
+            type={"suv+"}
+            handleClose={handleClose}
+            setisconfirmed={setisconfirmed}
+          />
+        );
+        break;
+      case "executive":
+        card = (
+          <ConfirmModal
+            src={Executive}
+            name={"Toyota Crysta"}
+            price={executiveFare - 500}
+            Totalprice={executiveFare}
+            type={"executive"}
+            handleClose={handleClose}
+            setisconfirmed={setisconfirmed}
+          />
+        );
+        break;
+      case "tempo":
+        card = (
+          <ConfirmModal
+            src={Van}
+            name={"Force traveller"}
+            price={tempoFare - 600}
+            Totalprice={tempoFare}
+            type={"tempo"}
+            handleClose={handleClose}
+            setisconfirmed={setisconfirmed}
+          />
+        );
+        break;
+
+      default:
+        break;
+    }
+    return card;
+  };
 
   return (
     <Modal
@@ -29,113 +143,7 @@ function ConfirmationModal({ open, handleClose }) {
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
-      <Box sx={style}>
-        {isconfirmed ? (
-          <Signin />
-        ) : (
-          <>
-            <div
-              style={{
-                justifyContent: "flex-end",
-                paddingRight: "1rem",
-              }}
-              className="fr"
-            >
-              <button
-                onClick={() =>
-                  handleClose(setisconfirmed, setAuthstate, setotpsent)
-                }
-                style={{
-                  background: "none",
-                  border: "none",
-                  padding: ".5rem",
-                  color: "red",
-                  fontWeight: "bold",
-                }}
-              >
-                X
-              </button>
-            </div>
-            <div className="card-header">
-              <img src={temp} alt="rover" />
-            </div>
-            <div className="card-body">
-              <h4 className="cbody__name">helo</h4>
-              <p
-                style={{
-                  marginBottom: ".7rem",
-                }}
-              >
-                Distance:kms
-              </p>
-              <p
-                style={{
-                  fontSize: "14px",
-                  marginBottom: ".7rem",
-                }}
-              >
-                Extra Toll at actuals + Extra Permit charges applicable.
-              </p>
-              <p
-                style={{
-                  marginLeft: "auto",
-                  fontWeight: "bold",
-                  marginBottom: ".7rem",
-                }}
-              >
-                Price: ₹/km
-              </p>
-              <p
-                style={{
-                  marginLeft: "auto",
-                  fontWeight: "bold",
-                  marginBottom: ".7rem",
-                }}
-              >
-                Total Price: ₹/km
-              </p>
-              <div
-                style={{ width: "100%", marginBottom: ".5rem" }}
-                className="fare__middlebar__row2 fr"
-              >
-                <div className="fare__middlebar__row2__col1 fr">
-                  <FaCarAlt
-                    style={{
-                      marginRight: ".3rem",
-                    }}
-                  />
-                  <p>type</p>
-                </div>
-                <p>person</p>
-                <p>AC</p>
-              </div>
-            </div>
-            <div className="fr">
-              <Button
-                variant="text"
-                style={{
-                  marginLeft: "auto",
-                  marginRight: ".5rem",
-                }}
-                onClick={() => {
-                  setisconfirmed(true);
-                }}
-              >
-                Confirm
-              </Button>
-              <Button
-                onClick={() =>
-                  handleClose(setisconfirmed, setAuthstate, setotpsent)
-                }
-                variant="text"
-                color="error"
-              >
-                Cancel
-              </Button>
-            </div>
-          </>
-        )}
-      </Box>
+      <Box sx={style}>{isconfirmed ? <Signin /> : confirmCase()}</Box>
     </Modal>
   );
 }

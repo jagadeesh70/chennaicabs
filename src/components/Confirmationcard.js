@@ -32,14 +32,7 @@ function Confirmationcard({
         >
           Distance:{distance} km
         </p>
-        <p
-          style={{
-            fontSize: "14px",
-            marginBottom: ".7rem",
-          }}
-        >
-          Extra Toll at actuals + Extra Permit charges applicable.
-        </p>
+
         <p
           style={{
             marginLeft: "auto",
@@ -57,6 +50,14 @@ function Confirmationcard({
           }}
         >
           Total Price: ₹{totalprice}
+        </p>
+        <p
+          style={{
+            fontSize: "14px",
+            marginBottom: ".7rem",
+          }}
+        >
+          Extra Toll at actuals + Extra Permit charges applicable.
         </p>
         <div
           style={{ width: "100%", marginBottom: ".5rem" }}

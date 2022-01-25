@@ -8,7 +8,7 @@ import { BookingContext } from "../../context/BookingContext";
 import Context from "../../context/Context";
 
 function SingleCard({ src, name, price, type, npersons, Totalprice, cartype }) {
-  const { setCartype } = useContext(BookingContext);
+  const { setCartype, distance } = useContext(BookingContext);
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
     if (checkEmptyvalues("from locentryform")) {
@@ -33,6 +33,7 @@ function SingleCard({ src, name, price, type, npersons, Totalprice, cartype }) {
         setOpen={setOpen}
         handleClose={handleClose}
         handleOpen={handleOpen}
+        cartype={cartype}
       />
       <div className="card">
         <div className="card-header">
@@ -45,16 +46,9 @@ function SingleCard({ src, name, price, type, npersons, Totalprice, cartype }) {
               marginBottom: ".7rem",
             }}
           >
-            Distance:kms
+            Distance: {distance} km
           </p>
-          <p
-            style={{
-              fontSize: "14px",
-              marginBottom: ".7rem",
-            }}
-          >
-            Extra Toll at actuals + Extra Permit charges applicable.
-          </p>
+
           <p
             style={{
               marginLeft: "auto",
@@ -72,6 +66,14 @@ function SingleCard({ src, name, price, type, npersons, Totalprice, cartype }) {
             }}
           >
             Total Price: ₹{Totalprice}
+          </p>
+          <p
+            style={{
+              fontSize: "14px",
+              marginBottom: ".7rem",
+            }}
+          >
+            Extra Toll at actuals + Extra Permit charges applicable.
           </p>
           <div
             style={{ width: "100%", marginBottom: ".5rem" }}
