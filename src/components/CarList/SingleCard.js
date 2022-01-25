@@ -5,7 +5,6 @@ import ConfirmationModal from "../Modal";
 import { checkEmptyvalues } from "../LocationEntryForm";
 import { useContext } from "react";
 import { BookingContext } from "../../context/BookingContext";
-import Context from "../../context/Context";
 
 function SingleCard({ src, name, price, type, npersons, Totalprice, cartype }) {
   const { setCartype, distance } = useContext(BookingContext);

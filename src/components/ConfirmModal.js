@@ -13,6 +13,7 @@ function ConfirmModal({
   type,
   handleClose,
   setisconfirmed,
+  numofper,
 }) {
   const { pickup, drop, distance, fromId, toId, fromLocation, toLocation } =
     useContext(MapContext);
@@ -91,7 +92,7 @@ function ConfirmModal({
             />
             <p>{type}</p>
           </div>
-          <p>person</p>
+          <p>{numofper} person</p>
           <p>AC</p>
         </div>
       </div>

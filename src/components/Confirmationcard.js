@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaCarAlt } from "react-icons/fa";
 import { Context } from "../context/Context";
 import { useContext } from "react";
@@ -13,10 +13,12 @@ function Confirmationcard({
   nperson,
   func,
 }) {
-  const { sendOtp } = useContext(Context);
+  const { sendOtp, setBookingConfirmed } = useContext(Context);
+
   const handleClick = (func) => {
     func();
     sendOtp();
+    setBookingConfirmed(true);
   };
   return (
     <div
