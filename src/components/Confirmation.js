@@ -9,12 +9,19 @@ import Sedan from "../images/sedan.png";
 import Suv_plus from "../images/suv_plus.png";
 import Suv from "../images/suv.png";
 import Van from "../images/van.png";
-
+import BookingDone from "./BookingDone";
 function Confirmation() {
   const { sedanFare, suvFare, suvplusFare, executiveFare, tempoFare } =
     useContext(BookingContext);
 
-  const { addNewTrip, username, uid, phone } = useContext(Context);
+  const {
+    addNewTrip,
+    username,
+    uid,
+    phone,
+    bookingConfirmed,
+    setBookingConfirmed,
+  } = useContext(Context);
   const { pickup, drop, distance, fromId, toId, fromLocation, toLocation } =
     useContext(MapContext);
   const { pickDate, dropDate, pickTime, cartype, daysLeft } =
@@ -339,7 +346,7 @@ function Confirmation() {
     return card;
   };
 
-  return <div>{carFunc(cartype)}</div>;
+  return <div>{bookingConfirmed ? <BookingDone /> : carFunc(cartype)}</div>;
 }
 
 export default Confirmation;

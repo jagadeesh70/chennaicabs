@@ -48,6 +48,7 @@ function ConfirmationModal({ open, handleClose, cartype }) {
             type={"sedan"}
             handleClose={handleClose}
             setisconfirmed={setisconfirmed}
+            numofper={4}
           />
         );
         break;
@@ -61,6 +62,7 @@ function ConfirmationModal({ open, handleClose, cartype }) {
             type={"suv"}
             handleClose={handleClose}
             setisconfirmed={setisconfirmed}
+            numofper={7}
           />
         );
         break;
@@ -74,6 +76,7 @@ function ConfirmationModal({ open, handleClose, cartype }) {
             type={"sedan"}
             handleClose={handleClose}
             setisconfirmed={setisconfirmed}
+            numofper={4}
           />
         );
         break;
@@ -87,6 +90,7 @@ function ConfirmationModal({ open, handleClose, cartype }) {
             type={"suv"}
             handleClose={handleClose}
             setisconfirmed={setisconfirmed}
+            numofper={7}
           />
         );
         break;
@@ -100,6 +104,7 @@ function ConfirmationModal({ open, handleClose, cartype }) {
             type={"suv+"}
             handleClose={handleClose}
             setisconfirmed={setisconfirmed}
+            numofper={7}
           />
         );
         break;
@@ -113,6 +118,7 @@ function ConfirmationModal({ open, handleClose, cartype }) {
             type={"executive"}
             handleClose={handleClose}
             setisconfirmed={setisconfirmed}
+            numofper={6}
           />
         );
         break;
@@ -126,6 +132,7 @@ function ConfirmationModal({ open, handleClose, cartype }) {
             type={"tempo"}
             handleClose={handleClose}
             setisconfirmed={setisconfirmed}
+            numofper={12}
           />
         );
         break;

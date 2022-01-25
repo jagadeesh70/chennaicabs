@@ -24,6 +24,7 @@ const ContextProvider = ({ children }) => {
   const [uid, setUid] = useState();
   const [bookingId, setBookingId] = useState();
   const [servOtp, setServOtp] = useState();
+  const [bookingConfirmed, setBookingConfirmed] = useState(false);
 
   useEffect(async () => {
     generateBookingId();
@@ -33,14 +34,14 @@ const ContextProvider = ({ children }) => {
     });
   }, [otpsent]);
   const generateBookingId = async () => {
-    let bookingId = "CC";
+    let bookingIds = "CC";
     let docRef = doc(db, "total_trips", "total");
     let docData = await getDoc(docRef);
     let total_trips = docData.data().total.toString();
     for (let i = 0; i < 8 - total_trips.length; i++) {
-      bookingId += "0";
+      bookingIds += "0";
     }
-    setBookingId(bookingId + total_trips);
+    setBookingId(bookingIds + total_trips);
   };
   console.log(bookingId);
   const configureCaptcha = (e) => {
@@ -215,6 +216,8 @@ const ContextProvider = ({ children }) => {
         uid,
         setotpsent,
         sendOtp,
+        bookingConfirmed,
+        setBookingConfirmed,
       }}
     >
       {children}
