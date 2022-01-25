@@ -53,3 +53,8 @@
 .end-main {
   margin-top: 50px;
 }
+
+.dp__options {
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
