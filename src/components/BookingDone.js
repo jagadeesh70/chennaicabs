@@ -5,7 +5,7 @@ import { Context } from "../context/Context";
 function BookingDone() {
   const { bookingId } = useContext(Context);
   const handleClick = () => {
-    console.log("hello");
+    window.location.reload(true);
   };
   return (
     <div className="card">

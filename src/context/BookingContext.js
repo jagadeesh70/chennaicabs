@@ -36,11 +36,12 @@ const BookingContextProvider = ({ children }) => {
   const [tempoFare, setTempoFare] = useState();
   const [cartype, setCartype] = useState();
 
-  const DaysLeft = (pickDates, dropDates) => {
-    if (pickDates && dropDates) {
-      let days = parseInt(dropDates.getDate() - pickDates.getDate());
-      setDaysLeft(days + 1);
+  const DaysLeft = () => {
+    let days;
+    if (pickDate && dropDate) {
+      days = parseInt(dropDate.getDate() - pickDate.getDate());
     }
+    return days;
   };
 
   const TotalFare = (distance, triptype, days) => {

@@ -24,7 +24,7 @@ function Confirmation() {
   } = useContext(Context);
   const { pickup, drop, distance, fromId, toId, fromLocation, toLocation } =
     useContext(MapContext);
-  const { pickDate, dropDate, pickTime, cartype, daysLeft } =
+  const { pickDate, dropDate, pickTime, cartype, DaysLeft } =
     useContext(BookingContext);
 
   const weekday = [
@@ -38,15 +38,19 @@ function Confirmation() {
   ];
   let nowdate = Date.now();
   let bookingDate = new Date(nowdate).toISOString().split("T")[0];
-  let bookingTime = new Date(nowdate).toLocaleString("sv-SV");
+  let bookingTime = new Date(nowdate).toLocaleString("en-GB");
   let pickupDate = new Date(pickDate).toISOString().split("T")[0];
-  let pickupTime = new Date(pickTime).toLocaleTimeString();
-  let pickupDay = new Date(pickDate).getDay();
+  let pickupTime = new Date(pickTime).toLocaleTimeString("en-US", {
+    hour: "numeric",
+    minute: "numeric",
+  });
+  let pickupDay = new Date(bookingDate).getDay();
+  console.log(pickupDay);
   let dropdownDate = new Date(dropDate).toISOString().split("T")[0];
 
   const sedanOneWay = () => {
     addNewTrip(
-      bookingTime,
+      bookingTime.replaceAll("/", "-"),
       fromId,
       toId,
       uid,
@@ -58,7 +62,7 @@ function Confirmation() {
       pickDate, //timestamp
       "sedan",
       "", //no return date for one way
-      "300",
+      300,
       phone,
       sedanFare - 300,
       username, //done
@@ -86,14 +90,14 @@ function Confirmation() {
       pickDate, //timestamp
       "suv",
       "", //no return date for one way
-      "300",
+      300,
       phone,
       suvFare - 300,
       username, //done
       pickupTime,
       fromLocation,
       toLocation,
-      pickupDay, //change
+      weekday[pickupDay], //change
       "one_way",
       suvFare,
       suvFare
@@ -114,14 +118,14 @@ function Confirmation() {
       pickDate, //timestamp
       "sedan",
       dropdownDate, //no return date for one way
-      300 * daysLeft,
+      300 * DaysLeft,
       phone,
       sedanFare,
       username, //done
       pickupTime,
       fromLocation,
       toLocation,
-      pickupDay, //change
+      weekday[pickupDay], //change
       "two_way",
       sedanFare,
       sedanFare
@@ -142,14 +146,14 @@ function Confirmation() {
       pickDate, //timestamp
       "suv",
       dropdownDate, //no return date for one way
-      300 * daysLeft, //had to change
+      300 * DaysLeft, //had to change
       phone,
       suvFare,
       username, //done
       pickupTime,
       fromLocation,
       toLocation,
-      pickupDay, //change
+      weekday[pickupDay], //change
       "one_way",
       suvFare,
       suvFare
@@ -170,14 +174,14 @@ function Confirmation() {
       pickDate, //timestamp
       "suv+",
       dropdownDate, //no return date for one way
-      400 * daysLeft,
+      400 * DaysLeft,
       phone,
       suvplusFare,
       username, //done
       pickupTime,
       fromLocation,
       toLocation,
-      pickupDay, //change
+      weekday[pickupDay], //change
       "round_way",
       suvplusFare,
       suvplusFare
@@ -197,14 +201,14 @@ function Confirmation() {
       pickDate, //timestamp
       "executive",
       dropdownDate, //no return date for one way
-      500 * daysLeft,
+      500 * DaysLeft,
       phone,
       executiveFare,
       username, //done
       pickupTime,
       fromLocation,
       toLocation,
-      pickupDay, //change
+      weekday[pickupDay], //change
       "round_way",
       executiveFare,
       executiveFare
@@ -224,14 +228,14 @@ function Confirmation() {
       pickDate, //timestamp
       "tempo",
       dropdownDate, //no return date for one way
-      600 * daysLeft,
+      600 * DaysLeft,
       phone,
       tempoFare,
       username, //done
       pickupTime,
       fromLocation,
       toLocation,
-      pickupDay, //change
+      weekday[pickupDay], //change
       "round_way",
       tempoFare,
       tempoFare
@@ -252,6 +256,7 @@ function Confirmation() {
             cartype={cartype}
             nperson={4}
             func={sedanOneWay}
+            driverfee={300}
           />
         );
         break;
@@ -275,7 +280,7 @@ function Confirmation() {
             images={Sedan}
             name="suv"
             distance={distance}
-            baseprice={sedanFare - 300}
+            baseprice={sedanFare - 300 * DaysLeft()}
             totalprice={sedanFare}
             cartype={cartype}
             nperson={4}
@@ -289,7 +294,7 @@ function Confirmation() {
             images={Suv}
             name="suv"
             distance={distance}
-            baseprice={suvFare - 300}
+            baseprice={suvFare - 300 * DaysLeft}
             totalprice={suvFare}
             cartype={cartype}
             nperson={4}

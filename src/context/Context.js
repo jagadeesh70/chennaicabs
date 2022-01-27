@@ -6,6 +6,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import {
+  addDoc,
   collection,
   doc,
   getDoc,
@@ -29,20 +30,27 @@ const ContextProvider = ({ children }) => {
   useEffect(async () => {
     generateBookingId();
     generateOtp();
-    onSnapshot(collection(db, "profile"), (snap) => {
-      snap.docs.map((doc) => doc.data());
-    });
-  }, [otpsent]);
+    onSnapshot(
+      collection(db, "profile"),
+      (snap) => {
+        snap.docs.map((doc) => doc.data());
+      },
+      () => console.log()
+    );
+  }, [otpsent, uid]);
   const generateBookingId = async () => {
-    let bookingIds = "CC";
-    let docRef = doc(db, "total_trips", "total");
-    let docData = await getDoc(docRef);
-    let total_trips = docData.data().total.toString();
-    for (let i = 0; i < 8 - total_trips.length; i++) {
-      bookingIds += "0";
-    }
-    setBookingId(bookingIds + total_trips);
+    try {
+      let bookingIds = "CC";
+      let docRef = doc(db, "total_trips", "total");
+      let docData = await getDoc(docRef);
+      let total_trips = docData.data().total.toString();
+      for (let i = 0; i < 8 - total_trips.length; i++) {
+        bookingIds += "0";
+      }
+      setBookingId(bookingIds + total_trips);
+    } catch {}
   };
+  console.log(bookingId);
   const configureCaptcha = () => {
     window.recaptchaVerifier = new RecaptchaVerifier(
       "sign-in-button",
@@ -77,16 +85,15 @@ const ContextProvider = ({ children }) => {
         const user = result.user;
         updateProfile(auth.currentUser, { displayName: username });
         createUser(user.uid, user.displayName, user.phoneNumber);
-        setUsername(user.displayName);
         setPhone(user.phoneNumber);
         setUid(user.uid);
         setAuthstate(true);
       })
-      .catch((error) => {
+      .catch(() => {
         setAuthstate(false);
       });
   };
-
+  console.log(username);
   const generateOtp = () => {
     let digits = "1234567890";
     let otp = "";
@@ -104,7 +111,7 @@ const ContextProvider = ({ children }) => {
     };
 
     fetch(
-      `https://cors-anywhere.herokuapp.com/http://login.blesssms.com/api/mt/SendSMS?senderid=CHCABS&channel=Trans&DCS=0&flashsms=0&number=${phone}&text=Dear ${servOtp},Kindly request you to check the KM reading before the start {%23var%23} and end trip.For any assistance call..9841346080.Thanking you."&route=10&APIKey=jPT9C6DKXUmc8jDkBAq06w`,
+      `https://cors-anywhere.herokuapp.com/http://login.blesssms.com/api/mt/SendSMS?senderid=CHCABS&channel=Trans&DCS=0&flashsms=0&number=${phone}&text=NB ${servOtp} is the OTP for your Ride ${bookingId}&route=10&APIKey=jPT9C6DKXUmc8jDkBAq06w`,
       requestOptions
     );
   };
@@ -146,6 +153,7 @@ const ContextProvider = ({ children }) => {
     subTotal, //done
     total_fare //done
   ) => {
+    let collRef = collection(db, `profile/${uid}/trips`);
     await setDoc(doc(db, "new_booking", bookingId), {
       booking_id: bookingId,
       from_address: fromAddress,
@@ -155,7 +163,43 @@ const ContextProvider = ({ children }) => {
       user_id: uid,
       trip_status: "ongoing",
       referred_by: "",
-      reward_points: "",
+      reward_points: 0,
+      booking_date: booking_date,
+      trip_start_date: tripStartDate,
+      distance: distance,
+      timestamp: timeStamp,
+      car_mode: car_mode,
+      ratings: -1,
+      trip_return_date: tripReturnDate,
+      driver_fee: driverFee,
+      phone_number: phoneNumber,
+      base_fare: baseFare,
+      user_name: username,
+      driver_name: "",
+      driver_number: "",
+      car_name: "",
+      car_number: "",
+      booking_time: booking_time,
+      time: time,
+      driver_accepted: 0,
+      otp: servOtp,
+      from_location: from_location,
+      to_location: to_location,
+      day: day,
+      trip_type: trip_type,
+      subtotal: subTotal,
+      total_fare: total_fare,
+    });
+    await setDoc(doc(collRef, bookingId), {
+      booking_id: bookingId,
+      from_address: fromAddress,
+      to_address: toAddress,
+      from_id: fromId,
+      to_id: toId,
+      user_id: uid,
+      trip_status: "ongoing",
+      referred_by: "",
+      reward_points: 0,
       booking_date: booking_date,
       trip_start_date: tripStartDate,
       distance: distance,

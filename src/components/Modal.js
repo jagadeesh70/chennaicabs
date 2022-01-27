@@ -26,12 +26,12 @@ const style = {
 function ConfirmationModal({ open, handleClose, cartype }) {
   const { setAuthstate, setotpsent } = useContext(Context);
   const {
-    triptype,
     sedanFare,
     suvFare,
     suvplusFare,
     executiveFare,
     tempoFare,
+    daysLeft,
   } = useContext(BookingContext);
 
   const [isconfirmed, setisconfirmed] = useState(false);
@@ -44,12 +44,12 @@ function ConfirmationModal({ open, handleClose, cartype }) {
           <ConfirmModal
             src={Sedan}
             name={"Etios/Dzire or Equivalent"}
-            price={sedanFare - 300}
             Totalprice={sedanFare}
             type={"sedan"}
             handleClose={handleClose}
             setisconfirmed={setisconfirmed}
             numofper={4}
+            driverfee={300}
           />
         );
         break;
@@ -58,12 +58,12 @@ function ConfirmationModal({ open, handleClose, cartype }) {
           <ConfirmModal
             src={Suv}
             name={"Innova/Xylo or Equivalent"}
-            price={suvFare - 300}
             Totalprice={suvFare}
             type={"suv"}
             handleClose={handleClose}
             setisconfirmed={setisconfirmed}
             numofper={7}
+            driverfee={300}
           />
         );
         break;
@@ -72,12 +72,12 @@ function ConfirmationModal({ open, handleClose, cartype }) {
           <ConfirmModal
             src={Sedan}
             name={"Etios/Dzire or Equivalent"}
-            price={sedanFare - 300}
             Totalprice={sedanFare}
             type={"sedan"}
             handleClose={handleClose}
             setisconfirmed={setisconfirmed}
             numofper={4}
+            driverfee={300}
           />
         );
         break;
@@ -86,12 +86,12 @@ function ConfirmationModal({ open, handleClose, cartype }) {
           <ConfirmModal
             src={Suv}
             name={"Innova/Xylo or Equivalent"}
-            price={suvFare - 300}
             Totalprice={suvFare}
             type={"suv"}
             handleClose={handleClose}
             setisconfirmed={setisconfirmed}
             numofper={7}
+            driverfee={300}
           />
         );
         break;
@@ -100,12 +100,12 @@ function ConfirmationModal({ open, handleClose, cartype }) {
           <ConfirmModal
             src={Suv_plus}
             name={"Toyota Innova"}
-            price={suvplusFare - 400}
             Totalprice={suvplusFare}
             type={"suv+"}
             handleClose={handleClose}
             setisconfirmed={setisconfirmed}
             numofper={7}
+            driverfee={400}
           />
         );
         break;
@@ -114,12 +114,12 @@ function ConfirmationModal({ open, handleClose, cartype }) {
           <ConfirmModal
             src={Executive}
             name={"Toyota Crysta"}
-            price={executiveFare - 500}
             Totalprice={executiveFare}
             type={"executive"}
             handleClose={handleClose}
             setisconfirmed={setisconfirmed}
             numofper={6}
+            driverfee={500}
           />
         );
         break;
@@ -128,12 +128,12 @@ function ConfirmationModal({ open, handleClose, cartype }) {
           <ConfirmModal
             src={Van}
             name={"Force traveller"}
-            price={tempoFare - 600}
             Totalprice={tempoFare}
             type={"tempo"}
             handleClose={handleClose}
             setisconfirmed={setisconfirmed}
             numofper={12}
+            driverfee={600}
           />
         );
         break;

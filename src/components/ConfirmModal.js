@@ -8,12 +8,12 @@ import { Context } from "../context/Context";
 function ConfirmModal({
   src,
   name,
-  price,
   Totalprice,
   type,
   handleClose,
   setisconfirmed,
   numofper,
+  driverfee,
 }) {
   const { pickup, drop, distance, fromId, toId, fromLocation, toLocation } =
     useContext(MapContext);
@@ -53,7 +53,6 @@ function ConfirmModal({
         >
           Distance: {distance} km
         </p>
-
         <p
           style={{
             marginLeft: "auto",
@@ -61,7 +60,7 @@ function ConfirmModal({
             marginBottom: ".7rem",
           }}
         >
-          Base Price:{price} ₹/km
+          Driver Fee: ₹{driverfee} /km
         </p>
         <p
           style={{
@@ -70,12 +69,13 @@ function ConfirmModal({
             marginBottom: ".7rem",
           }}
         >
-          Total Price:{Totalprice} ₹/km
+          Total Price: ₹{Totalprice} /km
         </p>
         <p
           style={{
-            fontSize: "14px",
+            fontSize: "12px",
             marginBottom: ".7rem",
+            color: "red",
           }}
         >
           Extra Toll at actuals + Extra Permit charges applicable.

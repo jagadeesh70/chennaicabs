@@ -25,6 +25,7 @@ function Login() {
               required
               onChange={(e) => setUsername(e.target.value)}
             />
+            <div className="form-border"></div>
             <br />
             <label style={{ paddingTop: "13px", marginTop: "1rem" }}>
               &nbsp;Mobile Number:
