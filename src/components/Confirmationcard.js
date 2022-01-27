@@ -4,6 +4,10 @@ import { Context } from "../context/Context";
 import { useContext } from "react";
 import { MapContext } from "../context/MapContext";
 import { BookingContext } from "../context/BookingContext";
+import "./Confirmationcard.css";
+import { GrLocation } from "react-icons/gr";
+import { RiBuildingLine } from "react-icons/ri";
+import { AiOutlineCalendar } from "react-icons/ai";
 function Confirmationcard({
   images,
   name,
@@ -26,57 +30,60 @@ function Confirmationcard({
     setBookingConfirmed(true);
   };
   return (
-    <div
-      style={{
-        padding: "1rem",
-      }}
-      className="ccard__container"
-    >
-      <div className="fc">
-        <div
-          style={{
-            padding: "1rem",
-            background: "#C4C4C4",
-            width: "fit-content",
-            borderRadius: "1rem",
-            marginBottom: "1rem",
-            fontWeight: "bold",
-          }}
-        >
-          Booking summary
+    <div className="ccard__container">
+      <h2>Booking summary</h2>
+      <div
+        style={{
+          borderBottom: "1px solid black",
+        }}
+        className="ccard__r1 fc"
+      >
+        <div className="fr">
+          <GrLocation className="ccard__icon" /> <p>From: {pickup}</p>
         </div>
         <div className="fr">
-          <img
-            style={{
-              height: "4rem",
-              width: "auto",
-              marginRight: "1rem",
-            }}
-            src={images}
-            alt=""
-          />
-          <div className="data__pane">
-            <p className="dp__options">cab type: {name}</p>
-            <p className="dp__options">journey type: {triptype}</p>
-            <p className="dp__options">from: {pickup} </p>
-            <p className="dp__options">to: {drop} </p>
-            <p className="dp__options">pickup date:{pickupDate} </p>
-            <p className="dp__options">return date: {dropdownDate} </p>
-            <p className="dp__options">base fare: ₹{baseprice}</p>
-            <p className="dp__options">driver fee: ₹{driverfee} </p>
-            <p className="dp__options">total fare: ₹{totalprice} </p>
-            <p className="dp__options">distance: {distance} </p>
-            <p className="dp__options">Extra km charges: ₹{extraCharges}/km </p>
-          </div>
+          <RiBuildingLine className="ccard__icon" /> <p>To: {drop}</p>
+        </div>
+
+        <div className="fr">
+          <AiOutlineCalendar className="ccard__icon" />
+          <p style={{ whiteSpace: "nowrap" }}>Pickup Date: {pickupDate} </p>
+        </div>
+        <div className="fr">
+          <AiOutlineCalendar className="ccard__icon" />
+          <p style={{ whiteSpace: "nowrap" }}>Return Date: </p>
         </div>
       </div>
-      <button
-        style={{ margin: ".5rem 0" }}
-        id="submit-btn"
-        onClick={() => handleClick(func)}
+      <div
+        style={{
+          borderBottom: "1px solid black",
+        }}
+        className="ccard__r1 fc"
       >
-        Book Now
-      </button>
+        <p>cab type</p>
+        <p>journey type:</p>
+        <p>base fare:</p>
+        <p>driver fee:</p>
+      </div>
+      <div className="ccard__r1 fc">
+        <p>distance</p>
+        <p>Extra kilometer charges:</p>
+        <h4 style={{ marginLeft: "auto" }}>Total fare:</h4>
+      </div>
+      <div
+        style={{
+          width: "fit-content",
+          display: "flex",
+          alignItems: "center",
+          padding: "1rem",
+          textAlign: "center",
+          justifyContent: "center",
+          fontWeight: "unset",
+        }}
+        id="submit-btn"
+      >
+        Book now
+      </div>
     </div>
   );
 }
