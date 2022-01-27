@@ -10,7 +10,7 @@ import { BookingContext } from "../context/BookingContext";
 
 class LocationSearchInput extends React.Component {
   static contextType = BookingContext;
-  static setOrigin = this.contextType
+  static setOrigin = this.contextType;
   constructor(props) {
     super(props);
     this.state = { address: "" };
@@ -18,21 +18,14 @@ class LocationSearchInput extends React.Component {
 
   handleChange = (address) => {
     this.setState({ address });
-    console.log(this.state);
-
   };
 
-  
   handleSelect = (address) => {
-    geocodeByAddress(address)
-      .then((results) => getLatLng(results[0]))
-      .then((latLng) => console.log("Success", latLng))
-      .catch((error) => console.error("Error", error));
+    geocodeByAddress(address).then((results) => getLatLng(results[0]));
   };
 
   render() {
-    const { setOrigin, setDestination,setLatLong } = this.context
-    console.log(this.context)
+    const { setOrigin, setDestination, setLatLong } = this.context;
     return (
       <PlacesAutocomplete
         value={this.state.address}
@@ -71,7 +64,7 @@ class LocationSearchInput extends React.Component {
                     ...getInputProps({
                       placeholder: "Search Places ...",
                       className: "location-search-input",
-                    })
+                    }),
                   }}
                 />
               )}
@@ -86,15 +79,15 @@ class LocationSearchInput extends React.Component {
                   // inline style for demonstration purpose
                   const style = suggestion.active
                     ? {
-                      backgroundColor: "#24c64f",
-                      cursor: "pointer",
-                      width: "29%",
-                    }
+                        backgroundColor: "#24c64f",
+                        cursor: "pointer",
+                        width: "29%",
+                      }
                     : {
-                      backgroundColor: "#a6f77b",
-                      cursor: "pointer",
-                      width: "29%",
-                    };
+                        backgroundColor: "#a6f77b",
+                        cursor: "pointer",
+                        width: "29%",
+                      };
                   return (
                     <div
                       {...getSuggestionItemProps(suggestion, {

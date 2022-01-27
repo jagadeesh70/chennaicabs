@@ -57,11 +57,11 @@ function Confirmationcard({
           />
           <div className="data__pane">
             <p className="dp__options">cab type: {name}</p>
-            <p className="dp__options">journey type: oneway</p>
+            <p className="dp__options">journey type: {triptype}</p>
             <p className="dp__options">from: {pickup} </p>
             <p className="dp__options">to: {drop} </p>
             <p className="dp__options">pickup date:{pickupDate} </p>
-            <p className="dp__options">return date: --- </p>
+            <p className="dp__options">return date: {dropdownDate} </p>
             <p className="dp__options">base fare: ₹{baseprice}</p>
             <p className="dp__options">driver fee: ₹{driverfee} </p>
             <p className="dp__options">total fare: ₹{totalprice} </p>

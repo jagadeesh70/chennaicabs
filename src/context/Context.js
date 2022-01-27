@@ -50,7 +50,6 @@ const ContextProvider = ({ children }) => {
       setBookingId(bookingIds + total_trips);
     } catch {}
   };
-  console.log(bookingId);
   const configureCaptcha = () => {
     window.recaptchaVerifier = new RecaptchaVerifier(
       "sign-in-button",
@@ -93,7 +92,6 @@ const ContextProvider = ({ children }) => {
         setAuthstate(false);
       });
   };
-  console.log(username);
   const generateOtp = () => {
     let digits = "1234567890";
     let otp = "";

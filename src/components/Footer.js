@@ -20,10 +20,21 @@ function Footer() {
         Terms & conditions &nbsp; &nbsp; &nbsp;Privacy Policy
       </div>
       <div className="socialmedia">
-        <i className="fab fa-facebook-square fa-2x"></i>
-        <i className="fab fa-instagram-square fa-2x"></i>
-        <i className="fab fa-twitter-square fa-2x"></i>
-        <i className="fab fa-youtube fa-2x"></i>
+        <a
+          href="https://m.facebook.com/Chennai-Cabs-2002469283178934/?tsid=0.3134908302767774&source=result"
+          style={{ textDecoration: "none" }}
+        >
+          <i className="fab fa-facebook-square fa-2x"></i>
+        </a>
+        <a href="https://www.instagram.com/chennaicabs/">
+          <i className="fab fa-instagram-square fa-2x"></i>
+        </a>
+        <a href="http://">
+          <i className="fab fa-twitter-square fa-2x"></i>
+        </a>
+        <a href="https://youtube.com/channel/UC0iKI98LLYQB6pcuWZmh7Og">
+          <i className="fab fa-youtube fa-2x"></i>
+        </a>
       </div>
     </div>
   );
