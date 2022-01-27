@@ -9,18 +9,18 @@ import { GrLocation } from "react-icons/gr";
 import { RiBuildingLine } from "react-icons/ri";
 import { AiOutlineCalendar } from "react-icons/ai";
 function Confirmationcard({
-  images,
   name,
   baseprice,
   totalprice,
-  func,
   extraCharges,
   driverfee,
+  returndate,
+  func,
 }) {
   const { sendOtp, setBookingConfirmed } = useContext(Context);
   const { pickup, drop, distance } = useContext(MapContext);
   const { pickDate, dropDate, pickTime, triptype } = useContext(BookingContext);
-  let pickupDate = new Date(pickDate).toLocaleDateString();
+  let pickupDate = new Date(pickDate).toISOString().split("T")[0];
   let pickupTime = new Date(pickTime).toLocaleTimeString();
   let dropdownDate = new Date(dropDate).toLocaleDateString();
 
@@ -51,7 +51,7 @@ function Confirmationcard({
         </div>
         <div className="fr">
           <AiOutlineCalendar className="ccard__icon" />
-          <p style={{ whiteSpace: "nowrap" }}>Return Date: </p>
+          <p style={{ whiteSpace: "nowrap" }}>Return Date: {returndate} </p>
         </div>
       </div>
       <div
@@ -60,15 +60,15 @@ function Confirmationcard({
         }}
         className="ccard__r1 fc"
       >
-        <p>cab type</p>
-        <p>journey type:</p>
-        <p>base fare:</p>
-        <p>driver fee:</p>
+        <p>cab type: {name}</p>
+        <p>journey type:{triptype}</p>
+        <p>base fare: ₹ {baseprice}</p>
+        <p>driver fee: ₹ {driverfee}</p>
       </div>
       <div className="ccard__r1 fc">
-        <p>distance</p>
-        <p>Extra kilometer charges:</p>
-        <h4 style={{ marginLeft: "auto" }}>Total fare:</h4>
+        <p>distance: {distance} km</p>
+        <p>Extra kilometer charges: ₹ {extraCharges}/km</p>
+        <h4 style={{ marginLeft: "auto" }}>Total fare: ₹{totalprice}</h4>
       </div>
       <div
         style={{
@@ -81,6 +81,7 @@ function Confirmationcard({
           fontWeight: "unset",
         }}
         id="submit-btn"
+        onClick={() => handleClick(func)}
       >
         Book now
       </div>

@@ -30,3 +30,13 @@
     padding-bottom: 0.8rem;
   }
 }
+
+a:link {
+  text-decoration: none;
+  color: white;
+}
+
+a:visited {
+  text-decoration: none;
+  color: white;
+}

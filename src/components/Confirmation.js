@@ -4,11 +4,6 @@ import { useContext } from "react";
 import { MapContext } from "../context/MapContext";
 import { BookingContext } from "../context/BookingContext";
 import Confirmationcard from "./Confirmationcard";
-import Executive from "../images/executive.png";
-import Sedan from "../images/sedan.png";
-import Suv_plus from "../images/suv_plus.png";
-import Suv from "../images/suv.png";
-import Van from "../images/van.png";
 import BookingDone from "./BookingDone";
 function Confirmation() {
   const { sedanFare, suvFare, suvplusFare, executiveFare, tempoFare } =
@@ -45,7 +40,10 @@ function Confirmation() {
   });
   let pickupDay = new Date(bookingDate).getDay();
   let dropdownDate = new Date(dropDate).toISOString().split("T")[0];
-  let DaysLeft = dropDate.getDate() - pickDate.getDate() + 1;
+  let DaysLeft = 1;
+  if (dropDate) {
+    DaysLeft = dropDate.getDate() - pickDate.getDate() + 1;
+  }
   const sedanOneWay = () => {
     addNewTrip(
       bookingTime.replaceAll("/", "-"),
@@ -246,7 +244,6 @@ function Confirmation() {
       case "sedanoneway":
         card = (
           <Confirmationcard
-            images={Sedan}
             name="sedan"
             distance={distance}
             baseprice={sedanFare - 300}
@@ -255,13 +252,14 @@ function Confirmation() {
             nperson={4}
             func={sedanOneWay}
             driverfee={300}
+            returndate={"---"}
+            extraCharges={13}
           />
         );
         break;
       case "suvoneway":
         card = (
           <Confirmationcard
-            images={Suv}
             name="suv"
             distance={distance}
             baseprice={suvFare - 300}
@@ -270,28 +268,30 @@ function Confirmation() {
             nperson={7}
             func={suvOneWay}
             driverfee={300}
+            returndate={"---"}
+            extraCharges={18}
           />
         );
         break;
       case "sedan":
         card = (
           <Confirmationcard
-            images={Sedan}
-            name="suv"
+            name="sedan"
             distance={distance}
             baseprice={sedanFare - 300 * DaysLeft}
             totalprice={sedanFare}
             cartype={cartype}
             nperson={4}
             func={sedanTwoWay}
-            driverfee={300}
+            driverfee={300 * DaysLeft}
+            returndate={dropdownDate}
+            extraCharges={11}
           />
         );
         break;
       case "suv":
         card = (
           <Confirmationcard
-            images={Suv}
             name="suv"
             distance={distance}
             baseprice={suvFare - 300 * DaysLeft}
@@ -300,13 +300,14 @@ function Confirmation() {
             nperson={4}
             func={suvTwoWay}
             driverfee={300 * DaysLeft}
+            returndate={dropdownDate}
+            extraCharges={15}
           />
         );
         break;
       case "suvplus":
         card = (
           <Confirmationcard
-            images={Suv_plus}
             name="suv+"
             distance={distance}
             baseprice={suvplusFare - 400}
@@ -315,13 +316,14 @@ function Confirmation() {
             nperson={7}
             func={suvPlusTwoWay}
             driverfee={400 * DaysLeft}
+            returndate={dropdownDate}
+            extraCharges={15}
           />
         );
         break;
       case "executive":
         card = (
           <Confirmationcard
-            images={Executive}
             name="executive"
             distance={distance}
             baseprice={executiveFare - 500}
@@ -330,13 +332,14 @@ function Confirmation() {
             nperson={6}
             func={executiveTwoWay}
             driverfee={500 * DaysLeft}
+            returndate={dropdownDate}
+            extraCharges={17}
           />
         );
         break;
       case "tempo":
         card = (
           <Confirmationcard
-            images={Van}
             name="Tempo"
             distance={distance}
             baseprice={tempoFare - 600}
@@ -345,6 +348,8 @@ function Confirmation() {
             nperson={12}
             func={tempoTwoWay}
             driverfee={600 * DaysLeft}
+            returndate={dropdownDate}
+            extraCharges={19}
           />
         );
         break;
