@@ -4,7 +4,7 @@ import TextField from "@mui/material/TextField";
 import MobileDatePicker from "@mui/lab/MobileDatePicker";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
-
+import TimePicker from "@mui/lab/TimePicker";
 import MobileTimePicker from "@mui/lab/MobileTimePicker";
 import DateAdapter from "@mui/lab/AdapterDateFns";
 import { BookingContext } from "../context/BookingContext";
@@ -120,13 +120,7 @@ function LocationEntryForm() {
   }, [triptype, pickInput, dropInput]);
   return (
     <LocalizationProvider dateAdapter={DateAdapter}>
-      <Snackbar
-        open={snackbar}
-        autoHideDuration={6000}
-        onClose={handleClose}
-        // key={'top' + 'center'}
-        // anchorOrigin={{ 'top' , 'center' }}
-      >
+      <Snackbar open={snackbar} autoHideDuration={6000} onClose={handleClose}>
         <Alert severity="error">Please Fill all values</Alert>
       </Snackbar>
       <div id="LocationEntryForm" className="form__container">
@@ -190,7 +184,19 @@ function LocationEntryForm() {
             />
           )}
         />
-        <MobileTimePicker
+        {/* <MobileTimePicker
+          label="Enter Pickup Time"
+          value={pickTime}
+          onChange={(e) => setpickTime(e)}
+          renderInput={(params) => (
+            <TextField
+              className="form__autocomplete"
+              size="small"
+              {...params}
+            />
+          )}
+        /> */}
+        <TimePicker
           label="Enter Pickup Time"
           value={pickTime}
           onChange={(e) => setpickTime(e)}
