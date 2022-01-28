@@ -25,7 +25,7 @@ const BookingContextProvider = ({ children }) => {
   //States
   const [distance, setDistance] = useState("");
   const [vehicle, setVehicle] = useState();
-  const [pickDate, setpickDate] = useState(null);
+  const [pickDate, setpickDate] = useState(new Date());
   const [dropDate, setdropDate] = useState(null);
   const [pickTime, setpickTime] = useState(null);
   const [daysLeft, setDaysLeft] = useState(null);

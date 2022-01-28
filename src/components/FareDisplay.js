@@ -29,7 +29,7 @@ function FareDisplay() {
   let pickupTime = new Date(pickTime).toLocaleTimeString();
   let dropdownDate = new Date(dropDate).toLocaleDateString();
   return (
-    <div className="form__container">
+    <div id="fare__container" className="form__container">
       <div className="fare__topbar fc">
         <div className="fare__topbar__location1 fr">
           <FiMapPin size="1.6rem" className="ft__icons" color="#15FE1E" />

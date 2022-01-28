@@ -68,3 +68,12 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+@media only screen and (max-width: 600px) {
+  #fare__container {
+    display: none;
+  }
+  .cars__container {
+    margin-top: 0;
+  }
+}

@@ -37,11 +37,22 @@ function SingleCard({ src, name, price, type, npersons, Totalprice, cartype }) {
         cartype={cartype}
       />
       <div className="card">
+        <h4 className="cbody__name">{name}</h4>
+        <p
+          style={{
+            width: "fit-content",
+            marginLeft: "auto",
+            marginTop: ".5rem",
+            marginRight: ".5rem",
+            fontWeight: "bold",
+          }}
+        >
+          Price: ₹{price}/km
+        </p>
         <div className="card-header">
           <img src={src} alt="rover" />
         </div>
         <div className="card-body">
-          <h4 className="cbody__name">{name}</h4>
           <p
             style={{
               marginBottom: ".7rem",
@@ -49,8 +60,7 @@ function SingleCard({ src, name, price, type, npersons, Totalprice, cartype }) {
           >
             Distance: {distance} km
           </p>
-
-          <p
+          {/* <p
             style={{
               marginLeft: "auto",
               fontWeight: "bold",
@@ -58,7 +68,7 @@ function SingleCard({ src, name, price, type, npersons, Totalprice, cartype }) {
             }}
           >
             Price: ₹{price}/km
-          </p>
+          </p> */}
           <p
             style={{
               marginLeft: "auto",
