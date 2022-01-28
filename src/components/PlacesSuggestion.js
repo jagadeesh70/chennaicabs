@@ -25,7 +25,7 @@ class LocationSearchInput extends React.Component {
   };
 
   render() {
-    const { setOrigin, setDestination, setLatLong } = this.context;
+    const { setLatLong } = this.context;
     return (
       <PlacesAutocomplete
         value={this.state.address}
@@ -34,19 +34,6 @@ class LocationSearchInput extends React.Component {
       >
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
           <>
-            {/* <TextField
-              size="small"
-              id="free-solo-2-demo"
-              className="form__autocomplete"
-              label={this.props.inputType}
-              InputProps={{
-                type: "search",
-                ...getInputProps({
-                  placeholder: "Search Places ...",
-                  className: "location-search-input",
-                }),
-              }}
-            /> */}
             <Autocomplete
               size="small"
               freeSolo

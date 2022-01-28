@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Signin from "../pages/Signin";
-import temp from "../images/sedan.png";
 import { Context } from "../context/Context";
 import Executive from "../images/executive.png";
 import Sedan from "../images/sedan.png";

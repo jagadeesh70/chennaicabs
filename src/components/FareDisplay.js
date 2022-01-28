@@ -1,5 +1,4 @@
 import React, { useContext, useEffect } from "react";
-import { FaCarAlt } from "react-icons/fa";
 import { FiMapPin } from "react-icons/fi";
 import { RiArrowUpDownLine } from "react-icons/ri";
 import { RiBuildingLine } from "react-icons/ri";
@@ -9,8 +8,7 @@ import { BookingContext } from "../context/BookingContext";
 
 function FareDisplay() {
   const { pickup, drop, distance } = useContext(MapContext);
-  const { totalFare, pickDate, dropDate, pickTime, triptype } =
-    useContext(BookingContext);
+  const { pickDate, dropDate, pickTime, triptype } = useContext(BookingContext);
 
   const pick = () => {
     if (pickup) {

@@ -1,6 +1,5 @@
 import React from "react";
 import "./End.css";
-import BookingDone from "./BookingDone";
 
 function End() {
   return (

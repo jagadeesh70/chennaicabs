@@ -4,7 +4,6 @@ import {
   Marker,
   DirectionsService,
   DirectionsRenderer,
-  LoadScript,
 } from "@react-google-maps/api";
 import { MapContext } from "../context/MapContext";
 import "./Maps.css";
