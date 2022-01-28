@@ -56,7 +56,7 @@ function LocationEntryForm() {
   };
 
   checkEmptyvalues = (type) => {
-    if (triptype == "Drop Trip") {
+    if (triptype == "One Way Trip") {
       if (
         pickup == undefined ||
         drop == undefined ||
@@ -102,7 +102,7 @@ function LocationEntryForm() {
   };
 
   useEffect(() => {
-    if (triptype === "Drop Trip") {
+    if (triptype === "One Way Trip") {
       setcabchoices(["Etios/Dzire or Equivalent", "Innova/Xylo or Equivalent"]);
     } else {
       setcabchoices([
@@ -131,10 +131,11 @@ function LocationEntryForm() {
       </Snackbar>
       <div id="LocationEntryForm" className="form__container">
         <div className="form__chip__container">
-          {["Drop Trip", "Round Trip"].map((e, i) => (
+          {["One Way Trip", "Round Trip"].map((e, i) => (
             <button
               key={i}
               style={{
+                fontWeight: 600,
                 background:
                   triptype == e
                     ? "linear-gradient(to left, #a6f77b, #2dbd6e)"

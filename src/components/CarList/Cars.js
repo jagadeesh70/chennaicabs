@@ -20,7 +20,7 @@ function Cars() {
 
   return (
     <div className="cars__container">
-      {triptype === "Drop Trip" ? (
+      {triptype === "One Way Trip" ? (
         <>
           <SingleCard
             src={Sedan}

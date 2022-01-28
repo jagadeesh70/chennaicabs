@@ -21,8 +21,6 @@ function Confirmationcard({
   const { pickup, drop, distance } = useContext(MapContext);
   const { pickDate, dropDate, pickTime, triptype } = useContext(BookingContext);
   let pickupDate = new Date(pickDate).toISOString().split("T")[0];
-  let pickupTime = new Date(pickTime).toLocaleTimeString();
-  let dropdownDate = new Date(dropDate).toLocaleDateString();
 
   const handleClick = (func) => {
     func();

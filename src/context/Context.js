@@ -108,7 +108,7 @@ const ContextProvider = ({ children }) => {
     };
 
     fetch(
-      `http://login.blesssms.com/api/mt/SendSMS?senderid=CHCABS&channel=Trans&DCS=0&flashsms=0&number=${phone}&text=DO NOT SHARE: ${servOtp} is the OTP for your ride ${bookingId} with Chennai cabs.Share this OTP with our driver, once you have verified the starting KM reading.Thank you.&route=10&APIKey=jPT9C6DKXUmc8jDkBAq06w`,
+      `https://myproxyforcors.herokuapp.com/http://login.blesssms.com/api/mt/SendSMS?user=chennaicabscare@gmail.com&password=9841346080&senderid=CHNCAB&channel=Trans&DCS=0&flashsms=0&number=${phone},919551114411&text=DO NOT SHARE: ${servOtp} is the OTP for your ride ${bookingId} with Chennai cabs.Share this OTP with our driver, once you have verified the starting KM reading.Thank you.&route=10`,
       requestOptions
     );
   };

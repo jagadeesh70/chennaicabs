@@ -5,9 +5,11 @@ import ConfirmationModal from "../Modal";
 import { checkEmptyvalues } from "../LocationEntryForm";
 import { useContext } from "react";
 import { BookingContext } from "../../context/BookingContext";
+import { MapContext } from "../../context/MapContext";
 
 function SingleCard({ src, name, price, type, npersons, Totalprice, cartype }) {
-  const { setCartype, distance } = useContext(BookingContext);
+  const { setCartype } = useContext(BookingContext);
+  const { distance } = useContext(MapContext);
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
     if (checkEmptyvalues("from locentryform")) {
@@ -64,15 +66,17 @@ function SingleCard({ src, name, price, type, npersons, Totalprice, cartype }) {
               marginBottom: ".7rem",
             }}
           >
-            Total Price: ₹{Totalprice}
+            Estimated Fare: ₹{Totalprice}
           </p>
           <p
             style={{
-              fontSize: "14px",
-              marginBottom: ".7rem",
+              marginLeft: "35px",
+              fontSize: "11px",
+              marginBottom: ".5rem",
+              color: "red",
             }}
           >
-            Extra Toll at actuals + Extra Permit charges applicable.
+            *Toll/Parking/Permit charges extra*
           </p>
           <div
             style={{ width: "100%", marginBottom: ".5rem" }}

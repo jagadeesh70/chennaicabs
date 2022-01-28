@@ -36,10 +36,10 @@
 }
 .float {
   position: fixed;
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   bottom: 40px;
-  right: 40px;
+  right: 20px;
   background-color: #25d366;
   color: #fff;
   border-radius: 50px;
@@ -47,8 +47,64 @@
   font-size: 30px;
   box-shadow: 2px 2px 3px #999;
   z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .my-float {
-  margin-top: 16px;
+  margin-top: 4px;
+}
+
+.dial-float {
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  bottom: 40px;
+  left: 20px;
+  z-index: 100;
+  animation: ring 2s ease infinite;
+  animation-duration: 2s;
+  animation-timing-function: ease;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+  animation-fill-mode: none;
+  animation-play-state: running;
+}
+
+@keyframes ring {
+  0% {
+    transform: rotate(-15deg);
+  }
+  2% {
+    transform: rotate(15deg);
+  }
+  4% {
+    transform: rotate(-18deg);
+  }
+  6% {
+    transform: rotate(18deg);
+  }
+  8% {
+    transform: rotate(-22deg);
+  }
+  10% {
+    transform: rotate(22deg);
+  }
+  12% {
+    transform: rotate(-18deg);
+  }
+  14% {
+    transform: rotate(18deg);
+  }
+  16% {
+    transform: rotate(-12deg);
+  }
+  18% {
+    transform: rotate(12deg);
+  }
+  20% {
+    transform: rotate(0deg);
+  }
 }

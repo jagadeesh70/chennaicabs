@@ -19,8 +19,8 @@ function FareDisplay() {
       );
     } else {
       return (
-        <p title="Enter the pick up Location" className="faredis__locs">
-          Enter the pick up Location
+        <p title="pick up Location" className="faredis__locs">
+          Pick Up Location
         </p>
       );
     }
@@ -49,8 +49,8 @@ function FareDisplay() {
               {drop}
             </p>
           ) : (
-            <p title="Enter the Destination Location" className="faredis__locs">
-              Enter the Destination Location
+            <p title="Destination Location" className="faredis__locs">
+              Destination Location
             </p>
           )}
         </div>

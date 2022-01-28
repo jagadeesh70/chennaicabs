@@ -25,6 +25,7 @@ function ConfirmModal({
         style={{
           justifyContent: "flex-end",
           paddingRight: "1rem",
+          width: "300px",
         }}
         className="fr"
       >
@@ -41,11 +42,14 @@ function ConfirmModal({
           X
         </button>
       </div>
-      <div className="card-header">
-        <img src={src} alt="rover" />
+      <div
+        className="card-header"
+        style={{ display: "flex", flexDirection: "column" }}
+      >
+        <h4 className="cbody__name">{name}</h4>
+        <img src={src} alt="rover" style={{ height: "140px" }} />
       </div>
       <div className="card-body">
-        <h4 className="cbody__name">{name}</h4>
         <p
           style={{
             marginBottom: ".7rem",
@@ -78,7 +82,7 @@ function ConfirmModal({
             color: "red",
           }}
         >
-          Extra Toll at actuals + Extra Permit charges applicable.
+          *Toll/Parking/Permit charges extra*
         </p>
         <div
           style={{ width: "100%", marginBottom: ".5rem" }}
