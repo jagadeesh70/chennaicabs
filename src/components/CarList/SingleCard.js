@@ -37,18 +37,30 @@ function SingleCard({ src, name, price, type, npersons, Totalprice, cartype }) {
         cartype={cartype}
       />
       <div className="card">
-        <h4 className="cbody__name">{name}</h4>
-        <p
+        <div
           style={{
-            width: "fit-content",
-            marginLeft: "auto",
-            marginTop: ".5rem",
-            marginRight: ".5rem",
-            fontWeight: "bold",
+            position: "absolute",
+            backgroundColor: "rgb(150, 224, 12)",
+            right: "-5px",
+            top: "-20px",
+            borderRadius: "5px",
           }}
         >
-          Price: ₹{price}/km
-        </p>
+          <p
+            style={{
+              width: "auto",
+              marginTop: ".2rem",
+              marginBottom: ".2rem",
+              marginLeft: ".5rem",
+              marginRight: ".5rem",
+              fontWeight: "bold",
+              fontSize: "14px",
+            }}
+          >
+            Fare: <span style={{ fontSize: "18px" }}>₹{price}</span>/km
+          </p>
+        </div>
+        <h4 className="cbody__name">{name}</h4>
         <div className="card-header">
           <img src={src} alt="rover" />
         </div>

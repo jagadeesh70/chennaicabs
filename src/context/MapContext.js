@@ -26,11 +26,6 @@ const MapContextProvider = ({ children }) => {
   const [origin, setOrigin] = useState(null);
   const [destination, setDestination] = useState(null);
 
-  const [response, setResponse] = useState(null);
-  useEffect(() => {
-    traceRoute();
-  }, [distance, pointA, pointB]);
-
   const position = {
     lat: -27.590824,
     lng: -48.551262,

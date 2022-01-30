@@ -51,11 +51,7 @@ const BookingContextProvider = ({ children }) => {
     executivefare = bookingData[2].executive.fare;
     tempofare = bookingData[2].tempo.fare;
   }
-  //Driver Fee based on vehicle
-  //One way fare price based on Vehicle
-  const oneWayBaseFareSmallCar = 1690;
-  const oneWayBaseFareLargeCar = 2340;
-  //once way Base Distance
+
   const oneWayBaseDistance = 130;
   //Two way base distance
   const twoWayBaseDistance = 250;
@@ -99,10 +95,10 @@ const BookingContextProvider = ({ children }) => {
     let fare;
     if (tripType === "One Way Trip") {
       if (distance < 130) {
-        fare = oneWayBaseFareSmallCar + oneWaySedanFee;
+        fare = 130 * oneWaySedanFare + oneWaySedanFee;
       } else {
         fare =
-          oneWayBaseFareSmallCar +
+          130 * oneWaySedanFare +
           oneWaySedanFee +
           (distance - oneWayBaseDistance) * oneWaySedanFare;
       }
@@ -124,10 +120,10 @@ const BookingContextProvider = ({ children }) => {
     let fare;
     if (tripType === "One Way Trip") {
       if (distance < 130) {
-        fare = oneWayBaseFareLargeCar + oneWaySedanFee;
+        fare = 130 * oneWaySuvFare + oneWaySedanFee;
       } else {
         fare =
-          oneWayBaseFareLargeCar +
+          130 * oneWaySuvFare +
           oneWaySuvFee +
           (distance - oneWayBaseDistance) * oneWaySuvFare;
       }
