@@ -8,7 +8,6 @@ import BookingDone from "./BookingDone";
 function Confirmation() {
   const { sedanFare, suvFare, suvplusFare, executiveFare, tempoFare } =
     useContext(BookingContext);
-
   const {
     addNewTrip,
     username,
@@ -30,15 +29,21 @@ function Confirmation() {
     "Friday",
     "Saturday",
   ];
+
   let nowdate = Date.now();
   let bookingDate = new Date(nowdate).toISOString().split("T")[0];
-  let bookingTime = new Date(nowdate).toLocaleString("en-GB");
+  let booktime = new Date(nowdate).toLocaleString("en-CA", {
+    hour12: false,
+  });
+  let booknow1 = booktime.replaceAll("/", "-");
+  let book = booknow1.split(", ");
+  let bookingTime = book.join(" ");
   let pickupDate = new Date(pickDate).toISOString().split("T")[0];
   let pickupTime = new Date(pickTime).toLocaleTimeString("en-US", {
     hour: "numeric",
     minute: "numeric",
   });
-  let pickupDay = new Date(bookingDate).getDay();
+  let pickupDay = new Date(pickDate).getDay();
   let dropdownDate = new Date(dropDate).toISOString().split("T")[0];
   let DaysLeft = 1;
   if (dropDate) {
@@ -46,7 +51,7 @@ function Confirmation() {
   }
   const sedanOneWay = () => {
     addNewTrip(
-      bookingTime.replaceAll("/", "-"),
+      bookingTime,
       fromId,
       toId,
       uid,
@@ -122,7 +127,7 @@ function Confirmation() {
       fromLocation,
       toLocation,
       weekday[pickupDay], //change
-      "two_way",
+      "round_way",
       sedanFare,
       sedanFare
     );
@@ -150,7 +155,7 @@ function Confirmation() {
       fromLocation,
       toLocation,
       weekday[pickupDay], //change
-      "one_way",
+      "round_way",
       suvFare,
       suvFare
     );

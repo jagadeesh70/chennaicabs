@@ -5,7 +5,6 @@ import MobileDatePicker from "@mui/lab/MobileDatePicker";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 import TimePicker from "@mui/lab/TimePicker";
-import MobileTimePicker from "@mui/lab/MobileTimePicker";
 import DateAdapter from "@mui/lab/AdapterDateFns";
 import { BookingContext } from "../context/BookingContext";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
@@ -113,6 +112,7 @@ function LocationEntryForm() {
         "Force traveller",
       ]);
     }
+    traceRoute();
     setcabtype("");
     return () => {
       setcabchoices(["Etios/Dzire or Equivalent", "Innova/Xylo or Equivalent"]);

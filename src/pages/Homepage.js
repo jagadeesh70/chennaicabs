@@ -40,7 +40,7 @@ function Homepage() {
       <div className="entry-container">
         <LocationEntryForm />
         <FareDisplay />
-        <Map></Map>
+        {/* <Map></Map> */}
       </div>
       <Cars />
       <End />

@@ -114,12 +114,6 @@ const MapContextProvider = ({ children }) => {
     }
   }, []);
 
-  const directionsRendererOptions = useMemo(() => {
-    return {
-      directions: response,
-    };
-  }, [response]);
-
   return (
     <MapContext.Provider
       value={{
@@ -145,7 +139,6 @@ const MapContextProvider = ({ children }) => {
         position,
         directionsServiceOptions,
         directionsCallback,
-        directionsRendererOptions,
         traceRoute,
         distance,
         pickup,

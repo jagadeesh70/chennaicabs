@@ -1,14 +1,57 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
+import { auth, db } from "../config/firebase-config";
+import {
+  collection,
+  doc,
+  getDocs,
+  onSnapshot,
+  setDoc,
+} from "firebase/firestore";
 
 const BookingContext = createContext();
 
 const BookingContextProvider = ({ children }) => {
   const [triptype, settriptype] = useState("One Way Trip");
+  const [bookingData, setBookingData] = useState();
+  let oneWaySedanFee;
+  let oneWaySuvFee;
+  let sedanDriverfee;
+  let suvDriverfee;
+  let suvplusDriverfee;
+  let executiveDriverfee;
+  let tempoDriverfee;
+
+  let oneWaySedanFare;
+  let oneWaySuvFare;
+  let sedanfare;
+  let suvfare;
+  let suvplusfare;
+  let executivefare;
+  let tempofare;
+
+  useEffect(async () => {
+    onSnapshot(collection(db, "car_modes"), (snap) => {
+      setBookingData(snap.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    });
+  }, []);
+  if (bookingData) {
+    oneWaySedanFee = bookingData[0].sedan.driver_fee;
+    oneWaySuvFee = bookingData[0].suv.driver_fee;
+    oneWaySedanFare = bookingData[0].sedan.fare;
+    oneWaySuvFare = bookingData[0].suv.fare;
+
+    sedanDriverfee = bookingData[2].sedan.driver_fee;
+    suvDriverfee = bookingData[2].suv.driver_fee;
+    suvplusDriverfee = bookingData[2]["suv+"].driver_fee;
+    executiveDriverfee = bookingData[2].executive.driver_fee;
+    tempoDriverfee = bookingData[2].tempo.driver_fee;
+    sedanfare = bookingData[2].sedan.fare;
+    suvfare = bookingData[2].suv.fare;
+    suvplusfare = bookingData[2]["suv+"].fare;
+    executivefare = bookingData[2].executive.fare;
+    tempofare = bookingData[2].tempo.fare;
+  }
   //Driver Fee based on vehicle
-  const driverFeeSmall = 300;
-  const driverFeeMedium = 400;
-  const driverFeeLarge = 500;
-  const driverFeeVan = 600;
   //One way fare price based on Vehicle
   const oneWayBaseFareSmallCar = 1690;
   const oneWayBaseFareLargeCar = 2340;
@@ -56,21 +99,21 @@ const BookingContextProvider = ({ children }) => {
     let fare;
     if (tripType === "One Way Trip") {
       if (distance < 130) {
-        fare = oneWayBaseFareSmallCar + driverFeeSmall;
+        fare = oneWayBaseFareSmallCar + oneWaySedanFee;
       } else {
         fare =
           oneWayBaseFareSmallCar +
-          driverFeeSmall +
-          (distance - oneWayBaseDistance) * 13;
+          oneWaySedanFee +
+          (distance - oneWayBaseDistance) * oneWaySedanFare;
       }
     } else {
       if (distance * 2 < twoWayBaseDistance * days) {
-        fare = driverFeeSmall * days + twoWayBaseFareSmall * days;
+        fare = sedanDriverfee * days + twoWayBaseFareSmall * days;
       } else {
         fare =
-          driverFeeSmall * days +
+          sedanDriverfee * days +
           twoWayBaseFareSmall * days +
-          (distance * 2 - twoWayBaseDistance * days) * 11;
+          (distance * 2 - twoWayBaseDistance * days) * oneWaySuvFare;
       }
     }
     SetSedanFare(fare);
@@ -81,21 +124,21 @@ const BookingContextProvider = ({ children }) => {
     let fare;
     if (tripType === "One Way Trip") {
       if (distance < 130) {
-        fare = oneWayBaseFareLargeCar + driverFeeSmall;
+        fare = oneWayBaseFareLargeCar + oneWaySedanFee;
       } else {
         fare =
           oneWayBaseFareLargeCar +
-          driverFeeSmall +
-          (distance - oneWayBaseDistance) * 18;
+          oneWaySuvFee +
+          (distance - oneWayBaseDistance) * oneWaySuvFare;
       }
     } else {
       if (distance * 2 < twoWayBaseDistance * days) {
-        fare = driverFeeSmall * days + twoWayBaseFareMedium * days;
+        fare = suvDriverfee * days + twoWayBaseFareMedium * days;
       } else {
         fare =
-          driverFeeSmall * days +
+          suvDriverfee * days +
           twoWayBaseFareMedium * days +
-          (distance * 2 - twoWayBaseDistance * days) * 15;
+          (distance * 2 - twoWayBaseDistance * days) * suvfare;
       }
     }
     setSuvFare(fare);
@@ -105,10 +148,10 @@ const BookingContextProvider = ({ children }) => {
   const SuvPlusFare = (distance, days) => {
     let fare;
     if (distance * 2 < twoWayBaseDistance * days) {
-      fare = driverFeeMedium * days + twoWayBaseFareMedium * days;
+      fare = suvplusDriverfee * days + twoWayBaseFareMedium * days;
     } else {
       fare =
-        driverFeeMedium * days +
+        suvplusDriverfee * days +
         twoWayBaseFareMedium * days +
         (distance * 2 - twoWayBaseDistance * days) * 15;
     }
@@ -119,10 +162,10 @@ const BookingContextProvider = ({ children }) => {
   const ExecutiveFare = (distance, days) => {
     let fare;
     if (distance * 2 < twoWayBaseDistance * days) {
-      fare = driverFeeMedium * days + twoWayBaseFareMedium * days;
+      fare = suvplusDriverfee * days + twoWayBaseFareMedium * days;
     } else {
       fare =
-        driverFeeLarge * days +
+        executiveDriverfee * days +
         twoWayBaseFareLarge * days +
         (distance * 2 - twoWayBaseDistance * days) * 17;
     }
@@ -132,10 +175,10 @@ const BookingContextProvider = ({ children }) => {
   const TempoFare = (distance, days) => {
     let fare;
     if (distance * 2 < twoWayBaseDistance * days) {
-      fare = driverFeeVan * days + twoWayBaseFareVan * days;
+      fare = tempoDriverfee * days + twoWayBaseFareVan * days;
     } else {
       fare =
-        driverFeeVan * days +
+        tempoDriverfee * days +
         twoWayBaseFareVan * days +
         (distance * 2 - twoWayBaseDistance * days) * 19;
     }
