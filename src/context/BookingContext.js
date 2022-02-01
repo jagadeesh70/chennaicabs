@@ -109,7 +109,7 @@ const BookingContextProvider = ({ children }) => {
         fare =
           sedanDriverfee * days +
           twoWayBaseFareSmall * days +
-          (distance * 2 - twoWayBaseDistance * days) * oneWaySuvFare;
+          (distance * 2 - twoWayBaseDistance * days) * sedanfare;
       }
     }
     SetSedanFare(fare);
