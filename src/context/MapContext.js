@@ -25,6 +25,7 @@ const MapContextProvider = ({ children }) => {
 
   const [origin, setOrigin] = useState(null);
   const [destination, setDestination] = useState(null);
+  const [response, setResponse] = useState();
 
   const position = {
     lat: -27.590824,

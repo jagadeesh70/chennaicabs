@@ -208,6 +208,13 @@ const BookingContextProvider = ({ children }) => {
         SedanFare,
         cartype,
         setCartype,
+        oneWaySedanFare,
+        oneWaySuvFare,
+        sedanfare,
+        suvfare,
+        suvplusfare,
+        executivefare,
+        tempofare,
       }}
     >
       {children}

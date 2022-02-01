@@ -16,6 +16,13 @@ function Cars() {
     suvplusFare,
     executiveFare,
     tempoFare,
+    oneWaySedanFare,
+    oneWaySuvFare,
+    sedanfare,
+    suvfare,
+    suvplusfare,
+    executivefare,
+    tempofare,
   } = useContext(BookingContext);
 
   return (
@@ -25,7 +32,7 @@ function Cars() {
           <SingleCard
             src={Sedan}
             name="Etios/Dzire or Equivalent"
-            price={11}
+            price={oneWaySedanFare}
             type="sedan"
             npersons="4"
             Totalprice={sedanFare}
@@ -34,7 +41,7 @@ function Cars() {
           <SingleCard
             src={Suv}
             name="Innova/Xylo or Equivalent"
-            price={15}
+            price={oneWaySuvFare}
             type="suv"
             npersons="7"
             Totalprice={suvFare}
@@ -46,7 +53,7 @@ function Cars() {
           <SingleCard
             src={Sedan}
             name="Etios/Dzire or Equivalent"
-            price={11}
+            price={sedanfare}
             type="sedan"
             npersons="4"
             Totalprice={sedanFare}
@@ -55,7 +62,7 @@ function Cars() {
           <SingleCard
             src={Suv}
             name="Innova/Xylo or Equivalent"
-            price={15}
+            price={suvfare}
             type="suv"
             npersons="7"
             Totalprice={suvFare}
@@ -64,7 +71,7 @@ function Cars() {
           <SingleCard
             src={Suv_plus}
             name="Toyota Innova"
-            price={15}
+            price={suvplusfare}
             type="suv+"
             npersons="7"
             Totalprice={suvplusFare}
@@ -73,7 +80,7 @@ function Cars() {
           <SingleCard
             src={Executive}
             name="Toyota Crysta"
-            price={17}
+            price={executivefare}
             type="executive"
             npersons="6"
             Totalprice={executiveFare}
@@ -82,7 +89,7 @@ function Cars() {
           <SingleCard
             src={Van}
             name="Force traveller"
-            price={19}
+            price={tempofare}
             type="tempo"
             npersons="12"
             Totalprice={tempoFare}
