@@ -28,6 +28,7 @@
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
   border: 4px solid rgb(150, 224, 12);
   width: 300px;
+  z-index: 1;
 }
 .card-header img {
   width: 200px;
@@ -97,3 +98,31 @@
   font-family: "Roboto", sans-serif;
   box-shadow: 4px 4px 15px rgba(26, 35, 126, 0.2);
 } */
+
+.extra-info {
+  display: none;
+  line-height: 30px;
+  font-size: 12px;
+  top: 0;
+  left: 50px;
+  position: absolute;
+}
+
+.info:hover .extra-info {
+  display: flex;
+}
+
+.info {
+  font-size: 20px;
+  padding-left: 5px;
+  width: 20px;
+  border-radius: 15px;
+  z-index: 1000;
+}
+
+.info:hover {
+  background-color: white;
+  padding: 0 0 0 5px;
+  width: 315px;
+  text-align: left !important;
+}

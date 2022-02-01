@@ -37,6 +37,7 @@ function SingleCard({ src, name, price, type, npersons, Totalprice, cartype }) {
         handleOpen={handleOpen}
         cartype={cartype}
       />
+
       <div className="card">
         <div
           style={{
@@ -48,7 +49,7 @@ function SingleCard({ src, name, price, type, npersons, Totalprice, cartype }) {
           }}
         >
           Fare: ₹{price}/km
-        </p>
+        </div>
         <div className="card-header">
           <img src={src} alt="rover" />
         </div>
@@ -60,7 +61,8 @@ function SingleCard({ src, name, price, type, npersons, Totalprice, cartype }) {
           >
             Distance: {distance} km
           </p>
-          <p
+
+          <div
             style={{
               marginLeft: "auto",
               fontWeight: "bold",
@@ -68,15 +70,8 @@ function SingleCard({ src, name, price, type, npersons, Totalprice, cartype }) {
               display: "flex",
             }}
           >
-            <BsFillInfoCircleFill
-              title="Total fare may change at the end of your trip if the distance travelled exceeds the estimated distance 347 km"
-              style={{
-                margin: "auto .5rem",
-              }}
-              color="grey"
-            />
             Estimated Fare: ₹{Totalprice}
-          </p>
+          </div>
           <p
             style={{
               marginLeft: "35px",
