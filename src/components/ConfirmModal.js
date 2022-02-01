@@ -41,26 +41,36 @@ function ConfirmModal({
           X
         </button>
       </div>
+      <h4 className="cbody__name">{name}</h4>
       <div className="card-header">
         <img src={src} alt="rover" />
       </div>
       <div className="card-body">
-        <h4 className="cbody__name">{name}</h4>
         <p
           style={{
-            marginBottom: ".7rem",
+            margin: ".7rem 0",
           }}
         >
           Distance: {distance} km
         </p>
+
         <p
           style={{
             marginLeft: "auto",
             fontWeight: "bold",
-            marginBottom: ".7rem",
+            marginBottom: ".2rem",
           }}
         >
-          Driver Fee: ₹{driverfee} /km
+          Estimated Fare: ₹{Totalprice}
+        </p>
+        <p
+          style={{
+            marginLeft: "8rem",
+            marginBottom: ".7rem",
+            fontSize: ".9rem",
+          }}
+        >
+          (up to 288 km)
         </p>
         <p
           style={{
@@ -69,7 +79,16 @@ function ConfirmModal({
             marginBottom: ".7rem",
           }}
         >
-          Total Price: ₹{Totalprice} /km
+          Base Fare: ₹700
+        </p>
+        <p
+          style={{
+            marginLeft: "auto",
+            fontWeight: "bold",
+            marginBottom: ".7rem",
+          }}
+        >
+          Driver allowance: ₹{driverfee}
         </p>
         <p
           style={{

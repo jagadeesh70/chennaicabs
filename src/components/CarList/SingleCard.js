@@ -1,6 +1,7 @@
 import React from "react";
 import "./SingleCard.css";
 import { FaCarAlt } from "react-icons/fa";
+import { BsFillInfoCircleFill } from "react-icons/bs";
 import ConfirmationModal from "../Modal";
 import { checkEmptyvalues } from "../LocationEntryForm";
 import { useContext } from "react";
@@ -45,7 +46,7 @@ function SingleCard({ src, name, price, type, npersons, Totalprice, cartype }) {
             fontWeight: "bold",
           }}
         >
-          Price: ₹{price}/km
+          Fare: ₹{price}/km
         </p>
         <div className="card-header">
           <img src={src} alt="rover" />
@@ -58,23 +59,22 @@ function SingleCard({ src, name, price, type, npersons, Totalprice, cartype }) {
           >
             Distance: {distance} km
           </p>
-          {/* <p
-            style={{
-              marginLeft: "auto",
-              fontWeight: "bold",
-              marginBottom: ".7rem",
-            }}
-          >
-            Price: ₹{price}/km
-          </p> */}
           <p
             style={{
               marginLeft: "auto",
               fontWeight: "bold",
               marginBottom: ".7rem",
+              display: "flex",
             }}
           >
-            Total Price: ₹{Totalprice}
+            <BsFillInfoCircleFill
+              title="Total fare may change at the end of your trip if the distance travelled exceeds the estimated distance 347 km"
+              style={{
+                margin: "auto .5rem",
+              }}
+              color="grey"
+            />
+            Estimated Fare: ₹{Totalprice}
           </p>
           <p
             style={{
