@@ -6,6 +6,8 @@ import { checkEmptyvalues } from "../LocationEntryForm";
 import { useContext } from "react";
 import { BookingContext } from "../../context/BookingContext";
 import { MapContext } from "../../context/MapContext";
+import { Tooltip } from "@mui/material";
+import { BsFillInfoCircleFill } from "react-icons/bs";
 
 function SingleCard({ src, name, price, type, npersons, Totalprice, cartype }) {
   const { setCartype } = useContext(BookingContext);
@@ -37,30 +39,30 @@ function SingleCard({ src, name, price, type, npersons, Totalprice, cartype }) {
         cartype={cartype}
       />
       <div className="card">
+        <h4 className="cbody__name">{name}</h4>
         <div
           style={{
             position: "absolute",
             backgroundColor: "rgb(150, 224, 12)",
-            right: "-5px",
-            top: "-20px",
+            right: "3px",
+            top: "30px",
             borderRadius: "5px",
           }}
         >
           <p
             style={{
               width: "auto",
-              marginTop: ".2rem",
-              marginBottom: ".2rem",
+              marginTop: ".1rem",
+              marginBottom: ".1rem",
               marginLeft: ".5rem",
               marginRight: ".5rem",
               fontWeight: "bold",
-              fontSize: "14px",
+              fontSize: "12px",
             }}
           >
             Fare: <span style={{ fontSize: "18px" }}>₹{price}</span>/km
           </p>
         </div>
-        <h4 className="cbody__name">{name}</h4>
         <div className="card-header">
           <img src={src} alt="rover" />
         </div>
@@ -81,15 +83,23 @@ function SingleCard({ src, name, price, type, npersons, Totalprice, cartype }) {
           >
             Price: ₹{price}/km
           </p> */}
-          <p
+          <div
             style={{
               marginLeft: "auto",
               fontWeight: "bold",
               marginBottom: ".7rem",
+              justifyContent: "center",
+              display: "flex",
             }}
           >
+            <Tooltip
+              title={`Total fare may change at the end of your trip if the distance travelled exceeds the estimated distance ${"distance"} km`}
+              arrow
+            >
+              <i className="icon-info-sign info"></i>
+            </Tooltip>
             Estimated Fare: ₹{Totalprice}
-          </p>
+          </div>
           <p
             style={{
               marginLeft: "35px",
