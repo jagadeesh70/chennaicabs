@@ -7,6 +7,7 @@ import { useContext } from "react";
 import { BookingContext } from "../../context/BookingContext";
 import { MapContext } from "../../context/MapContext";
 import { Tooltip } from "@mui/material";
+import { FaSnowflake } from "react-icons/fa";
 
 function SingleCard({ src, name, price, type, npersons, Totalprice, cartype }) {
   const { setCartype } = useContext(BookingContext);
@@ -72,6 +73,7 @@ function SingleCard({ src, name, price, type, npersons, Totalprice, cartype }) {
           <p
             style={{
               marginBottom: ".7rem",
+              marginLeft: "auto",
             }}
           >
             Distance: {distance} km
@@ -92,6 +94,7 @@ function SingleCard({ src, name, price, type, npersons, Totalprice, cartype }) {
               marginBottom: ".7rem",
               justifyContent: "center",
               display: "flex",
+              fontSize: "18px",
             }}
           >
             <Tooltip
@@ -127,7 +130,14 @@ function SingleCard({ src, name, price, type, npersons, Totalprice, cartype }) {
               <p>{type}</p>
             </div>
             <p>{npersons} person</p>
-            <p>AC</p>
+            <div className="fare__middlebar__row2__col1 fr">
+              <FaSnowflake
+                style={{
+                  marginRight: ".3rem",
+                }}
+              />
+              <p>AC</p>
+            </div>
           </div>
           <button
             id="submit-btn"
