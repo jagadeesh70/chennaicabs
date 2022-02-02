@@ -48,6 +48,7 @@
   margin-left: auto;
   margin-right: auto;
   width: fit-content;
+  font-size: 16px;
 }
 
 .card__over__container {
@@ -98,31 +99,9 @@
   font-family: "Roboto", sans-serif;
   box-shadow: 4px 4px 15px rgba(26, 35, 126, 0.2);
 } */
-
-.extra-info {
-  display: none;
-  line-height: 30px;
-  font-size: 12px;
-  top: 0;
-  left: 50px;
-  position: absolute;
-}
-
-.info:hover .extra-info {
-  display: flex;
-}
-
 .info {
-  font-size: 20px;
-  padding-left: 5px;
-  width: 20px;
+  font-size: 16px;
+  width: 24px;
   border-radius: 15px;
-  z-index: 1000;
-}
-
-.info:hover {
-  background-color: white;
-  padding: 0 0 0 5px;
-  width: 315px;
-  text-align: left !important;
+  margin-top: 1px;
 }
