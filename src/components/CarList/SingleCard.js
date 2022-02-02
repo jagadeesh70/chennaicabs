@@ -1,14 +1,16 @@
 import React from "react";
 import "./SingleCard.css";
 import { FaCarAlt } from "react-icons/fa";
-import { BsFillInfoCircleFill } from "react-icons/bs";
 import ConfirmationModal from "../Modal";
 import { checkEmptyvalues } from "../LocationEntryForm";
 import { useContext } from "react";
 import { BookingContext } from "../../context/BookingContext";
+import { MapContext } from "../../context/MapContext";
+import { Tooltip } from "@mui/material";
 
 function SingleCard({ src, name, price, type, npersons, Totalprice, cartype }) {
-  const { setCartype, distance } = useContext(BookingContext);
+  const { setCartype } = useContext(BookingContext);
+  const { distance } = useContext(MapContext);
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
     if (checkEmptyvalues("from locentryform")) {
@@ -37,17 +39,29 @@ function SingleCard({ src, name, price, type, npersons, Totalprice, cartype }) {
       />
       <div className="card">
         <h4 className="cbody__name">{name}</h4>
-        <p
+        <div
           style={{
-            width: "fit-content",
-            marginLeft: "auto",
-            marginTop: ".5rem",
-            marginRight: ".5rem",
-            fontWeight: "bold",
+            position: "absolute",
+            backgroundColor: "rgb(150, 224, 12)",
+            right: "3px",
+            top: "30px",
+            borderRadius: "5px",
           }}
         >
-          Fare: ₹{price}/km
-        </p>
+          <p
+            style={{
+              width: "auto",
+              marginTop: ".1rem",
+              marginBottom: ".1rem",
+              marginLeft: ".5rem",
+              marginRight: ".5rem",
+              fontWeight: "bold",
+              fontSize: "12px",
+            }}
+          >
+            Fare: <span style={{ fontSize: "18px" }}>₹{price}</span>/km
+          </p>
+        </div>
         <div className="card-header">
           <img src={src} alt="rover" />
         </div>
@@ -59,30 +73,41 @@ function SingleCard({ src, name, price, type, npersons, Totalprice, cartype }) {
           >
             Distance: {distance} km
           </p>
-          <p
+          {/* <p
             style={{
               marginLeft: "auto",
               fontWeight: "bold",
               marginBottom: ".7rem",
+            }}
+          >
+            Price: ₹{price}/km
+          </p> */}
+          <div
+            style={{
+              marginLeft: "auto",
+              fontWeight: "bold",
+              marginBottom: ".7rem",
+              justifyContent: "center",
               display: "flex",
             }}
           >
-            <BsFillInfoCircleFill
-              title="Total fare may change at the end of your trip if the distance travelled exceeds the estimated distance 347 km"
-              style={{
-                margin: "auto .5rem",
-              }}
-              color="grey"
-            />
+            <Tooltip
+              title={`Total fare may change at the end of your trip if the distance travelled exceeds the estimated distance ${"distance"} km`}
+              arrow
+            >
+              <i className="icon-info-sign info"></i>
+            </Tooltip>
             Estimated Fare: ₹{Totalprice}
-          </p>
+          </div>
           <p
             style={{
-              fontSize: "14px",
-              marginBottom: ".7rem",
+              marginLeft: "35px",
+              fontSize: "11px",
+              marginBottom: ".5rem",
+              color: "red",
             }}
           >
-            Extra Toll at actuals + Extra Permit charges applicable.
+            *Toll/Parking/Permit charges extra*
           </p>
           <div
             style={{ width: "100%", marginBottom: ".5rem" }}

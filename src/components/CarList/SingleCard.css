@@ -47,6 +47,7 @@
   margin-left: auto;
   margin-right: auto;
   width: fit-content;
+  font-size: 16px;
 }
 
 .card__over__container {
@@ -97,3 +98,9 @@
   font-family: "Roboto", sans-serif;
   box-shadow: 4px 4px 15px rgba(26, 35, 126, 0.2);
 } */
+.info {
+  font-size: 16px;
+  width: 24px;
+  border-radius: 15px;
+  margin-top: 1px;
+}

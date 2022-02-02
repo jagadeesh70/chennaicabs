@@ -25,8 +25,7 @@ const MapContextProvider = ({ children }) => {
 
   const [origin, setOrigin] = useState(null);
   const [destination, setDestination] = useState(null);
-
-  const [response, setResponse] = useState(null);
+  const [response, setResponse] = useState();
   useEffect(() => {
     traceRoute();
   }, [distance, pointA, pointB]);
