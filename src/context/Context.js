@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect } from "react";
+import Loader from "../components/Loader";
 import { auth, db } from "../config/firebase-config";
 import {
   RecaptchaVerifier,
