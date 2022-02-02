@@ -7,11 +7,12 @@ import "./Homepage.css";
 import FareDisplay from "../components/FareDisplay";
 import Map from "../components/Map";
 import End from "../components/End";
-import dial from "../images/dial.png";
+import ProgressBar from "../components/ProgressBar/ProgressBar";
 
 function Homepage() {
   return (
     <div>
+      <ProgressBar />
       <Header></Header>
       <div
         className="fr"
@@ -44,11 +45,8 @@ function Homepage() {
       </div>
       <Cars />
       <End />
-      <a href="tel:+919551114411">
-        <img src={dial} className="dial-float" />
-      </a>
       <a
-        href="https://api.whatsapp.com/send?phone=+919841346080"
+        href="https://api.whatsapp.com/send?phone=9841346080"
         className="float"
         target="_blank"
       >

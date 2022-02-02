@@ -25,7 +25,6 @@ function ConfirmModal({
         style={{
           justifyContent: "flex-end",
           paddingRight: "1rem",
-          width: "300px",
         }}
         className="fr"
       >
@@ -82,7 +81,7 @@ function ConfirmModal({
             color: "red",
           }}
         >
-          *Toll/Parking/Permit charges extra*
+          Extra Toll at actuals + Extra Permit charges applicable.
         </p>
         <div
           style={{ width: "100%", marginBottom: ".5rem" }}

@@ -19,6 +19,7 @@ function Map() {
     position,
     directionsServiceOptions,
     directionsCallback,
+    directionsRendererOptions,
   } = useContext(MapContext);
   return (
     <div className="map-container">
@@ -43,6 +44,10 @@ function Map() {
               options={directionsServiceOptions}
               callback={directionsCallback}
             />
+          )}
+
+          {response && directionsRendererOptions && (
+            <DirectionsRenderer options={directionsRendererOptions} />
           )}
         </GoogleMap>
       </div>

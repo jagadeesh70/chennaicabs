@@ -5,6 +5,7 @@ import MobileDatePicker from "@mui/lab/MobileDatePicker";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 import TimePicker from "@mui/lab/TimePicker";
+import MobileTimePicker from "@mui/lab/MobileTimePicker";
 import DateAdapter from "@mui/lab/AdapterDateFns";
 import { BookingContext } from "../context/BookingContext";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
@@ -55,7 +56,7 @@ function LocationEntryForm() {
   };
 
   checkEmptyvalues = (type) => {
-    if (triptype == "One Way Trip") {
+    if (triptype == "Drop Trip") {
       if (
         pickup == undefined ||
         drop == undefined ||
@@ -101,7 +102,7 @@ function LocationEntryForm() {
   };
 
   useEffect(() => {
-    if (triptype === "One Way Trip") {
+    if (triptype === "Drop Trip") {
       setcabchoices(["Etios/Dzire or Equivalent", "Innova/Xylo or Equivalent"]);
     } else {
       setcabchoices([
@@ -112,7 +113,6 @@ function LocationEntryForm() {
         "Force traveller",
       ]);
     }
-    traceRoute();
     setcabtype("");
     return () => {
       setcabchoices(["Etios/Dzire or Equivalent", "Innova/Xylo or Equivalent"]);
@@ -125,11 +125,10 @@ function LocationEntryForm() {
       </Snackbar>
       <div id="LocationEntryForm" className="form__container">
         <div className="form__chip__container">
-          {["One Way Trip", "Round Trip"].map((e, i) => (
+          {["Drop Trip", "Round Trip"].map((e, i) => (
             <button
               key={i}
               style={{
-                fontWeight: 600,
                 background:
                   triptype == e
                     ? "linear-gradient(to left, #a6f77b, #2dbd6e)"

@@ -16,23 +16,16 @@ function Cars() {
     suvplusFare,
     executiveFare,
     tempoFare,
-    oneWaySedanFare,
-    oneWaySuvFare,
-    sedanfare,
-    suvfare,
-    suvplusfare,
-    executivefare,
-    tempofare,
   } = useContext(BookingContext);
 
   return (
     <div className="cars__container">
-      {triptype === "One Way Trip" ? (
+      {triptype === "Drop Trip" ? (
         <>
           <SingleCard
             src={Sedan}
             name="Etios/Dzire or Equivalent"
-            price={oneWaySedanFare}
+            price={11}
             type="sedan"
             npersons="4"
             Totalprice={sedanFare}
@@ -41,7 +34,7 @@ function Cars() {
           <SingleCard
             src={Suv}
             name="Innova/Xylo or Equivalent"
-            price={oneWaySuvFare}
+            price={15}
             type="suv"
             npersons="7"
             Totalprice={suvFare}
@@ -53,7 +46,7 @@ function Cars() {
           <SingleCard
             src={Sedan}
             name="Etios/Dzire or Equivalent"
-            price={sedanfare}
+            price={11}
             type="sedan"
             npersons="4"
             Totalprice={sedanFare}
@@ -62,7 +55,7 @@ function Cars() {
           <SingleCard
             src={Suv}
             name="Innova/Xylo or Equivalent"
-            price={suvfare}
+            price={15}
             type="suv"
             npersons="7"
             Totalprice={suvFare}
@@ -71,7 +64,7 @@ function Cars() {
           <SingleCard
             src={Suv_plus}
             name="Toyota Innova"
-            price={suvplusfare}
+            price={15}
             type="suv+"
             npersons="7"
             Totalprice={suvplusFare}
@@ -80,7 +73,7 @@ function Cars() {
           <SingleCard
             src={Executive}
             name="Toyota Crysta"
-            price={executivefare}
+            price={17}
             type="executive"
             npersons="6"
             Totalprice={executiveFare}
@@ -89,7 +82,7 @@ function Cars() {
           <SingleCard
             src={Van}
             name="Force traveller"
-            price={tempofare}
+            price={19}
             type="tempo"
             npersons="12"
             Totalprice={tempoFare}

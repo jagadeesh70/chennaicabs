@@ -1,0 +1,11 @@
+.progresscontainer {
+  box-sizing: border-box;
+  position: absolute;
+  z-index: 10000000;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.438);
+}
