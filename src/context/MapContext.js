@@ -9,7 +9,7 @@ import {
 const MapContext = createContext();
 
 const MapContextProvider = ({ children }) => {
-  const [distance, setDistance] = useState();
+  const [distance, setDistance] = useState(null);
 
   const [map, setMap] = useState();
   const [searchBoxA, setSearchBoxA] = useState();

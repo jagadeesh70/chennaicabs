@@ -1,18 +1,14 @@
 import { createContext, useState, useEffect } from "react";
 import { auth, db } from "../config/firebase-config";
-import {
-  collection,
-  doc,
-  getDocs,
-  onSnapshot,
-  setDoc,
-} from "firebase/firestore";
+import { collection, onSnapshot } from "firebase/firestore";
 
 const BookingContext = createContext();
 
 const BookingContextProvider = ({ children }) => {
   const [triptype, settriptype] = useState("One Way Trip");
   const [bookingData, setBookingData] = useState();
+  const [loading, setLoading] = useState(true);
+
   let oneWaySedanFee;
   let oneWaySuvFee;
   let sedanDriverfee;
@@ -32,6 +28,7 @@ const BookingContextProvider = ({ children }) => {
   useEffect(async () => {
     onSnapshot(collection(db, "car_modes"), (snap) => {
       setBookingData(snap.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      setLoading(false);
     });
   }, []);
   if (bookingData) {
@@ -215,6 +212,7 @@ const BookingContextProvider = ({ children }) => {
         suvplusfare,
         executivefare,
         tempofare,
+        loading,
       }}
     >
       {children}

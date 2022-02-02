@@ -11,6 +11,7 @@ function Loader() {
         backgroundColor: "white",
         display: "flex",
         flexDirection: "column",
+        overflow: "hidden",
       }}
     >
       <img src={logo} width="300px" />

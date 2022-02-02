@@ -1,5 +1,4 @@
 import { createContext, useState, useEffect } from "react";
-import Loader from "../components/Loader";
 import { auth, db } from "../config/firebase-config";
 import {
   RecaptchaVerifier,
@@ -30,13 +29,9 @@ const ContextProvider = ({ children }) => {
   useEffect(async () => {
     generateBookingId();
     generateOtp();
-    onSnapshot(
-      collection(db, "profile"),
-      (snap) => {
-        snap.docs.map((doc) => doc.data());
-      },
-      () => console.log()
-    );
+    onSnapshot(collection(db, "profile"), (snap) => {
+      snap.docs.map((doc) => doc.data());
+    });
   }, [otpsent, uid]);
   const generateBookingId = async () => {
     try {
@@ -227,29 +222,31 @@ const ContextProvider = ({ children }) => {
   };
 
   return (
-    <Context.Provider
-      value={{
-        username,
-        setUsername,
-        phone,
-        setPhone,
-        setotp,
-        onSignInSubmit,
-        onSubmitOtp,
-        otpsent,
-        setAuthstate,
-        authstate,
-        addNewTrip,
-        uid,
-        setotpsent,
-        sendOtp,
-        bookingConfirmed,
-        setBookingConfirmed,
-        bookingId,
-      }}
-    >
-      {children}
-    </Context.Provider>
+    <>
+      <Context.Provider
+        value={{
+          username,
+          setUsername,
+          phone,
+          setPhone,
+          setotp,
+          onSignInSubmit,
+          onSubmitOtp,
+          otpsent,
+          setAuthstate,
+          authstate,
+          addNewTrip,
+          uid,
+          setotpsent,
+          sendOtp,
+          bookingConfirmed,
+          setBookingConfirmed,
+          bookingId,
+        }}
+      >
+        {children}
+      </Context.Provider>
+    </>
   );
 };
 

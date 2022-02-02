@@ -227,7 +227,7 @@ function LocationEntryForm() {
           </>
         )}
         <button type="button" id="submit-btn" onClick={Total}>
-          Book Cab
+          Search Cab
         </button>
       </div>
     </LocalizationProvider>

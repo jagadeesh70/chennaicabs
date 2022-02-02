@@ -38,7 +38,9 @@ function SingleCard({ src, name, price, type, npersons, Totalprice, cartype }) {
         cartype={cartype}
       />
       <div className="card">
-        <h4 className="cbody__name">{name}</h4>
+        <h3 className="cbody__name" style={{ marginTop: "10px" }}>
+          {name}
+        </h3>
         <div
           style={{
             position: "absolute",
@@ -46,6 +48,7 @@ function SingleCard({ src, name, price, type, npersons, Totalprice, cartype }) {
             right: "3px",
             top: "30px",
             borderRadius: "5px",
+            marginTop: "8px",
           }}
         >
           <p
@@ -92,7 +95,9 @@ function SingleCard({ src, name, price, type, npersons, Totalprice, cartype }) {
             }}
           >
             <Tooltip
-              title={`Total fare may change at the end of your trip if the distance travelled exceeds the estimated distance ${"distance"} km`}
+              title={`Total fare may change at the end of your trip if the distance travelled exceeds the estimated distance ${
+                distance ? distance + "km" : ""
+              }`}
               arrow
             >
               <i className="icon-info-sign info"></i>
