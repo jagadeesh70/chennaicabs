@@ -7,7 +7,6 @@ import { useContext } from "react";
 import { BookingContext } from "../../context/BookingContext";
 import { MapContext } from "../../context/MapContext";
 import { Tooltip } from "@mui/material";
-import { BsFillInfoCircleFill } from "react-icons/bs";
 
 function SingleCard({ src, name, price, type, npersons, Totalprice, cartype }) {
   const { setCartype } = useContext(BookingContext);
