@@ -3,7 +3,7 @@ import DoneIcon from "@mui/icons-material/Done";
 import "./Booking.css";
 import { Context } from "../context/Context";
 function BookingDone() {
-  const { bookingId } = useContext(Context);
+  const { bookingId, username } = useContext(Context);
   const handleClick = () => {
     window.location.reload(true);
   };
@@ -16,7 +16,7 @@ function BookingDone() {
               <div className="icon-box">
                 <DoneIcon sx={{ fontSize: 50 }} />
               </div>
-              <h4 className="modal-title w-100">Awesome!</h4>
+              <h4 className="modal-title w-100">Hi {username}!</h4>
             </div>
             <div className="modal-body">
               <p className="text-center">

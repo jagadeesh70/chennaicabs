@@ -58,15 +58,15 @@ function Confirmationcard({
         }}
         className="ccard__r1 fc"
       >
-        <p>cab type: {name}</p>
-        <p>journey type:{triptype}</p>
-        <p>base fare: ₹ {baseprice}</p>
-        <p>driver fee: ₹ {driverfee}</p>
+        <p>Cab Type: {name}</p>
+        <p>Journey Type:{triptype}</p>
+        <p>Base Fare: ₹ {baseprice}</p>
+        <p>Driver Fee: ₹ {driverfee}</p>
       </div>
       <div className="ccard__r1 fc">
-        <p>distance: {distance} km</p>
-        <p>Extra kilometer charges: ₹ {extraCharges}/km</p>
-        <h4 style={{ marginLeft: "auto" }}>Total fare: ₹{totalprice}</h4>
+        <p>Distance: {distance} km</p>
+        <p>Extra Kilometer Charges: ₹ {extraCharges}/km</p>
+        <h4 style={{ marginLeft: "auto" }}>Estimated Fare: ₹{totalprice}</h4>
       </div>
       <div
         style={{

@@ -25,6 +25,7 @@ const ContextProvider = ({ children }) => {
   const [bookingId, setBookingId] = useState();
   const [servOtp, setServOtp] = useState();
   const [bookingConfirmed, setBookingConfirmed] = useState(false);
+  const [loginLoading, setLoginLoading] = useState(false);
 
   useEffect(async () => {
     generateBookingId();
@@ -58,6 +59,7 @@ const ContextProvider = ({ children }) => {
     );
   };
   const onSignInSubmit = (e) => {
+    authstate ? setLoginLoading(false) : setLoginLoading(true);
     e.preventDefault();
     configureCaptcha();
     const phoneNumber = "+91" + phone;
@@ -68,6 +70,7 @@ const ContextProvider = ({ children }) => {
         setotpsent(true);
       }
     );
+    setLoginLoading(false);
   };
 
   const onSubmitOtp = async (e) => {
@@ -242,6 +245,7 @@ const ContextProvider = ({ children }) => {
           bookingConfirmed,
           setBookingConfirmed,
           bookingId,
+          loginLoading,
         }}
       >
         {children}
