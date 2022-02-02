@@ -7,12 +7,10 @@ import "./Homepage.css";
 import FareDisplay from "../components/FareDisplay";
 import Map from "../components/Map";
 import End from "../components/End";
-import ProgressBar from "../components/ProgressBar/ProgressBar";
 
 function Homepage() {
   return (
     <div>
-      <ProgressBar />
       <Header></Header>
       <div
         className="fr"
