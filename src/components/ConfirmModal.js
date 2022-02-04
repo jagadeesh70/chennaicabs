@@ -20,14 +20,23 @@ function ConfirmModal({
     useContext(MapContext);
   const { setAuthstate, setotpsent } = useContext(Context);
   const { DaysLeft, triptype } = useContext(BookingContext);
+  let style1 = {
+    marginLeft: "auto",
+    fontWeight: "bold",
+    marginTop: ".7rem",
+  };
+  let style2 = {
+    margin: ".2rem",
+    fontSize: ".9rem",
+    fontWeight: "500",
+    color: "grey",
+  };
 
   return (
     <>
       <div
         style={{
           justifyContent: "flex-end",
-          paddingRight: "1rem",
-          width: "300px",
         }}
         className="fr"
       >
@@ -52,47 +61,36 @@ function ConfirmModal({
         <img src={src} alt="rover" style={{ height: "140px" }} />
       </div>
       <div className="card-body">
+        <p>Distance: {distance} km</p>
+        <p style={style1}>Driver Fee: ₹{driverfee} /day</p>
         <p
           style={{
-            marginBottom: ".7rem",
+            marginLeft: "11.7rem",
+            fontSize: ".9rem",
+            fontWeight: "500",
+            color: "grey",
           }}
         >
-          Distance: {distance} km
+          (up to 288 km)
         </p>
-        <p
-          style={{
-            marginLeft: "auto",
-            fontWeight: "bold",
-            marginBottom: ".7rem",
-          }}
-        >
-          Driver Fee: ₹{driverfee} /day
-        </p>
-        <p
-          style={{
-            marginLeft: "auto",
-            fontWeight: "bold",
-            marginBottom: ".7rem",
-          }}
-        >
+        <p style={style1}>
           Base Fare: ₹
           {triptype == "One Way Trip"
             ? Totalprice - driverfee
             : Totalprice - driverfee * (DaysLeft() + 1)}
         </p>
-        <p
-          style={{
-            marginLeft: "auto",
-            fontWeight: "bold",
-            marginBottom: ".7rem",
-          }}
-        >
-          Estimated Fare: ₹{Totalprice}
+        <p style={style1}>Estimated Fare: ₹{Totalprice}</p>
+        <p style={style2}>
+          Excludes toll costs, parking, permits and state tax
+        </p>
+        <p style={style2}>₹13/km will be charged for extra km</p>
+        <p style={style2}>
+          Extra fare may apply if you don`t end trip at madurai
         </p>
         <p
           style={{
             fontSize: "12px",
-            marginBottom: ".7rem",
+            margin: ".7rem 0",
             color: "red",
           }}
         >

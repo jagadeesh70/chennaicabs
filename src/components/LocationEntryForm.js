@@ -1,10 +1,9 @@
 import { useState, useEffect, useContext, forwardRef } from "react";
 import TextField from "@mui/material/TextField";
-
 import MobileDatePicker from "@mui/lab/MobileDatePicker";
+import MobileTimePicker from "@mui/lab/MobileTimePicker";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
-import TimePicker from "@mui/lab/TimePicker";
 import DateAdapter from "@mui/lab/AdapterDateFns";
 import { BookingContext } from "../context/BookingContext";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
@@ -40,10 +39,6 @@ function LocationEntryForm() {
     settriptype,
     TotalFare,
   } = useContext(BookingContext);
-  const [cabtype, setcabtype] = useState("");
-  const [cabchoices, setcabchoices] = useState([]);
-  const [pickInput, setPickInput] = useState();
-  const [dropInput, setdropInput] = useState();
   const [snackbar, setsnackbar] = useState(false);
 
   const handleClose = (event, reason) => {
@@ -99,25 +94,6 @@ function LocationEntryForm() {
     }
     return days;
   };
-
-  useEffect(() => {
-    if (triptype === "One Way Trip") {
-      setcabchoices(["Etios/Dzire or Equivalent", "Innova/Xylo or Equivalent"]);
-    } else {
-      setcabchoices([
-        "Etios/Dzire or Equivalent",
-        "Innova/Xylo or Equivalent",
-        "Toyota Innova",
-        "Toyota Crysta",
-        "Force traveller",
-      ]);
-    }
-    traceRoute();
-    setcabtype("");
-    return () => {
-      setcabchoices(["Etios/Dzire or Equivalent", "Innova/Xylo or Equivalent"]);
-    };
-  }, [triptype, pickInput, dropInput]);
   return (
     <LocalizationProvider dateAdapter={DateAdapter}>
       <Snackbar open={snackbar} autoHideDuration={6000} onClose={handleClose}>
@@ -154,7 +130,6 @@ function LocationEntryForm() {
               size="small"
               className="form__autocomplete"
               fullWidth={true}
-              onChange={(e) => setPickInput(e.target.value)}
             />
           </StandaloneSearchBox>
           <label style={{ fontFamily: "Roboto" }}>
@@ -168,7 +143,6 @@ function LocationEntryForm() {
               size="small"
               className="form__autocomplete"
               fullWidth={true}
-              onChange={(e) => setdropInput(e.target.value)}
             />
           </StandaloneSearchBox>
         </div>
@@ -185,19 +159,7 @@ function LocationEntryForm() {
             />
           )}
         />
-        {/* <MobileTimePicker
-          label="Enter Pickup Time"
-          value={pickTime}
-          onChange={(e) => setpickTime(e)}
-          renderInput={(params) => (
-            <TextField
-              className="form__autocomplete"
-              size="small"
-              {...params}
-            />
-          )}
-        /> */}
-        <TimePicker
+        <MobileTimePicker
           label="Enter Pickup Time"
           value={pickTime}
           onChange={(e) => setpickTime(e)}
