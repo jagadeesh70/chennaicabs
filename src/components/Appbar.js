@@ -7,13 +7,10 @@ import Typography from "@mui/material/Typography";
 import { BiMenu } from "react-icons/bi";
 import Menu from "@mui/material/Menu";
 import logo from "../images/logo.png";
-
-// import MenuIcon from "@mui/icons-material/Menu";
+import { Link, useNavigate } from "react-router-dom";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
-
-const pages = ["Home", "About us", "Contact us"];
 
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -24,6 +21,13 @@ const ResponsiveAppBar = () => {
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
+  };
+
+  const history = useNavigate();
+
+  const pushHistory = (url) => {
+    handleCloseNavMenu();
+    history(url);
   };
 
   return (
@@ -57,7 +61,6 @@ const ResponsiveAppBar = () => {
               Chennai Cabs
             </div>
           </Typography>
-
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
@@ -67,7 +70,6 @@ const ResponsiveAppBar = () => {
               onClick={handleOpenNavMenu}
               color="inherit"
             >
-              {/* <MenuIcon /> */}
               <BiMenu />
             </IconButton>
             <Menu
@@ -88,17 +90,13 @@ const ResponsiveAppBar = () => {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem
-                  style={{
-                    marginLeft: page == "Home" ? "auto" : "inherit",
-                  }}
-                  key={page}
-                  onClick={handleCloseNavMenu}
-                >
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
+              <MenuItem onClick={() => pushHistory("/")}>Home</MenuItem>
+              <MenuItem onClick={() => pushHistory("/contactus")}>
+                Contact us
+              </MenuItem>
+              <MenuItem onClick={() => pushHistory("/aboutus")}>
+                About Us
+              </MenuItem>
             </Menu>
           </Box>
           <Typography
@@ -124,15 +122,25 @@ const ResponsiveAppBar = () => {
             </div>
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                {page}
-              </Button>
-            ))}
+            <Button
+              onClick={handleCloseNavMenu}
+              sx={{ my: 2, color: "white", display: "block" }}
+            >
+              <Link to="/">Home</Link>
+            </Button>
+            <Button
+              onClick={handleCloseNavMenu}
+              sx={{ my: 2, color: "white", display: "block" }}
+            >
+              {" "}
+              <Link to="/ContactUs">Contact us</Link>
+            </Button>
+            <Button
+              onClick={handleCloseNavMenu}
+              sx={{ my: 2, color: "white", display: "block" }}
+            >
+              <Link to="/AboutUs">About us</Link>
+            </Button>
           </Box>
         </Toolbar>
       </Container>
