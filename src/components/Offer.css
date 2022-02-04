@@ -1,0 +1,60 @@
+@-moz-keyframes blink {
+  10% {
+    opacity: 90;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 80;
+  }
+}
+
+@-webkit-keyframes blink {
+  10% {
+    opacity: 90;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100;
+  }
+}
+/* IE */
+
+@-ms-keyframes blink {
+  10% {
+    opacity: 60;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 80;
+  }
+}
+/* Opera and prob css3 final iteration */
+
+@keyframes blink {
+  10% {
+    opacity: 60;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 80;
+  }
+}
+
+.blink-image {
+  -moz-animation: blink normal 2s infinite ease-in-out;
+  /* Firefox */
+  -webkit-animation: blink normal 2s infinite ease-in-out;
+  /* Webkit */
+  -ms-animation: blink normal 2s infinite ease-in-out;
+  /* IE */
+  animation: blink normal 2s infinite ease-in-out;
+  /* Opera and prob css3 final iteration */
+}

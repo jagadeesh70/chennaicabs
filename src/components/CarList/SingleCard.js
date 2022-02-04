@@ -109,13 +109,13 @@ function SingleCard({ src, name, price, type, npersons, Totalprice, cartype }) {
           </div>
           <p
             style={{
-              marginLeft: "35px",
+              marginLeft: "20px",
               fontSize: "11px",
               marginBottom: ".5rem",
               color: "red",
             }}
           >
-            *Toll/Parking/Permit charges extra*
+            *Toll Charges - FREE/Parking/Permit charges extra*
           </p>
           <div
             style={{ width: "100%", marginBottom: ".5rem" }}

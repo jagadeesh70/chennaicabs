@@ -10,6 +10,8 @@ import End from "../components/End";
 import dial from "../images/dial.png";
 import { BookingContext } from "../context/BookingContext";
 import Loader from "../components/Loader";
+import Marquee from "react-fast-marquee";
+import Offer from "../components/Offer";
 
 function Homepage() {
   const { loading } = useContext(BookingContext);
@@ -20,6 +22,31 @@ function Homepage() {
       ) : (
         <div>
           <Header></Header>
+          <a href="https://play.google.com/store/apps/details?id=com.cabs.chennaicabs">
+            <Marquee
+              play={true}
+              speed={40}
+              style={{
+                backgroundColor: "none",
+                color: "white",
+              }}
+              gradient={false}
+            >
+              <div
+                style={{
+                  fontWeight: "bolder",
+                  marginTop: "10px",
+                }}
+              >
+                We are available at playstore now .{" "}
+                <span style={{ color: "#ff7fe1", fontSize: "14px" }}>
+                  CLICK HERE
+                </span>{" "}
+                to download our App Now...
+              </div>
+            </Marquee>
+          </a>
+          <Offer />
           <div
             className="fr"
             style={{
@@ -31,7 +58,6 @@ function Homepage() {
               fontSize: "34px",
               fontWeight: "bold",
               display: "flex",
-              marginTop: "20px",
             }}
             className="q-Quotes"
           >

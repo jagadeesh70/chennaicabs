@@ -25,9 +25,9 @@ function FareDisplay() {
       );
     }
   };
-  let pickupDate = new Date(pickDate).toLocaleDateString();
+  let pickupDate = new Date(pickDate).toLocaleDateString("en-GB");
   let pickupTime = new Date(pickTime).toLocaleTimeString();
-  let dropdownDate = new Date(dropDate).toLocaleDateString();
+  let dropdownDate = new Date(dropDate).toLocaleDateString("en-GB");
   return (
     <div id="fare__container" className="form__container">
       <div className="fare__topbar fc">
@@ -96,7 +96,12 @@ function FareDisplay() {
             )}
             {distance ? (
               <p>
-                Distance: <strong>{distance} km</strong>
+                Distance:{" "}
+                <strong>
+                  {triptype == "One Way Trip"
+                    ? `${distance} km`
+                    : `${distance * 2} km (up and down distance)`}
+                </strong>
               </p>
             ) : (
               <p>Distance: -</p>

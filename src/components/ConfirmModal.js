@@ -4,6 +4,7 @@ import { MapContext } from "../context/MapContext";
 import Button from "@mui/material/Button";
 import { FaCarAlt } from "react-icons/fa";
 import { Context } from "../context/Context";
+import { BookingContext } from "../context/BookingContext";
 
 function ConfirmModal({
   src,
@@ -18,6 +19,7 @@ function ConfirmModal({
   const { pickup, drop, distance, fromId, toId, fromLocation, toLocation } =
     useContext(MapContext);
   const { setAuthstate, setotpsent } = useContext(Context);
+  const { DaysLeft, triptype } = useContext(BookingContext);
 
   return (
     <>
@@ -64,7 +66,7 @@ function ConfirmModal({
             marginBottom: ".7rem",
           }}
         >
-          Driver Fee: ₹{driverfee} /km
+          Driver Fee: ₹{driverfee} /day
         </p>
         <p
           style={{
@@ -73,7 +75,19 @@ function ConfirmModal({
             marginBottom: ".7rem",
           }}
         >
-          Total Price: ₹{Totalprice} /km
+          Base Fare: ₹
+          {triptype == "One Way Trip"
+            ? Totalprice - driverfee
+            : Totalprice - driverfee * (DaysLeft() + 1)}
+        </p>
+        <p
+          style={{
+            marginLeft: "auto",
+            fontWeight: "bold",
+            marginBottom: ".7rem",
+          }}
+        >
+          Estimated Fare: ₹{Totalprice}
         </p>
         <p
           style={{
@@ -82,7 +96,7 @@ function ConfirmModal({
             color: "red",
           }}
         >
-          *Toll/Parking/Permit charges extra*
+          *Toll Charges - FREE/Parking/Permit charges extra*
         </p>
         <div
           style={{ width: "100%", marginBottom: ".5rem" }}
