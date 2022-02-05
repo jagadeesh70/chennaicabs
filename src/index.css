@@ -27,3 +27,8 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+/* .des_nav_active {
+  background: rgba(255, 255, 255, 0.26);
+  border-bottom: 3px solid rgba(11, 218, 11, 0.589);
+} */

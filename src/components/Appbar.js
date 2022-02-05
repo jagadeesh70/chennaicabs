@@ -7,7 +7,7 @@ import Typography from "@mui/material/Typography";
 import { BiMenu } from "react-icons/bi";
 import Menu from "@mui/material/Menu";
 import logo from "../images/logo.png";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
@@ -46,8 +46,10 @@ const ResponsiveAppBar = () => {
                 alignItems: "center",
                 WebkitTextStrokeWidth: "0.3px",
                 WebkitTextStrokeColor: "black",
+                cursor: "pointer",
               }}
               className="header__lgo fr"
+              onClick={() => pushHistory("/")}
             >
               <img
                 style={{
@@ -122,25 +124,49 @@ const ResponsiveAppBar = () => {
             </div>
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            <Button
-              onClick={handleCloseNavMenu}
-              sx={{ my: 2, color: "white", display: "block" }}
+            <NavLink
+              className={(isActive) => (!isActive ? "" : "des_nav_active")}
+              to="/"
             >
-              <Link to="/">Home</Link>
-            </Button>
-            <Button
-              onClick={handleCloseNavMenu}
-              sx={{ my: 2, color: "white", display: "block" }}
+              <Button
+                onClick={handleCloseNavMenu}
+                sx={{
+                  color: "white",
+                  display: "block",
+                }}
+              >
+                Home
+              </Button>
+            </NavLink>
+
+            <NavLink
+              className={(isActive) => (!isActive ? "" : "des_nav_active")}
+              to="/contactUs"
             >
-              {" "}
-              <Link to="/ContactUs">Contact us</Link>
-            </Button>
-            <Button
-              onClick={handleCloseNavMenu}
-              sx={{ my: 2, color: "white", display: "block" }}
+              <Button
+                onClick={handleCloseNavMenu}
+                sx={{
+                  color: "white",
+                  display: "block",
+                }}
+              >
+                Contact us
+              </Button>
+            </NavLink>
+            <NavLink
+              className={(isActive) => (!isActive ? "" : "des_nav_active")}
+              to="/aboutUs"
             >
-              <Link to="/AboutUs">About us</Link>
-            </Button>
+              <Button
+                onClick={handleCloseNavMenu}
+                sx={{
+                  color: "white",
+                  display: "block",
+                }}
+              >
+                About us
+              </Button>
+            </NavLink>
           </Box>
         </Toolbar>
       </Container>
