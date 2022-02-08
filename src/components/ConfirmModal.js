@@ -65,6 +65,7 @@ function ConfirmModal({
         <p style={style1}>Driver Fee: ₹{driverfee} /day</p>
         <p
           style={{
+            whiteSpace: "nowrap",
             marginLeft: "11.7rem",
             fontSize: ".9rem",
             fontWeight: "500",
