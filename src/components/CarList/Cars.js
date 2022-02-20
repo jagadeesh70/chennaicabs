@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import SingleCard from "./SingleCard";
 import Executive from "../../images/executive.png";
 import Sedan from "../../images/sedan.png";
@@ -7,6 +7,7 @@ import Suv from "../../images/suv.png";
 import Van from "../../images/van.png";
 import { BookingContext } from "../../context/BookingContext";
 import { useContext } from "react";
+let ccontainer_ref;
 
 function Cars() {
   const {
@@ -24,9 +25,9 @@ function Cars() {
     executivefare,
     tempofare,
   } = useContext(BookingContext);
-
+  ccontainer_ref = useRef();
   return (
-    <div className="cars__container">
+    <div ref={ccontainer_ref} className="cars__container">
       {triptype === "One Way Trip" ? (
         <>
           <SingleCard
@@ -101,4 +102,5 @@ function Cars() {
   );
 }
 
+export { ccontainer_ref };
 export default Cars;

@@ -2,7 +2,7 @@ import React from "react";
 import "./SingleCard.css";
 import { FaCarAlt } from "react-icons/fa";
 import ConfirmationModal from "../Modal";
-import { checkEmptyvalues } from "../LocationEntryForm";
+import { Total } from "../LocationEntryForm";
 import { useContext } from "react";
 import { BookingContext } from "../../context/BookingContext";
 import { MapContext } from "../../context/MapContext";
@@ -14,10 +14,9 @@ function SingleCard({ src, name, price, type, npersons, Totalprice, cartype }) {
   const { distance } = useContext(MapContext);
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
-    if (checkEmptyvalues("from locentryform")) {
-      return;
+    if (Total()) {
+      setOpen(true);
     }
-    setOpen(true);
   };
   const handleClose = (setisconfirmed, setAuthstate, setotpsent) => {
     setisconfirmed(false);
@@ -78,15 +77,6 @@ function SingleCard({ src, name, price, type, npersons, Totalprice, cartype }) {
           >
             Distance: {distance} km
           </p>
-          {/* <p
-            style={{
-              marginLeft: "auto",
-              fontWeight: "bold",
-              marginBottom: ".7rem",
-            }}
-          >
-            Price: ₹{price}/km
-          </p> */}
           <div
             style={{
               marginLeft: "auto",

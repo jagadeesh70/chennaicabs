@@ -1,9 +1,8 @@
-import { useState, useEffect, useContext, forwardRef } from "react";
+import { useState, useContext } from "react";
 import TextField from "@mui/material/TextField";
 import MobileDatePicker from "@mui/lab/MobileDatePicker";
 import MobileTimePicker from "@mui/lab/MobileTimePicker";
-import Snackbar from "@mui/material/Snackbar";
-import MuiAlert from "@mui/material/Alert";
+import { ccontainer_ref } from "./CarList/Cars";
 import DateAdapter from "@mui/lab/AdapterDateFns";
 import { BookingContext } from "../context/BookingContext";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
@@ -11,11 +10,7 @@ import "./PlaceSuggestion.css";
 import "./LocationEntryForm.css";
 import { StandaloneSearchBox } from "@react-google-maps/api";
 import { MapContext } from "../context/MapContext";
-
-let checkEmptyvalues;
-const Alert = forwardRef(function Alert(props, ref) {
-  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-});
+let Total;
 
 function LocationEntryForm() {
   const {
@@ -39,53 +34,38 @@ function LocationEntryForm() {
     settriptype,
     TotalFare,
   } = useContext(BookingContext);
-  const [snackbar, setsnackbar] = useState(false);
 
-  const handleClose = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
+  const [isunfilled, setisunfilled] = useState([]);
+
+  const checkEmptyvalues = () => {
+    let tempval = null;
+    setisunfilled([]);
+    if (pickup == undefined) {
+      setisunfilled([1]);
+      tempval = true;
     }
-
-    setsnackbar(false);
+    if (drop == undefined) {
+      setisunfilled((oldarray) => [...oldarray, 2]);
+      tempval = true;
+    }
+    if (pickTime == null) {
+      setisunfilled((oldarray) => [...oldarray, 3]);
+      tempval = true;
+    }
+    if (triptype == "Round Trip" && dropDate == null) {
+      setisunfilled((oldarray) => [...oldarray, 4]);
+      tempval = true;
+    }
+    return tempval;
   };
 
-  checkEmptyvalues = (type) => {
-    if (triptype == "One Way Trip") {
-      if (
-        pickup == undefined ||
-        drop == undefined ||
-        pickDate == null ||
-        pickTime == null
-      ) {
-        if (type == "from locentryform") {
-          document.querySelector("#LocationEntryForm").scrollIntoView();
-        }
-        setsnackbar(true);
-        return true;
-      }
-    } else {
-      if (
-        pickup == undefined ||
-        drop == undefined ||
-        pickDate == null ||
-        dropDate == null ||
-        pickTime == null
-      ) {
-        if (type == "from locentryform") {
-          document.querySelector("#LocationEntryForm").scrollIntoView();
-        }
-        setsnackbar(true);
-        return true;
-      }
-    }
-  };
-
-  const Total = () => {
-    if (checkEmptyvalues("from form")) {
+  Total = () => {
+    if (checkEmptyvalues()) {
       return;
     }
-    document.querySelector(".cars__container").scrollIntoView();
+    ccontainer_ref.current.scrollIntoView();
     TotalFare(distance, triptype, getDate(pickDate, dropDate) + 1);
+    return true;
   };
   const getDate = (pickDates, dropDates) => {
     let days;
@@ -96,9 +76,6 @@ function LocationEntryForm() {
   };
   return (
     <LocalizationProvider dateAdapter={DateAdapter}>
-      <Snackbar open={snackbar} autoHideDuration={6000} onClose={handleClose}>
-        <Alert severity="error">Please Fill all values</Alert>
-      </Snackbar>
       <div id="LocationEntryForm" className="form__container">
         <div className="form__chip__container">
           {["One Way Trip", "Round Trip"].map((e, i) => (
@@ -126,10 +103,19 @@ function LocationEntryForm() {
             onPlacesChanged={onPlacesChangedA}
           >
             <TextField
-              required
+              inputRef={(input) => {
+                if (isunfilled.indexOf(1) == 0 && input != null) {
+                  input.focus();
+                }
+              }}
+              error={isunfilled.includes(1)}
               size="small"
+              id="txtfld__1"
               className="form__autocomplete"
               fullWidth={true}
+              helperText={
+                isunfilled.includes(1) ? "Please Enter Pickup Location" : ""
+              }
             />
           </StandaloneSearchBox>
           <label style={{ fontFamily: "Roboto" }}>
@@ -140,9 +126,20 @@ function LocationEntryForm() {
             onPlacesChanged={onPlacesChangedB}
           >
             <TextField
+              inputRef={(input) => {
+                if (isunfilled.indexOf(2) == 0 && input != null) {
+                  input.focus();
+                }
+              }}
+              error={isunfilled.includes(2)}
               size="small"
               className="form__autocomplete"
               fullWidth={true}
+              helperText={
+                isunfilled.includes(2)
+                  ? "Please Enter Destination Location"
+                  : ""
+              }
             />
           </StandaloneSearchBox>
         </div>
@@ -168,6 +165,15 @@ function LocationEntryForm() {
               className="form__autocomplete"
               size="small"
               {...params}
+              inputRef={(input) => {
+                if (isunfilled.indexOf(3) == 0 && input != null) {
+                  input.focus();
+                }
+              }}
+              error={isunfilled.includes(3)}
+              helperText={
+                isunfilled.includes(3) ? "Please Enter Pickup Time" : ""
+              }
             />
           )}
         />
@@ -183,6 +189,15 @@ function LocationEntryForm() {
                   className="form__autocomplete"
                   size="small"
                   {...params}
+                  inputRef={(input) => {
+                    if (isunfilled.indexOf(4) == 0 && input != null) {
+                      input.focus();
+                    }
+                  }}
+                  error={isunfilled.includes(4)}
+                  helperText={
+                    isunfilled.includes(4) ? "Please Enter Pickup Time" : ""
+                  }
                 />
               )}
             />
@@ -196,5 +211,5 @@ function LocationEntryForm() {
   );
 }
 
-export { checkEmptyvalues };
+export { Total };
 export default LocationEntryForm;
