@@ -16,6 +16,7 @@ function Homepage() {
       <div>
         <a href="https://play.google.com/store/apps/details?id=com.cabs.chennaicabs">
           <Marquee
+            className="marq__text"
             play={true}
             speed={40}
             style={{
@@ -40,7 +41,7 @@ function Homepage() {
         </a>
         <Offer />
         <div
-          className="fr"
+          className="fr q-Quotes"
           style={{
             position: "absolute",
             justifyContent: "center",
@@ -51,7 +52,6 @@ function Homepage() {
             fontWeight: "bold",
             display: "flex",
           }}
-          className="q-Quotes"
         >
           <div>
             <p className="main-quote">

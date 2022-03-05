@@ -112,3 +112,19 @@
 .overlay::after {
   background-color: #96e00c;
 }
+
+@media only screen and (max-height: 657px) {
+  .q-Quotes {
+    font-size: 25px !important;
+  }
+}
+@media only screen and (max-height: 618px) {
+  .q-Quotes {
+    display: none !important;
+  }
+}
+@media only screen and (max-height: 458px) {
+  .marq__text {
+    display: none !important;
+  }
+}

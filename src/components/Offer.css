@@ -58,3 +58,9 @@
   animation: blink normal 2s infinite ease-in-out;
   /* Opera and prob css3 final iteration */
 }
+
+@media only screen and (max-height: 485px) {
+  .blink-image {
+    display: none !important;
+  }
+}
